@@ -1,0 +1,336 @@
+
+ATTiny.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000001b6  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .rodata       0000000e  000041b6  000001b6  0000024a  2**0
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  2 .data         00000000  00800040  00800040  00000258  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  3 .bss          00000007  00800040  00800040  00000258  2**0
+                  ALLOC
+  4 .comment      00000030  00000000  00000000  00000258  2**0
+                  CONTENTS, READONLY
+  5 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000288  2**2
+                  CONTENTS, READONLY
+  6 .debug_aranges 00000068  00000000  00000000  000002c4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_info   00000fc3  00000000  00000000  0000032c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_abbrev 00000729  00000000  00000000  000012ef  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_line   00000502  00000000  00000000  00001a18  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_frame  00000154  00000000  00000000  00001f1c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_str    00000815  00000000  00000000  00002070  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_loc    0000049f  00000000  00000000  00002885  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 13 .debug_ranges 00000058  00000000  00000000  00002d24  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	10 c0       	rjmp	.+32     	; 0x22 <__ctors_end>
+   2:	2a c0       	rjmp	.+84     	; 0x58 <__bad_interrupt>
+   4:	29 c0       	rjmp	.+82     	; 0x58 <__bad_interrupt>
+   6:	28 c0       	rjmp	.+80     	; 0x58 <__bad_interrupt>
+   8:	27 c0       	rjmp	.+78     	; 0x58 <__bad_interrupt>
+   a:	26 c0       	rjmp	.+76     	; 0x58 <__bad_interrupt>
+   c:	25 c0       	rjmp	.+74     	; 0x58 <__bad_interrupt>
+   e:	24 c0       	rjmp	.+72     	; 0x58 <__bad_interrupt>
+  10:	23 c0       	rjmp	.+70     	; 0x58 <__bad_interrupt>
+  12:	91 c0       	rjmp	.+290    	; 0x136 <__vector_9>
+  14:	21 c0       	rjmp	.+66     	; 0x58 <__bad_interrupt>
+  16:	20 c0       	rjmp	.+64     	; 0x58 <__bad_interrupt>
+  18:	1f c0       	rjmp	.+62     	; 0x58 <__bad_interrupt>
+  1a:	1e c0       	rjmp	.+60     	; 0x58 <__bad_interrupt>
+  1c:	1d c0       	rjmp	.+58     	; 0x58 <__bad_interrupt>
+  1e:	1c c0       	rjmp	.+56     	; 0x58 <__bad_interrupt>
+  20:	1b c0       	rjmp	.+54     	; 0x58 <__bad_interrupt>
+
+00000022 <__ctors_end>:
+  22:	11 27       	eor	r17, r17
+  24:	1f bf       	out	0x3f, r17	; 63
+  26:	cf eb       	ldi	r28, 0xBF	; 191
+  28:	d0 e0       	ldi	r29, 0x00	; 0
+  2a:	de bf       	out	0x3e, r29	; 62
+  2c:	cd bf       	out	0x3d, r28	; 61
+
+0000002e <__do_clear_bss>:
+  2e:	20 e0       	ldi	r18, 0x00	; 0
+  30:	a0 e4       	ldi	r26, 0x40	; 64
+  32:	b0 e0       	ldi	r27, 0x00	; 0
+  34:	01 c0       	rjmp	.+2      	; 0x38 <.do_clear_bss_start>
+
+00000036 <.do_clear_bss_loop>:
+  36:	1d 93       	st	X+, r17
+
+00000038 <.do_clear_bss_start>:
+  38:	a7 34       	cpi	r26, 0x47	; 71
+  3a:	b2 07       	cpc	r27, r18
+  3c:	e1 f7       	brne	.-8      	; 0x36 <.do_clear_bss_loop>
+
+0000003e <__do_copy_data>:
+  3e:	20 e0       	ldi	r18, 0x00	; 0
+  40:	a0 e4       	ldi	r26, 0x40	; 64
+  42:	b0 e0       	ldi	r27, 0x00	; 0
+  44:	e4 ec       	ldi	r30, 0xC4	; 196
+  46:	f1 e4       	ldi	r31, 0x41	; 65
+  48:	02 c0       	rjmp	.+4      	; 0x4e <__SREG__+0xf>
+  4a:	31 91       	ld	r19, Z+
+  4c:	3d 93       	st	X+, r19
+  4e:	a0 34       	cpi	r26, 0x40	; 64
+  50:	b2 07       	cpc	r27, r18
+  52:	d9 f7       	brne	.-10     	; 0x4a <__SREG__+0xb>
+  54:	a1 d0       	rcall	.+322    	; 0x198 <main>
+  56:	ad c0       	rjmp	.+346    	; 0x1b2 <_exit>
+
+00000058 <__bad_interrupt>:
+  58:	d3 cf       	rjmp	.-90     	; 0x0 <__vectors>
+
+0000005a <_Z12volatile_TMRv>:
+
+   // dont block bus
+   TMRuint16_t i;
+   for (i = 0; i < (uint16_t)1000; i++)
+      ;
+}
+  5a:	65 a1       	lds	r22, 0x45	; 0x800045 <tx_shift_reg_a>
+  5c:	76 a1       	lds	r23, 0x46	; 0x800046 <tx_shift_reg_a+0x1>
+  5e:	43 a1       	lds	r20, 0x43	; 0x800043 <tx_shift_reg_b>
+  60:	54 a1       	lds	r21, 0x44	; 0x800044 <tx_shift_reg_b+0x1>
+  62:	64 17       	cp	r22, r20
+  64:	75 07       	cpc	r23, r21
+  66:	49 f4       	brne	.+18     	; 0x7a <_Z12volatile_TMRv+0x20>
+  68:	63 a1       	lds	r22, 0x43	; 0x800043 <tx_shift_reg_b>
+  6a:	74 a1       	lds	r23, 0x44	; 0x800044 <tx_shift_reg_b+0x1>
+  6c:	41 a1       	lds	r20, 0x41	; 0x800041 <tx_shift_reg_c>
+  6e:	52 a1       	lds	r21, 0x42	; 0x800042 <tx_shift_reg_c+0x1>
+  70:	64 17       	cp	r22, r20
+  72:	75 07       	cpc	r23, r21
+  74:	21 f0       	breq	.+8      	; 0x7e <_Z12volatile_TMRv+0x24>
+  76:	40 e0       	ldi	r20, 0x00	; 0
+  78:	03 c0       	rjmp	.+6      	; 0x80 <__DATA_REGION_LENGTH__>
+  7a:	40 e0       	ldi	r20, 0x00	; 0
+  7c:	01 c0       	rjmp	.+2      	; 0x80 <__DATA_REGION_LENGTH__>
+  7e:	41 e0       	ldi	r20, 0x01	; 1
+  80:	44 23       	and	r20, r20
+  82:	19 f0       	breq	.+6      	; 0x8a <__DATA_REGION_LENGTH__+0xa>
+  84:	85 a1       	lds	r24, 0x45	; 0x800045 <tx_shift_reg_a>
+  86:	96 a1       	lds	r25, 0x46	; 0x800046 <tx_shift_reg_a+0x1>
+  88:	08 95       	ret
+  8a:	65 a1       	lds	r22, 0x45	; 0x800045 <tx_shift_reg_a>
+  8c:	76 a1       	lds	r23, 0x46	; 0x800046 <tx_shift_reg_a+0x1>
+  8e:	43 a1       	lds	r20, 0x43	; 0x800043 <tx_shift_reg_b>
+  90:	54 a1       	lds	r21, 0x44	; 0x800044 <tx_shift_reg_b+0x1>
+  92:	64 17       	cp	r22, r20
+  94:	75 07       	cpc	r23, r21
+  96:	29 f4       	brne	.+10     	; 0xa2 <__DATA_REGION_LENGTH__+0x22>
+  98:	45 a1       	lds	r20, 0x45	; 0x800045 <tx_shift_reg_a>
+  9a:	56 a1       	lds	r21, 0x46	; 0x800046 <tx_shift_reg_a+0x1>
+  9c:	52 a9       	sts	0x42, r21	; 0x800042 <tx_shift_reg_c+0x1>
+  9e:	41 a9       	sts	0x41, r20	; 0x800041 <tx_shift_reg_c>
+  a0:	10 c0       	rjmp	.+32     	; 0xc2 <__stack+0x3>
+  a2:	65 a1       	lds	r22, 0x45	; 0x800045 <tx_shift_reg_a>
+  a4:	76 a1       	lds	r23, 0x46	; 0x800046 <tx_shift_reg_a+0x1>
+  a6:	41 a1       	lds	r20, 0x41	; 0x800041 <tx_shift_reg_c>
+  a8:	52 a1       	lds	r21, 0x42	; 0x800042 <tx_shift_reg_c+0x1>
+  aa:	64 17       	cp	r22, r20
+  ac:	75 07       	cpc	r23, r21
+  ae:	29 f4       	brne	.+10     	; 0xba <__DATA_REGION_LENGTH__+0x3a>
+  b0:	45 a1       	lds	r20, 0x45	; 0x800045 <tx_shift_reg_a>
+  b2:	56 a1       	lds	r21, 0x46	; 0x800046 <tx_shift_reg_a+0x1>
+  b4:	54 a9       	sts	0x44, r21	; 0x800044 <tx_shift_reg_b+0x1>
+  b6:	43 a9       	sts	0x43, r20	; 0x800043 <tx_shift_reg_b>
+  b8:	04 c0       	rjmp	.+8      	; 0xc2 <__stack+0x3>
+  ba:	43 a1       	lds	r20, 0x43	; 0x800043 <tx_shift_reg_b>
+  bc:	54 a1       	lds	r21, 0x44	; 0x800044 <tx_shift_reg_b+0x1>
+  be:	56 a9       	sts	0x46, r21	; 0x800046 <tx_shift_reg_a+0x1>
+  c0:	45 a9       	sts	0x45, r20	; 0x800045 <tx_shift_reg_a>
+  c2:	85 a1       	lds	r24, 0x45	; 0x800045 <tx_shift_reg_a>
+  c4:	96 a1       	lds	r25, 0x46	; 0x800046 <tx_shift_reg_a+0x1>
+  c6:	08 95       	ret
+
+000000c8 <_Z11set_TMR_valj>:
+  c8:	96 a9       	sts	0x46, r25	; 0x800046 <tx_shift_reg_a+0x1>
+  ca:	85 a9       	sts	0x45, r24	; 0x800045 <tx_shift_reg_a>
+  cc:	94 a9       	sts	0x44, r25	; 0x800044 <tx_shift_reg_b+0x1>
+  ce:	83 a9       	sts	0x43, r24	; 0x800043 <tx_shift_reg_b>
+  d0:	92 a9       	sts	0x42, r25	; 0x800042 <tx_shift_reg_c+0x1>
+  d2:	81 a9       	sts	0x41, r24	; 0x800041 <tx_shift_reg_c>
+  d4:	08 95       	ret
+
+000000d6 <_Z7UART_txc>:
+  d6:	cf 93       	push	r28
+  d8:	c8 2f       	mov	r28, r24
+  da:	bf df       	rcall	.-130    	; 0x5a <_Z12volatile_TMRv>
+  dc:	89 2b       	or	r24, r25
+  de:	49 f4       	brne	.+18     	; 0xf2 <_Z7UART_txc+0x1c>
+  e0:	bc df       	rcall	.-136    	; 0x5a <_Z12volatile_TMRv>
+  e2:	8c 2f       	mov	r24, r28
+  e4:	90 e0       	ldi	r25, 0x00	; 0
+  e6:	88 0f       	add	r24, r24
+  e8:	99 1f       	adc	r25, r25
+  ea:	92 60       	ori	r25, 0x02	; 2
+  ec:	ed df       	rcall	.-38     	; 0xc8 <_Z11set_TMR_valj>
+  ee:	42 e0       	ldi	r20, 0x02	; 2
+  f0:	48 bb       	out	0x18, r20	; 24
+  f2:	cf 91       	pop	r28
+  f4:	08 95       	ret
+
+000000f6 <_Z11UART_tx_strPKc>:
+  f6:	cf 93       	push	r28
+  f8:	df 93       	push	r29
+  fa:	c8 2f       	mov	r28, r24
+  fc:	d9 2f       	mov	r29, r25
+  fe:	88 81       	ld	r24, Y
+ 100:	88 23       	and	r24, r24
+ 102:	39 f0       	breq	.+14     	; 0x112 <_Z11UART_tx_strPKc+0x1c>
+ 104:	cf 5f       	subi	r28, 0xFF	; 255
+ 106:	df 4f       	sbci	r29, 0xFF	; 255
+ 108:	e6 df       	rcall	.-52     	; 0xd6 <_Z7UART_txc>
+ 10a:	a7 df       	rcall	.-178    	; 0x5a <_Z12volatile_TMRv>
+ 10c:	89 2b       	or	r24, r25
+ 10e:	e9 f7       	brne	.-6      	; 0x10a <_Z11UART_tx_strPKc+0x14>
+ 110:	f6 cf       	rjmp	.-20     	; 0xfe <_Z11UART_tx_strPKc+0x8>
+ 112:	df 91       	pop	r29
+ 114:	cf 91       	pop	r28
+ 116:	08 95       	ret
+
+00000118 <_Z9UART_initv>:
+ 118:	45 b1       	in	r20, 0x05	; 5
+ 11a:	42 60       	ori	r20, 0x02	; 2
+ 11c:	45 b9       	out	0x05, r20	; 5
+ 11e:	46 b1       	in	r20, 0x06	; 6
+ 120:	42 60       	ori	r20, 0x02	; 2
+ 122:	46 b9       	out	0x06, r20	; 6
+ 124:	42 e0       	ldi	r20, 0x02	; 2
+ 126:	49 bb       	out	0x19, r20	; 25
+ 128:	46 b5       	in	r20, 0x26	; 38
+ 12a:	42 60       	ori	r20, 0x02	; 2
+ 12c:	46 bd       	out	0x26, r20	; 38
+ 12e:	47 e6       	ldi	r20, 0x67	; 103
+ 130:	46 bb       	out	0x16, r20	; 22
+ 132:	78 94       	sei
+ 134:	08 95       	ret
+
+00000136 <__vector_9>:
+
+// timer0 compare A match interrupt
+ISR(TIM0_COMPA_vect)
+{
+ 136:	1f 93       	push	r17
+ 138:	0f 93       	push	r16
+ 13a:	0f b7       	in	r16, 0x3f	; 63
+ 13c:	0f 93       	push	r16
+ 13e:	10 e0       	ldi	r17, 0x00	; 0
+ 140:	4f 93       	push	r20
+ 142:	5f 93       	push	r21
+ 144:	6f 93       	push	r22
+ 146:	7f 93       	push	r23
+ 148:	8f 93       	push	r24
+ 14a:	9f 93       	push	r25
+ 14c:	af 93       	push	r26
+ 14e:	bf 93       	push	r27
+ 150:	ef 93       	push	r30
+ 152:	ff 93       	push	r31
+   uint16_t local_tx_shift_reg = volatile_TMR();
+ 154:	82 df       	rcall	.-252    	; 0x5a <_Z12volatile_TMRv>
+   // output LSB of the TX shift register at the TX pin
+   if (local_tx_shift_reg & 0x01)
+ 156:	80 ff       	sbrs	r24, 0
+ 158:	04 c0       	rjmp	.+8      	; 0x162 <__vector_9+0x2c>
+   {
+      TX_PORT |= (1 << TX_PIN);
+ 15a:	46 b1       	in	r20, 0x06	; 6
+ 15c:	42 60       	ori	r20, 0x02	; 2
+ 15e:	46 b9       	out	0x06, r20	; 6
+ 160:	03 c0       	rjmp	.+6      	; 0x168 <__vector_9+0x32>
+   }
+   else
+   {
+      TX_PORT &= ~(1 << TX_PIN);
+ 162:	46 b1       	in	r20, 0x06	; 6
+ 164:	4d 7f       	andi	r20, 0xFD	; 253
+ 166:	46 b9       	out	0x06, r20	; 6
+   }
+   // shift the TX shift register one bit to the right
+   local_tx_shift_reg = volatile_TMR();
+ 168:	78 df       	rcall	.-272    	; 0x5a <_Z12volatile_TMRv>
+   local_tx_shift_reg >>= 1;
+ 16a:	96 95       	lsr	r25
+ 16c:	87 95       	ror	r24
+   set_TMR_val(local_tx_shift_reg);
+ 16e:	ac df       	rcall	.-168    	; 0xc8 <_Z11set_TMR_valj>
+   // if the stop bit has been sent, the shift register will be 0
+   // and the transmission is completed, so we can stop & reset timer0
+   local_tx_shift_reg = volatile_TMR();
+ 170:	74 df       	rcall	.-280    	; 0x5a <_Z12volatile_TMRv>
+   if (!local_tx_shift_reg)
+ 172:	89 2b       	or	r24, r25
+ 174:	11 f4       	brne	.+4      	; 0x17a <__vector_9+0x44>
+   {
+      TCCR0B = 0;
+ 176:	18 bb       	out	0x18, r17	; 24
+      TCNT0 = 0;
+ 178:	17 bb       	out	0x17, r17	; 23
+   }
+}
+ 17a:	ff 91       	pop	r31
+ 17c:	ef 91       	pop	r30
+ 17e:	bf 91       	pop	r27
+ 180:	af 91       	pop	r26
+ 182:	9f 91       	pop	r25
+ 184:	8f 91       	pop	r24
+ 186:	7f 91       	pop	r23
+ 188:	6f 91       	pop	r22
+ 18a:	5f 91       	pop	r21
+ 18c:	4f 91       	pop	r20
+ 18e:	0f 91       	pop	r16
+ 190:	0f bf       	out	0x3f, r16	; 63
+ 192:	0f 91       	pop	r16
+ 194:	1f 91       	pop	r17
+ 196:	18 95       	reti
+
+00000198 <main>:
+unsigned short ram_size;
+
+int main(void)
+{
+
+	CCP = 0xD8;	  // disable Configuration Change Protection Register
+ 198:	48 ed       	ldi	r20, 0xD8	; 216
+ 19a:	4c bf       	out	0x3c, r20	; 60
+	CLKPSR = 0x0; // Clock Division Factor = 1			//vielleicht doch durch 8
+ 19c:	16 bf       	out	0x36, r17	; 54
+	a = 5;
+ 19e:	45 e0       	ldi	r20, 0x05	; 5
+ 1a0:	40 a9       	sts	0x40, r20	; 0x800040 <__DATA_REGION_ORIGIN__>
+	// b = a;
+	UART_init();
+ 1a2:	ba df       	rcall	.-140    	; 0x118 <_Z9UART_initv>
+	DDRA |= 1 << PA5; /* set PA5 to output (LED)*/
+ 1a4:	41 b1       	in	r20, 0x01	; 1
+ 1a6:	40 62       	ori	r20, 0x20	; 32
+ 1a8:	41 b9       	out	0x01, r20	; 1
+	//ram_pointer = allocate_ram(&ram_size);
+	//for (unsigned short i = 0; i < ram_size; i++)
+	//{
+		//*(ram_pointer + i) = TEST_PATTERN;
+	//}
+	UART_tx_str("Hello world!\n");
+ 1aa:	86 eb       	ldi	r24, 0xB6	; 182
+ 1ac:	91 e4       	ldi	r25, 0x41	; 65
+ 1ae:	a3 df       	rcall	.-186    	; 0xf6 <_Z11UART_tx_strPKc>
+ 1b0:	ff cf       	rjmp	.-2      	; 0x1b0 <main+0x18>
+
+000001b2 <_exit>:
+ 1b2:	f8 94       	cli
+
+000001b4 <__stop_program>:
+ 1b4:	ff cf       	rjmp	.-2      	; 0x1b4 <__stop_program>
