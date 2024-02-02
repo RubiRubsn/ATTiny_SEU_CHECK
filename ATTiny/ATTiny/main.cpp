@@ -14,6 +14,7 @@ uint8_t *allocate_ram(unsigned short *);
 
 uint8_t *ram_pointer;
 unsigned short ram_size;
+void test_memory(unsigned short test_pattern);
 
 int main(void)
 {
@@ -25,15 +26,16 @@ int main(void)
 	UART_init();
 	DDRA |= 1 << PA5; /* set PA5 to output (LED)*/
 
-	//ram_pointer = allocate_ram(&ram_size);
-	//for (unsigned short i = 0; i < ram_size; i++)
-	//{
-		//*(ram_pointer + i) = TEST_PATTERN;
-	//}
-	UART_tx_str("Hello world!\n");
+	ram_pointer = allocate_ram(&ram_size);
+	for (unsigned short i = 0; i < ram_size; i++)
+	{
+		*(ram_pointer + i) = TEST_PATTERN;
+	}
+	//UART_tx_str("test 123");
 
 	while (1)
 	{
+		test_memory(TEST_PATTERN);
 		//UART_tx_str("Hello world!\n");
 
 		//PORTA ^= 1 << PA5; // blink

@@ -22,15 +22,8 @@ Discarded input sections
  .text          0x00000000        0x0 main.o
  .data          0x00000000        0x0 main.o
  .bss           0x00000000        0x0 main.o
- .text._Z16uart_send_report10TMRuint8_tS_
-                0x00000000      0x266 main.o
- .text._Z12allocate_ramPt
-                0x00000000       0x46 main.o
- .text._Z11test_memoryt
-                0x00000000       0x60 main.o
- .bss.ram_size  0x00000000        0x2 main.o
- .bss.ram_pointer
-                0x00000000        0x2 main.o
+ .text._Z11UART_tx_strPKc
+                0x00000000       0x22 main.o
  .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrtiny\libgcc.a(_exit.o)
  .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrtiny\libgcc.a(_exit.o)
  .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrtiny\libgcc.a(_exit.o)
@@ -64,12 +57,7 @@ Discarded input sections
  .text.libgcc.fixed
                 0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrtiny\libgcc.a(_clear_bss.o)
  .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrtiny\libc.a(malloc.o)
- .data          0x00000000        0x6 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrtiny\libc.a(malloc.o)
  .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrtiny\libc.a(malloc.o)
- .text.avr-libc
-                0x00000000      0x374 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrtiny\libc.a(malloc.o)
- .comment       0x00000000       0x31 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrtiny\libc.a(malloc.o)
- COMMON         0x00000000        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrtiny\libc.a(malloc.o)
  .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrtiny\libgcc.a(_copy_data.o)
  .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrtiny\libgcc.a(_copy_data.o)
  .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrtiny\libgcc.a(_copy_data.o)
@@ -212,7 +200,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x1b6
+.text           0x00000000      0x7da
  *(.vectors)
  .vectors       0x00000000       0x22 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATtiny_DFP/1.10.348/gcc/dev/attiny20/avrtiny/crtattiny20.o
                 0x00000000                __vector_default
@@ -298,22 +286,32 @@ END GROUP
  .text._Z7UART_txc
                 0x000000d6       0x20 main.o
                 0x000000d6                _Z7UART_txc
- .text._Z11UART_tx_strPKc
-                0x000000f6       0x22 main.o
-                0x000000f6                _Z11UART_tx_strPKc
  .text._Z9UART_initv
-                0x00000118       0x1e main.o
-                0x00000118                _Z9UART_initv
+                0x000000f6       0x1e main.o
+                0x000000f6                _Z9UART_initv
+ .text._Z16uart_send_report10TMRuint8_tS_
+                0x00000114      0x202 main.o
+                0x00000114                _Z16uart_send_report10TMRuint8_tS_
  .text.__vector_9
-                0x00000136       0x62 main.o
-                0x00000136                __vector_9
- .text.main     0x00000198       0x1a main.o
-                0x00000198                main
-                0x000001b2                . = ALIGN (0x2)
+                0x00000316       0x62 main.o
+                0x00000316                __vector_9
+ .text._Z12allocate_ramPt
+                0x00000378       0x46 main.o
+                0x00000378                _Z12allocate_ramPt
+ .text._Z11test_memoryt
+                0x000003be       0x60 main.o
+                0x000003be                _Z11test_memoryt
+ .text.main     0x0000041e       0x44 main.o
+                0x0000041e                main
+ .text.avr-libc
+                0x00000462      0x374 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrtiny\libc.a(malloc.o)
+                0x00000462                malloc
+                0x00000640                free
+                0x000007d6                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x000001b2        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrtiny\libgcc.a(_exit.o)
-                0x000001b2                _exit
-                0x000001b2                exit
+ .fini9         0x000007d6        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrtiny\libgcc.a(_exit.o)
+                0x000007d6                _exit
+                0x000007d6                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -332,52 +330,62 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x000001b2        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrtiny\libgcc.a(_exit.o)
+ .fini0         0x000007d6        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrtiny\libgcc.a(_exit.o)
  *(.fini0)
-                0x000001b6                _etext = .
+                0x000007da                _etext = .
 
-.rodata         0x000041b6        0xe load address 0x000001b6
+.rodata
  *(.rodata)
  *(.rodata*)
- .rodata.str1.1
-                0x000041b6        0xe main.o
  *(.gnu.linkonce.r*)
 
-.data           0x00800040        0x0 load address 0x000001c4
+.data           0x00800040        0x6 load address 0x000007da
                 0x00800040                PROVIDE (__data_start, .)
  *(.data)
+ .data          0x00800040        0x6 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrtiny\libc.a(malloc.o)
+                0x00800040                __malloc_heap_end
+                0x00800042                __malloc_heap_start
+                0x00800044                __malloc_margin
  *(.data*)
  *(.gnu.linkonce.d*)
-                0x00800040                . = ALIGN (0x2)
-                0x00800040                _edata = .
-                0x00800040                PROVIDE (__data_end, .)
+                0x00800046                . = ALIGN (0x2)
+                0x00800046                _edata = .
+                0x00800046                PROVIDE (__data_end, .)
 
-.bss            0x00800040        0x7
-                0x00800040                PROVIDE (__bss_start, .)
+.bss            0x00800046        0xf
+                0x00800046                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
- .bss.a         0x00800040        0x1 main.o
-                0x00800040                a
+ .bss.ram_size  0x00800046        0x2 main.o
+                0x00800046                ram_size
+ .bss.ram_pointer
+                0x00800048        0x2 main.o
+                0x00800048                ram_pointer
+ .bss.a         0x0080004a        0x1 main.o
+                0x0080004a                a
  .bss.tx_shift_reg_c
-                0x00800041        0x2 main.o
-                0x00800041                tx_shift_reg_c
+                0x0080004b        0x2 main.o
+                0x0080004b                tx_shift_reg_c
  .bss.tx_shift_reg_b
-                0x00800043        0x2 main.o
-                0x00800043                tx_shift_reg_b
+                0x0080004d        0x2 main.o
+                0x0080004d                tx_shift_reg_b
  .bss.tx_shift_reg_a
-                0x00800045        0x2 main.o
-                0x00800045                tx_shift_reg_a
+                0x0080004f        0x2 main.o
+                0x0080004f                tx_shift_reg_a
  *(COMMON)
-                0x00800047                PROVIDE (__bss_end, .)
-                0x000001c4                __data_load_start = LOADADDR (.data)
-                0x000001c4                __data_load_end = (__data_load_start + SIZEOF (.data))
+ COMMON         0x00800051        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrtiny\libc.a(malloc.o)
+                0x00800051                __brkval
+                0x00800053                __flp
+                0x00800055                PROVIDE (__bss_end, .)
+                0x000007da                __data_load_start = LOADADDR (.data)
+                0x000007e0                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x00800047        0x0
+.noinit         0x00800055        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
  *(.noinit*)
                 [!provide]                PROVIDE (__noinit_end, .)
-                0x00800047                _end = .
-                0x00800047                PROVIDE (__heap_start, .)
+                0x00800055                _end = .
+                0x00800055                PROVIDE (__heap_start, .)
 
 .lock
  *(.lock*)
@@ -410,6 +418,7 @@ END GROUP
  *(.comment)
  .comment       0x00000000       0x30 main.o
                                  0x31 (size before relaxing)
+ .comment       0x00000030       0x31 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrtiny\libc.a(malloc.o)
 
 .note.gnu.avr.deviceinfo
                 0x00000000       0x3c
@@ -439,20 +448,20 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000      0xfc3
+.debug_info     0x00000000      0xfbb
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x45b C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATtiny_DFP/1.10.348/gcc/dev/attiny20/avrtiny/crtattiny20.o
- .debug_info    0x0000045b      0xb68 main.o
+ .debug_info    0x0000045b      0xb60 main.o
 
-.debug_abbrev   0x00000000      0x729
+.debug_abbrev   0x00000000      0x734
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x41c C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATtiny_DFP/1.10.348/gcc/dev/attiny20/avrtiny/crtattiny20.o
- .debug_abbrev  0x0000041c      0x30d main.o
+ .debug_abbrev  0x0000041c      0x318 main.o
 
-.debug_line     0x00000000      0x502
+.debug_line     0x00000000      0x520
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000       0xfd C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATtiny_DFP/1.10.348/gcc/dev/attiny20/avrtiny/crtattiny20.o
- .debug_line    0x000000fd      0x405 main.o
+ .debug_line    0x000000fd      0x423 main.o
 
 .debug_frame    0x00000000      0x154
  *(.debug_frame)
@@ -464,9 +473,9 @@ END GROUP
  .debug_str     0x00000184      0x691 main.o
                                 0x6e2 (size before relaxing)
 
-.debug_loc      0x00000000      0x49f
+.debug_loc      0x00000000      0x4fb
  *(.debug_loc)
- .debug_loc     0x00000000      0x49f main.o
+ .debug_loc     0x00000000      0x4fb main.o
 
 .debug_macinfo
  *(.debug_macinfo)

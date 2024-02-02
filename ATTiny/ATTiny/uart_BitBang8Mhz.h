@@ -92,7 +92,7 @@ void UART_tx_str(const char *string)
       while (volatile_TMR())
          ;
    }
-   //printf("%s \n", string);
+
 }
 
 void UART_init()
@@ -124,10 +124,6 @@ void UART_init()
 void uart_send_report(TMRuint8_t address, TMRuint8_t content)
 {
    // mark sending next register
-   UART_tx('+');
-   UART_tx('+');
-   UART_tx('+');
-
    // send address
 
    UART_tx((char)(address));
