@@ -8,13 +8,14 @@
    to achieve the desired baud rate (nominal value is 103)
 */
 
+#pragma once
 void UART_tx(char);
 void UART_tx_str(char *);
 void UART_init();
 
 #include <avr/io.h>
 #include <avr/interrupt.h>
-#include "TMR_datatype.h"
+// #include "TMR_datatype.h"
 // #include <util/delay.h>
 
 // change these to use another pin
@@ -82,18 +83,17 @@ void UART_tx(char character)
    TCCR0B = (1 << CS01);
 }
 
-void UART_tx_str(const char *string)
-{
+// void UART_tx_str(const char *string)
+// {
 
-   while (*string)
-   {
-      UART_tx(*string++);
-      // wait until transmission is finished
-      while (volatile_TMR())
-         ;
-   }
-
-}
+//    while (*string)
+//    {
+//       UART_tx(*string++);
+//       // wait until transmission is finished
+//       while (volatile_TMR())
+//          ;
+//    }
+// }
 
 void UART_init()
 {
@@ -121,27 +121,17 @@ void UART_init()
    sei();
 }
 
-void uart_send_report(TMRuint8_t address, TMRuint8_t content)
+void uart_send_report(uint8_t address, uint8_t content)
 {
-   // mark sending next register
-   // send address
-
    UART_tx((char)(address));
-
-   // send content
    UART_tx((char)(content));
-
-   // dont block bus
-   TMRuint16_t i;
-   for (i = 0; i < (uint16_t)1000; i++)
-      ;
 }
 
 // timer0 compare A match interrupt
 ISR(TIM0_COMPA_vect)
 {
    uint16_t local_tx_shift_reg = volatile_TMR();
-   // output LSB of the TX shift register at the TX pin
+
    if (local_tx_shift_reg & 0x01)
    {
       TX_PORT |= (1 << TX_PIN);
@@ -150,12 +140,10 @@ ISR(TIM0_COMPA_vect)
    {
       TX_PORT &= ~(1 << TX_PIN);
    }
-   // shift the TX shift register one bit to the right
+
    local_tx_shift_reg = volatile_TMR();
    local_tx_shift_reg >>= 1;
    set_TMR_val(local_tx_shift_reg);
-   // if the stop bit has been sent, the shift register will be 0
-   // and the transmission is completed, so we can stop & reset timer0
    local_tx_shift_reg = volatile_TMR();
    if (!local_tx_shift_reg)
    {

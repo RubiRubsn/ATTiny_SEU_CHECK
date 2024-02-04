@@ -4,41 +4,127 @@
 #include <avr/interrupt.h>
 #include <stdint.h>
 #include <stdlib.h>
-#include "TMR_datatype.h"
+// #include "TMR_datatype.h"
 #define RAM_START 0x0040
 #define FLASH_START 0x00C0
 
-uint8_t a;
+uint8_t adr;
+uint8_t val;
+
+struct tripple_uint8_t_ptr
+{
+	uint8_t *A;
+	uint8_t *B;
+	uint8_t *C;
+};
+
+struct tripple_uint8_t
+{
+	uint8_t A;
+	uint8_t B;
+	uint8_t C;
+};
 #define TEST_PATTERN 0xAA
 uint8_t *allocate_ram(unsigned short *);
 
-uint8_t *ram_pointer;
+tripple_uint8_t_ptr ram_pointer;
 unsigned short ram_size;
 void test_memory(unsigned short test_pattern);
+
+uint8_t TMR(uint8_t &A, uint8_t &B, uint8_t &C)
+{
+	if ((A == B) && (B == C))
+	{
+		return A;
+	}
+	else
+	{
+
+		if (A == B)
+		{
+			//uart_send_report((uint8_t)(short)&C, C);
+			adr = (uint8_t)(short)&C;
+			val = C;
+			C = A;
+		}
+		else if (A == C)
+		{
+			//uart_send_report((uint8_t)(short)&B, B);
+			adr = (uint8_t)(short)&B;
+			val = B;
+			B = A;
+		}
+		else
+		{
+			//uart_send_report((uint8_t)(short)&A, A);
+			adr = (uint8_t)(short)&A;
+			val = A;
+			A = B;
+		}
+		uart_send_report(adr, val);
+	}
+	return A;
+};
+uint8_t TMR(tripple_uint8_t &A)
+{
+	return TMR(A.A, A.B, A.C);
+};
+
+uint8_t *TMR(tripple_uint8_t_ptr &A)
+{
+	if ((A.A == A.B) && (A.B == A.C))
+	{
+		return A.A;
+	}
+	else
+	{
+		if (A.A == A.B)
+		{
+			adr = (uint8_t)(short)&(A.C);
+			val = (uint8_t)(short)(A.C);
+			//uart_send_report((short)&A.C, A.C);
+			A.C = A.A;
+		}
+		else if (A.A == A.C)
+		{
+			adr = (uint8_t)(short)&(A.B);
+			val = (uint8_t)(short)(A.B);
+			//uart_send_report((short)&A.B, A.B);
+			A.B = A.A;
+		}
+		else
+		{
+			//uart_send_report((short)&A.A, A.A);
+			adr = (uint8_t)(short)&(A.A);
+			val = (uint8_t)(short)(A.A);
+			A.A = A.B;
+		}
+		uart_send_report(adr, val);
+	}
+	return A.A;
+};
 
 int main(void)
 {
 
 	CCP = 0xD8;	  // disable Configuration Change Protection Register
 	CLKPSR = 0x0; // Clock Division Factor = 1			//vielleicht doch durch 8
-	a = 5;
-	// b = a;
 	UART_init();
 	DDRA |= 1 << PA5; /* set PA5 to output (LED)*/
 
-	ram_pointer = allocate_ram(&ram_size);
-	for (unsigned short i = 0; i < ram_size; i++)
+	ram_pointer.A = allocate_ram(&ram_size);
+	ram_pointer.B = ram_pointer.A;
+	ram_pointer.C = ram_pointer.A;
+
+	for (tripple_uint8_t i = {0, 0, 0}; TMR(i) < ram_size; i.A++, i.B++, i.C++)
 	{
-		*(ram_pointer + i) = TEST_PATTERN;
+
+		*(TMR(ram_pointer) + i.A) = TEST_PATTERN; //size optimisations i is tmr checked one line ahead
 	}
-	//UART_tx_str("test 123");
 
 	while (1)
 	{
 		test_memory(TEST_PATTERN);
-		//UART_tx_str("Hello world!\n");
-
-		//PORTA ^= 1 << PA5; // blink
 	}
 
 	return 0;
@@ -46,10 +132,9 @@ int main(void)
 
 uint8_t *allocate_ram(unsigned short *out_size)
 {
-	unsigned short
-		i = FLASH_START - RAM_START;
+	unsigned short i = FLASH_START - RAM_START;
 	uint8_t *memory;
-	while ((memory = (uint8_t *)malloc(--i)) == 0x00 && i > 0)
+	while ((memory = (uint8_t *)malloc(--i)) == 0x00 && i > 0) //i muss TMR -----------------------------------------------------------
 		;
 	*out_size = i;
 	return memory;
@@ -57,14 +142,20 @@ uint8_t *allocate_ram(unsigned short *out_size)
 
 void test_memory(unsigned short test_pattern)
 {
-	unsigned short i;
-	for (i = 0; i < ram_size; i++)
+	for (tripple_uint8_t i = {0, 0, 0}; TMR(i) < ram_size; i.A++, i.B++, i.C++)
 	{
-		if (*(ram_pointer + i) != test_pattern)
+
+		//uint8_t *help = TMR(ram_pointer);
+		uint8_t *ram_help = TMR(ram_pointer);
+		if (*(ram_help + i.A) != test_pattern) //i is TMR checked one line ahead -- size optimisation
 		{
-			// send error and reset register
-			uart_send_report((short)ram_pointer + i, *(ram_pointer + i));
-			*(ram_pointer + i) = test_pattern;
+
+			// adr = (uint8_t)(short)TMR(ram_pointer) + TMR(i);
+			// val = *(TMR(ram_pointer) + TMR(i));
+			adr = (uint8_t)(short)ram_help + i.A;
+			val = *(ram_help + i.A);
+			uart_send_report(adr, val);
+			*(ram_help + TMR(i)) = test_pattern;
 		}
 	}
 }
