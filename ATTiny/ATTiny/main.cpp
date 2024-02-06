@@ -125,6 +125,7 @@ int main(void)
 	while (1)
 	{
 		test_memory(TEST_PATTERN);
+		PORTA ^= 1 << PA5;
 	}
 
 	return 0;
