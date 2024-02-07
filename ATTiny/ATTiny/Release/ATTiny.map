@@ -12,7 +12,8 @@ Discarded input sections
  .text          0x00000000        0x0 main.o
  .data          0x00000000        0x0 main.o
  .bss           0x00000000        0x0 main.o
- .bss.ram_size  0x00000000        0x2 main.o
+ .text._Z3TMRR19tripple_uint8_t_ptr
+                0x00000000       0x92 main.o
  .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrtiny\libgcc.a(_exit.o)
  .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrtiny\libgcc.a(_exit.o)
  .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrtiny\libgcc.a(_exit.o)
@@ -171,7 +172,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x41a
+.text           0x00000000      0x382
  *(.vectors)
  .vectors       0x00000000       0x22 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATtiny_DFP/1.10.348/gcc/dev/attiny20/avrtiny/crtattiny20.o
                 0x00000000                __vector_default
@@ -270,20 +271,17 @@ END GROUP
  .text._Z3TMRR15tripple_uint8_t
                 0x000001b8       0x12 main.o
                 0x000001b8                _Z3TMRR15tripple_uint8_t
- .text._Z3TMRR19tripple_uint8_t_ptr
-                0x000001ca       0x92 main.o
-                0x000001ca                _Z3TMRR19tripple_uint8_t_ptr
  .text._Z11test_memoryt
-                0x0000025c       0xfe main.o
-                0x0000025c                _Z11test_memoryt
+                0x000001ca       0xf8 main.o
+                0x000001ca                _Z11test_memoryt
  .text.startup.main
-                0x0000035a       0xbc main.o
-                0x0000035a                main
-                0x00000416                . = ALIGN (0x2)
+                0x000002c2       0xbc main.o
+                0x000002c2                main
+                0x0000037e                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00000416        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrtiny\libgcc.a(_exit.o)
-                0x00000416                _exit
-                0x00000416                exit
+ .fini9         0x0000037e        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrtiny\libgcc.a(_exit.o)
+                0x0000037e                _exit
+                0x0000037e                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -302,16 +300,16 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00000416        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrtiny\libgcc.a(_exit.o)
+ .fini0         0x0000037e        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrtiny\libgcc.a(_exit.o)
  *(.fini0)
-                0x0000041a                _etext = .
+                0x00000382                _etext = .
 
 .rodata
  *(.rodata)
  *(.rodata*)
  *(.gnu.linkonce.r*)
 
-.data           0x00800040        0x0 load address 0x0000041a
+.data           0x00800040        0x0 load address 0x00000382
                 [!provide]                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -320,40 +318,37 @@ END GROUP
                 0x00800040                _edata = .
                 [!provide]                PROVIDE (__data_end, .)
 
-.bss            0x00800040       0x3a
+.bss            0x00800040       0x38
                 0x00800040                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
- .bss.ram_pointer
-                0x00800040        0x6 main.o
-                0x00800040                ram_pointer
- .bss.counter   0x00800046        0x1 main.o
-                0x00800046                counter
- .bss.val       0x00800047        0x1 main.o
-                0x00800047                val
- .bss.adr       0x00800048        0x1 main.o
-                0x00800048                adr
- .bss.test      0x00800049       0x2b main.o
-                0x00800049                test
+ .bss.counter   0x00800040        0x1 main.o
+                0x00800040                counter
+ .bss.val       0x00800041        0x1 main.o
+                0x00800041                val
+ .bss.adr       0x00800042        0x1 main.o
+                0x00800042                adr
+ .bss.test      0x00800043       0x2f main.o
+                0x00800043                test
  .bss.tx_shift_reg_c
-                0x00800074        0x2 main.o
-                0x00800074                tx_shift_reg_c
+                0x00800072        0x2 main.o
+                0x00800072                tx_shift_reg_c
  .bss.tx_shift_reg_b
-                0x00800076        0x2 main.o
-                0x00800076                tx_shift_reg_b
+                0x00800074        0x2 main.o
+                0x00800074                tx_shift_reg_b
  .bss.tx_shift_reg_a
-                0x00800078        0x2 main.o
-                0x00800078                tx_shift_reg_a
+                0x00800076        0x2 main.o
+                0x00800076                tx_shift_reg_a
  *(COMMON)
-                0x0080007a                PROVIDE (__bss_end, .)
-                0x0000041a                __data_load_start = LOADADDR (.data)
-                0x0000041a                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00800078                PROVIDE (__bss_end, .)
+                0x00000382                __data_load_start = LOADADDR (.data)
+                0x00000382                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x0080007a        0x0
+.noinit         0x00800078        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
  *(.noinit*)
                 [!provide]                PROVIDE (__noinit_end, .)
-                0x0080007a                _end = .
+                0x00800078                _end = .
                 [!provide]                PROVIDE (__heap_start, .)
 
 .lock
