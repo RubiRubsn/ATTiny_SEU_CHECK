@@ -75,7 +75,7 @@ void UART_tx(char character)
    }
 
    // fill the TX shift register witch the character to be sent and the start & stop bits (start bit (1<<0) is already 0)
-   //local_tx_shift_reg = volatile_TMR();
+   // local_tx_shift_reg = volatile_TMR();
    local_tx_shift_reg = (character << 1) | (1 << 9); // stop bit (1<<9)
    set_TMR_val(local_tx_shift_reg);
 
