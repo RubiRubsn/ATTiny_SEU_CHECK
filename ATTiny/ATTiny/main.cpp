@@ -14,6 +14,7 @@ uint8_t test[nr_zells];
 
 uint8_t adr;
 uint8_t val;
+uint8_t counter_two = 0;
 
 uint8_t counter = 0;
 
@@ -343,7 +344,12 @@ int main(void)
 		if (++counter == 0)
 		{
 			PORTA ^= 1 << PA5;
-			UART_tx((char)('.'));
+			if (++counter_two == 10)
+			{
+
+				UART_tx((char)('.'));
+				counter_two = 0;
+			}
 		}
 	}
 

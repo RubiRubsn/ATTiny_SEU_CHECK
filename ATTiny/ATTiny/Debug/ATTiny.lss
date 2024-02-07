@@ -3,31 +3,31 @@ ATTiny.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         00000624  00000000  00000000  00000074  2**1
+  0 .text         00000630  00000000  00000000  00000074  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .data         00000000  00800040  00800040  00000698  2**0
+  1 .data         00000000  00800040  00800040  000006a4  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  2 .bss          00000038  00800040  00800040  00000698  2**0
+  2 .bss          00000039  00800040  00800040  000006a4  2**0
                   ALLOC
-  3 .comment      00000030  00000000  00000000  00000698  2**0
+  3 .comment      00000030  00000000  00000000  000006a4  2**0
                   CONTENTS, READONLY
-  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000006c8  2**2
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000006d4  2**2
                   CONTENTS, READONLY
-  5 .debug_aranges 00000078  00000000  00000000  00000704  2**0
+  5 .debug_aranges 00000078  00000000  00000000  00000710  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   00000d12  00000000  00000000  0000077c  2**0
+  6 .debug_info   00000d24  00000000  00000000  00000788  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 000006ee  00000000  00000000  0000148e  2**0
+  7 .debug_abbrev 000006ee  00000000  00000000  000014ac  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00000809  00000000  00000000  00001b7c  2**0
+  8 .debug_line   00000815  00000000  00000000  00001b9a  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  00000170  00000000  00000000  00002388  2**2
+  9 .debug_frame  00000170  00000000  00000000  000023b0  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    0000049f  00000000  00000000  000024f8  2**0
+ 10 .debug_str    000004ab  00000000  00000000  00002520  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    000004eb  00000000  00000000  00002997  2**0
+ 11 .debug_loc    000004eb  00000000  00000000  000029cb  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000068  00000000  00000000  00002e82  2**0
+ 12 .debug_ranges 00000068  00000000  00000000  00002eb6  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -69,11 +69,11 @@ Disassembly of section .text:
   36:	1d 93       	st	X+, r17
 
 00000038 <.do_clear_bss_start>:
-  38:	a8 37       	cpi	r26, 0x78	; 120
+  38:	a9 37       	cpi	r26, 0x79	; 121
   3a:	b2 07       	cpc	r27, r18
   3c:	e1 f7       	brne	.-8      	; 0x36 <.do_clear_bss_loop>
   3e:	91 d2       	rcall	.+1314   	; 0x562 <main>
-  40:	ef c2       	rjmp	.+1502   	; 0x620 <_exit>
+  40:	f5 c2       	rjmp	.+1514   	; 0x62c <_exit>
 
 00000042 <__bad_interrupt>:
   42:	de cf       	rjmp	.-68     	; 0x0 <__vectors>
@@ -85,59 +85,59 @@ Disassembly of section .text:
 	}
 	return A.A;
 };
-  44:	66 a7       	lds	r22, 0x76	; 0x800076 <tx_shift_reg_a>
-  46:	77 a7       	lds	r23, 0x77	; 0x800077 <tx_shift_reg_a+0x1>
-  48:	44 a7       	lds	r20, 0x74	; 0x800074 <tx_shift_reg_b>
-  4a:	55 a7       	lds	r21, 0x75	; 0x800075 <tx_shift_reg_b+0x1>
+  44:	67 a7       	lds	r22, 0x77	; 0x800077 <tx_shift_reg_a>
+  46:	78 a7       	lds	r23, 0x78	; 0x800078 <tx_shift_reg_a+0x1>
+  48:	45 a7       	lds	r20, 0x75	; 0x800075 <tx_shift_reg_b>
+  4a:	56 a7       	lds	r21, 0x76	; 0x800076 <tx_shift_reg_b+0x1>
   4c:	64 17       	cp	r22, r20
   4e:	75 07       	cpc	r23, r21
   50:	39 f4       	brne	.+14     	; 0x60 <_Z12volatile_TMRv+0x1c>
-  52:	64 a7       	lds	r22, 0x74	; 0x800074 <tx_shift_reg_b>
-  54:	75 a7       	lds	r23, 0x75	; 0x800075 <tx_shift_reg_b+0x1>
-  56:	42 a7       	lds	r20, 0x72	; 0x800072 <tx_shift_reg_c>
-  58:	53 a7       	lds	r21, 0x73	; 0x800073 <tx_shift_reg_c+0x1>
+  52:	65 a7       	lds	r22, 0x75	; 0x800075 <tx_shift_reg_b>
+  54:	76 a7       	lds	r23, 0x76	; 0x800076 <tx_shift_reg_b+0x1>
+  56:	43 a7       	lds	r20, 0x73	; 0x800073 <tx_shift_reg_c>
+  58:	54 a7       	lds	r21, 0x74	; 0x800074 <tx_shift_reg_c+0x1>
   5a:	64 17       	cp	r22, r20
   5c:	75 07       	cpc	r23, r21
   5e:	e1 f0       	breq	.+56     	; 0x98 <__DATA_REGION_LENGTH__+0x18>
-  60:	66 a7       	lds	r22, 0x76	; 0x800076 <tx_shift_reg_a>
-  62:	77 a7       	lds	r23, 0x77	; 0x800077 <tx_shift_reg_a+0x1>
-  64:	44 a7       	lds	r20, 0x74	; 0x800074 <tx_shift_reg_b>
-  66:	55 a7       	lds	r21, 0x75	; 0x800075 <tx_shift_reg_b+0x1>
+  60:	67 a7       	lds	r22, 0x77	; 0x800077 <tx_shift_reg_a>
+  62:	78 a7       	lds	r23, 0x78	; 0x800078 <tx_shift_reg_a+0x1>
+  64:	45 a7       	lds	r20, 0x75	; 0x800075 <tx_shift_reg_b>
+  66:	56 a7       	lds	r21, 0x76	; 0x800076 <tx_shift_reg_b+0x1>
   68:	64 17       	cp	r22, r20
   6a:	75 07       	cpc	r23, r21
   6c:	29 f4       	brne	.+10     	; 0x78 <_Z12volatile_TMRv+0x34>
-  6e:	46 a7       	lds	r20, 0x76	; 0x800076 <tx_shift_reg_a>
-  70:	57 a7       	lds	r21, 0x77	; 0x800077 <tx_shift_reg_a+0x1>
-  72:	53 af       	sts	0x73, r21	; 0x800073 <tx_shift_reg_c+0x1>
-  74:	42 af       	sts	0x72, r20	; 0x800072 <tx_shift_reg_c>
+  6e:	47 a7       	lds	r20, 0x77	; 0x800077 <tx_shift_reg_a>
+  70:	58 a7       	lds	r21, 0x78	; 0x800078 <tx_shift_reg_a+0x1>
+  72:	54 af       	sts	0x74, r21	; 0x800074 <tx_shift_reg_c+0x1>
+  74:	43 af       	sts	0x73, r20	; 0x800073 <tx_shift_reg_c>
   76:	10 c0       	rjmp	.+32     	; 0x98 <__DATA_REGION_LENGTH__+0x18>
-  78:	66 a7       	lds	r22, 0x76	; 0x800076 <tx_shift_reg_a>
-  7a:	77 a7       	lds	r23, 0x77	; 0x800077 <tx_shift_reg_a+0x1>
-  7c:	42 a7       	lds	r20, 0x72	; 0x800072 <tx_shift_reg_c>
-  7e:	53 a7       	lds	r21, 0x73	; 0x800073 <tx_shift_reg_c+0x1>
+  78:	67 a7       	lds	r22, 0x77	; 0x800077 <tx_shift_reg_a>
+  7a:	78 a7       	lds	r23, 0x78	; 0x800078 <tx_shift_reg_a+0x1>
+  7c:	43 a7       	lds	r20, 0x73	; 0x800073 <tx_shift_reg_c>
+  7e:	54 a7       	lds	r21, 0x74	; 0x800074 <tx_shift_reg_c+0x1>
   80:	64 17       	cp	r22, r20
   82:	75 07       	cpc	r23, r21
   84:	29 f4       	brne	.+10     	; 0x90 <__DATA_REGION_LENGTH__+0x10>
-  86:	46 a7       	lds	r20, 0x76	; 0x800076 <tx_shift_reg_a>
-  88:	57 a7       	lds	r21, 0x77	; 0x800077 <tx_shift_reg_a+0x1>
-  8a:	55 af       	sts	0x75, r21	; 0x800075 <tx_shift_reg_b+0x1>
-  8c:	44 af       	sts	0x74, r20	; 0x800074 <tx_shift_reg_b>
+  86:	47 a7       	lds	r20, 0x77	; 0x800077 <tx_shift_reg_a>
+  88:	58 a7       	lds	r21, 0x78	; 0x800078 <tx_shift_reg_a+0x1>
+  8a:	56 af       	sts	0x76, r21	; 0x800076 <tx_shift_reg_b+0x1>
+  8c:	45 af       	sts	0x75, r20	; 0x800075 <tx_shift_reg_b>
   8e:	04 c0       	rjmp	.+8      	; 0x98 <__DATA_REGION_LENGTH__+0x18>
-  90:	44 a7       	lds	r20, 0x74	; 0x800074 <tx_shift_reg_b>
-  92:	55 a7       	lds	r21, 0x75	; 0x800075 <tx_shift_reg_b+0x1>
-  94:	57 af       	sts	0x77, r21	; 0x800077 <tx_shift_reg_a+0x1>
-  96:	46 af       	sts	0x76, r20	; 0x800076 <tx_shift_reg_a>
-  98:	86 a7       	lds	r24, 0x76	; 0x800076 <tx_shift_reg_a>
-  9a:	97 a7       	lds	r25, 0x77	; 0x800077 <tx_shift_reg_a+0x1>
+  90:	45 a7       	lds	r20, 0x75	; 0x800075 <tx_shift_reg_b>
+  92:	56 a7       	lds	r21, 0x76	; 0x800076 <tx_shift_reg_b+0x1>
+  94:	58 af       	sts	0x78, r21	; 0x800078 <tx_shift_reg_a+0x1>
+  96:	47 af       	sts	0x77, r20	; 0x800077 <tx_shift_reg_a>
+  98:	87 a7       	lds	r24, 0x77	; 0x800077 <tx_shift_reg_a>
+  9a:	98 a7       	lds	r25, 0x78	; 0x800078 <tx_shift_reg_a+0x1>
   9c:	08 95       	ret
 
 0000009e <_Z11set_TMR_valj>:
-  9e:	97 af       	sts	0x77, r25	; 0x800077 <tx_shift_reg_a+0x1>
-  a0:	86 af       	sts	0x76, r24	; 0x800076 <tx_shift_reg_a>
-  a2:	95 af       	sts	0x75, r25	; 0x800075 <tx_shift_reg_b+0x1>
-  a4:	84 af       	sts	0x74, r24	; 0x800074 <tx_shift_reg_b>
-  a6:	93 af       	sts	0x73, r25	; 0x800073 <tx_shift_reg_c+0x1>
-  a8:	82 af       	sts	0x72, r24	; 0x800072 <tx_shift_reg_c>
+  9e:	98 af       	sts	0x78, r25	; 0x800078 <tx_shift_reg_a+0x1>
+  a0:	87 af       	sts	0x77, r24	; 0x800077 <tx_shift_reg_a>
+  a2:	96 af       	sts	0x76, r25	; 0x800076 <tx_shift_reg_b+0x1>
+  a4:	85 af       	sts	0x75, r24	; 0x800075 <tx_shift_reg_b>
+  a6:	94 af       	sts	0x74, r25	; 0x800074 <tx_shift_reg_c+0x1>
+  a8:	83 af       	sts	0x73, r24	; 0x800073 <tx_shift_reg_c>
   aa:	08 95       	ret
 
 000000ac <_Z7UART_txc>:
@@ -230,9 +230,9 @@ Disassembly of section .text:
  148:	44 23       	and	r20, r20
  14a:	49 f0       	breq	.+18     	; 0x15e <_Z13test_registerv+0x18>
  14c:	4f ef       	ldi	r20, 0xFF	; 255
- 14e:	42 a9       	sts	0x42, r20	; 0x800042 <adr>
+ 14e:	43 a9       	sts	0x43, r20	; 0x800043 <adr>
  150:	48 e0       	ldi	r20, 0x08	; 8
- 152:	41 a9       	sts	0x41, r20	; 0x800041 <val>
+ 152:	42 a9       	sts	0x42, r20	; 0x800042 <val>
  154:	68 e0       	ldi	r22, 0x08	; 8
  156:	8f ef       	ldi	r24, 0xFF	; 255
  158:	c3 df       	rcall	.-122    	; 0xe0 <_Z16uart_send_reporthh>
@@ -242,9 +242,9 @@ Disassembly of section .text:
  160:	44 23       	and	r20, r20
  162:	49 f0       	breq	.+18     	; 0x176 <_Z13test_registerv+0x30>
  164:	4f ef       	ldi	r20, 0xFF	; 255
- 166:	42 a9       	sts	0x42, r20	; 0x800042 <adr>
+ 166:	43 a9       	sts	0x43, r20	; 0x800043 <adr>
  168:	49 e0       	ldi	r20, 0x09	; 9
- 16a:	41 a9       	sts	0x41, r20	; 0x800041 <val>
+ 16a:	42 a9       	sts	0x42, r20	; 0x800042 <val>
  16c:	69 e0       	ldi	r22, 0x09	; 9
  16e:	8f ef       	ldi	r24, 0xFF	; 255
  170:	b7 df       	rcall	.-146    	; 0xe0 <_Z16uart_send_reporthh>
@@ -254,9 +254,9 @@ Disassembly of section .text:
  178:	44 23       	and	r20, r20
  17a:	49 f0       	breq	.+18     	; 0x18e <_Z13test_registerv+0x48>
  17c:	4f ef       	ldi	r20, 0xFF	; 255
- 17e:	42 a9       	sts	0x42, r20	; 0x800042 <adr>
+ 17e:	43 a9       	sts	0x43, r20	; 0x800043 <adr>
  180:	4a e0       	ldi	r20, 0x0A	; 10
- 182:	41 a9       	sts	0x41, r20	; 0x800041 <val>
+ 182:	42 a9       	sts	0x42, r20	; 0x800042 <val>
  184:	6a e0       	ldi	r22, 0x0A	; 10
  186:	8f ef       	ldi	r24, 0xFF	; 255
  188:	ab df       	rcall	.-170    	; 0xe0 <_Z16uart_send_reporthh>
@@ -266,9 +266,9 @@ Disassembly of section .text:
  190:	44 23       	and	r20, r20
  192:	49 f0       	breq	.+18     	; 0x1a6 <_Z13test_registerv+0x60>
  194:	4f ef       	ldi	r20, 0xFF	; 255
- 196:	42 a9       	sts	0x42, r20	; 0x800042 <adr>
+ 196:	43 a9       	sts	0x43, r20	; 0x800043 <adr>
  198:	4d e0       	ldi	r20, 0x0D	; 13
- 19a:	41 a9       	sts	0x41, r20	; 0x800041 <val>
+ 19a:	42 a9       	sts	0x42, r20	; 0x800042 <val>
  19c:	6d e0       	ldi	r22, 0x0D	; 13
  19e:	8f ef       	ldi	r24, 0xFF	; 255
  1a0:	9f df       	rcall	.-194    	; 0xe0 <_Z16uart_send_reporthh>
@@ -278,9 +278,9 @@ Disassembly of section .text:
  1a8:	44 23       	and	r20, r20
  1aa:	49 f0       	breq	.+18     	; 0x1be <_Z13test_registerv+0x78>
  1ac:	4f ef       	ldi	r20, 0xFF	; 255
- 1ae:	42 a9       	sts	0x42, r20	; 0x800042 <adr>
+ 1ae:	43 a9       	sts	0x43, r20	; 0x800043 <adr>
  1b0:	4e e0       	ldi	r20, 0x0E	; 14
- 1b2:	41 a9       	sts	0x41, r20	; 0x800041 <val>
+ 1b2:	42 a9       	sts	0x42, r20	; 0x800042 <val>
  1b4:	6e e0       	ldi	r22, 0x0E	; 14
  1b6:	8f ef       	ldi	r24, 0xFF	; 255
  1b8:	93 df       	rcall	.-218    	; 0xe0 <_Z16uart_send_reporthh>
@@ -290,9 +290,9 @@ Disassembly of section .text:
  1c0:	44 23       	and	r20, r20
  1c2:	49 f0       	breq	.+18     	; 0x1d6 <_Z13test_registerv+0x90>
  1c4:	4f ef       	ldi	r20, 0xFF	; 255
- 1c6:	42 a9       	sts	0x42, r20	; 0x800042 <adr>
+ 1c6:	43 a9       	sts	0x43, r20	; 0x800043 <adr>
  1c8:	4f e0       	ldi	r20, 0x0F	; 15
- 1ca:	41 a9       	sts	0x41, r20	; 0x800041 <val>
+ 1ca:	42 a9       	sts	0x42, r20	; 0x800042 <val>
  1cc:	6f e0       	ldi	r22, 0x0F	; 15
  1ce:	8f ef       	ldi	r24, 0xFF	; 255
  1d0:	87 df       	rcall	.-242    	; 0xe0 <_Z16uart_send_reporthh>
@@ -302,9 +302,9 @@ Disassembly of section .text:
  1d8:	44 23       	and	r20, r20
  1da:	49 f0       	breq	.+18     	; 0x1ee <_Z13test_registerv+0xa8>
  1dc:	4f ef       	ldi	r20, 0xFF	; 255
- 1de:	42 a9       	sts	0x42, r20	; 0x800042 <adr>
+ 1de:	43 a9       	sts	0x43, r20	; 0x800043 <adr>
  1e0:	40 e1       	ldi	r20, 0x10	; 16
- 1e2:	41 a9       	sts	0x41, r20	; 0x800041 <val>
+ 1e2:	42 a9       	sts	0x42, r20	; 0x800042 <val>
  1e4:	60 e1       	ldi	r22, 0x10	; 16
  1e6:	8f ef       	ldi	r24, 0xFF	; 255
  1e8:	7b df       	rcall	.-266    	; 0xe0 <_Z16uart_send_reporthh>
@@ -314,9 +314,9 @@ Disassembly of section .text:
  1f0:	44 23       	and	r20, r20
  1f2:	49 f0       	breq	.+18     	; 0x206 <_Z13test_registerv+0xc0>
  1f4:	4f ef       	ldi	r20, 0xFF	; 255
- 1f6:	42 a9       	sts	0x42, r20	; 0x800042 <adr>
+ 1f6:	43 a9       	sts	0x43, r20	; 0x800043 <adr>
  1f8:	41 e1       	ldi	r20, 0x11	; 17
- 1fa:	41 a9       	sts	0x41, r20	; 0x800041 <val>
+ 1fa:	42 a9       	sts	0x42, r20	; 0x800042 <val>
  1fc:	61 e1       	ldi	r22, 0x11	; 17
  1fe:	8f ef       	ldi	r24, 0xFF	; 255
  200:	6f df       	rcall	.-290    	; 0xe0 <_Z16uart_send_reporthh>
@@ -326,9 +326,9 @@ Disassembly of section .text:
  208:	44 23       	and	r20, r20
  20a:	49 f0       	breq	.+18     	; 0x21e <_Z13test_registerv+0xd8>
  20c:	4f ef       	ldi	r20, 0xFF	; 255
- 20e:	42 a9       	sts	0x42, r20	; 0x800042 <adr>
+ 20e:	43 a9       	sts	0x43, r20	; 0x800043 <adr>
  210:	42 e1       	ldi	r20, 0x12	; 18
- 212:	41 a9       	sts	0x41, r20	; 0x800041 <val>
+ 212:	42 a9       	sts	0x42, r20	; 0x800042 <val>
  214:	62 e1       	ldi	r22, 0x12	; 18
  216:	8f ef       	ldi	r24, 0xFF	; 255
  218:	63 df       	rcall	.-314    	; 0xe0 <_Z16uart_send_reporthh>
@@ -338,9 +338,9 @@ Disassembly of section .text:
  220:	44 23       	and	r20, r20
  222:	49 f0       	breq	.+18     	; 0x236 <_Z13test_registerv+0xf0>
  224:	4f ef       	ldi	r20, 0xFF	; 255
- 226:	42 a9       	sts	0x42, r20	; 0x800042 <adr>
+ 226:	43 a9       	sts	0x43, r20	; 0x800043 <adr>
  228:	43 e1       	ldi	r20, 0x13	; 19
- 22a:	41 a9       	sts	0x41, r20	; 0x800041 <val>
+ 22a:	42 a9       	sts	0x42, r20	; 0x800042 <val>
  22c:	63 e1       	ldi	r22, 0x13	; 19
  22e:	8f ef       	ldi	r24, 0xFF	; 255
  230:	57 df       	rcall	.-338    	; 0xe0 <_Z16uart_send_reporthh>
@@ -350,9 +350,9 @@ Disassembly of section .text:
  238:	44 23       	and	r20, r20
  23a:	49 f0       	breq	.+18     	; 0x24e <_Z13test_registerv+0x108>
  23c:	4f ef       	ldi	r20, 0xFF	; 255
- 23e:	42 a9       	sts	0x42, r20	; 0x800042 <adr>
+ 23e:	43 a9       	sts	0x43, r20	; 0x800043 <adr>
  240:	44 e1       	ldi	r20, 0x14	; 20
- 242:	41 a9       	sts	0x41, r20	; 0x800041 <val>
+ 242:	42 a9       	sts	0x42, r20	; 0x800042 <val>
  244:	64 e1       	ldi	r22, 0x14	; 20
  246:	8f ef       	ldi	r24, 0xFF	; 255
  248:	4b df       	rcall	.-362    	; 0xe0 <_Z16uart_send_reporthh>
@@ -362,9 +362,9 @@ Disassembly of section .text:
  250:	44 23       	and	r20, r20
  252:	49 f0       	breq	.+18     	; 0x266 <_Z13test_registerv+0x120>
  254:	4f ef       	ldi	r20, 0xFF	; 255
- 256:	42 a9       	sts	0x42, r20	; 0x800042 <adr>
+ 256:	43 a9       	sts	0x43, r20	; 0x800043 <adr>
  258:	45 e1       	ldi	r20, 0x15	; 21
- 25a:	41 a9       	sts	0x41, r20	; 0x800041 <val>
+ 25a:	42 a9       	sts	0x42, r20	; 0x800042 <val>
  25c:	65 e1       	ldi	r22, 0x15	; 21
  25e:	8f ef       	ldi	r24, 0xFF	; 255
  260:	3f df       	rcall	.-386    	; 0xe0 <_Z16uart_send_reporthh>
@@ -374,9 +374,9 @@ Disassembly of section .text:
  268:	44 23       	and	r20, r20
  26a:	49 f0       	breq	.+18     	; 0x27e <_Z13test_registerv+0x138>
  26c:	4f ef       	ldi	r20, 0xFF	; 255
- 26e:	42 a9       	sts	0x42, r20	; 0x800042 <adr>
+ 26e:	43 a9       	sts	0x43, r20	; 0x800043 <adr>
  270:	48 e1       	ldi	r20, 0x18	; 24
- 272:	41 a9       	sts	0x41, r20	; 0x800041 <val>
+ 272:	42 a9       	sts	0x42, r20	; 0x800042 <val>
  274:	68 e1       	ldi	r22, 0x18	; 24
  276:	8f ef       	ldi	r24, 0xFF	; 255
  278:	33 df       	rcall	.-410    	; 0xe0 <_Z16uart_send_reporthh>
@@ -386,9 +386,9 @@ Disassembly of section .text:
  280:	44 23       	and	r20, r20
  282:	49 f0       	breq	.+18     	; 0x296 <_Z13test_registerv+0x150>
  284:	4f ef       	ldi	r20, 0xFF	; 255
- 286:	42 a9       	sts	0x42, r20	; 0x800042 <adr>
+ 286:	43 a9       	sts	0x43, r20	; 0x800043 <adr>
  288:	40 e2       	ldi	r20, 0x20	; 32
- 28a:	41 a9       	sts	0x41, r20	; 0x800041 <val>
+ 28a:	42 a9       	sts	0x42, r20	; 0x800042 <val>
  28c:	60 e2       	ldi	r22, 0x20	; 32
  28e:	8f ef       	ldi	r24, 0xFF	; 255
  290:	27 df       	rcall	.-434    	; 0xe0 <_Z16uart_send_reporthh>
@@ -398,9 +398,9 @@ Disassembly of section .text:
  298:	44 23       	and	r20, r20
  29a:	49 f0       	breq	.+18     	; 0x2ae <_Z13test_registerv+0x168>
  29c:	4f ef       	ldi	r20, 0xFF	; 255
- 29e:	42 a9       	sts	0x42, r20	; 0x800042 <adr>
+ 29e:	43 a9       	sts	0x43, r20	; 0x800043 <adr>
  2a0:	41 e2       	ldi	r20, 0x21	; 33
- 2a2:	41 a9       	sts	0x41, r20	; 0x800041 <val>
+ 2a2:	42 a9       	sts	0x42, r20	; 0x800042 <val>
  2a4:	61 e2       	ldi	r22, 0x21	; 33
  2a6:	8f ef       	ldi	r24, 0xFF	; 255
  2a8:	1b df       	rcall	.-458    	; 0xe0 <_Z16uart_send_reporthh>
@@ -410,9 +410,9 @@ Disassembly of section .text:
  2b0:	44 23       	and	r20, r20
  2b2:	49 f0       	breq	.+18     	; 0x2c6 <_Z13test_registerv+0x180>
  2b4:	4f ef       	ldi	r20, 0xFF	; 255
- 2b6:	42 a9       	sts	0x42, r20	; 0x800042 <adr>
+ 2b6:	43 a9       	sts	0x43, r20	; 0x800043 <adr>
  2b8:	42 e2       	ldi	r20, 0x22	; 34
- 2ba:	41 a9       	sts	0x41, r20	; 0x800041 <val>
+ 2ba:	42 a9       	sts	0x42, r20	; 0x800042 <val>
  2bc:	62 e2       	ldi	r22, 0x22	; 34
  2be:	8f ef       	ldi	r24, 0xFF	; 255
  2c0:	0f df       	rcall	.-482    	; 0xe0 <_Z16uart_send_reporthh>
@@ -422,9 +422,9 @@ Disassembly of section .text:
  2c8:	44 23       	and	r20, r20
  2ca:	49 f0       	breq	.+18     	; 0x2de <_Z13test_registerv+0x198>
  2cc:	4f ef       	ldi	r20, 0xFF	; 255
- 2ce:	42 a9       	sts	0x42, r20	; 0x800042 <adr>
+ 2ce:	43 a9       	sts	0x43, r20	; 0x800043 <adr>
  2d0:	43 e2       	ldi	r20, 0x23	; 35
- 2d2:	41 a9       	sts	0x41, r20	; 0x800041 <val>
+ 2d2:	42 a9       	sts	0x42, r20	; 0x800042 <val>
  2d4:	63 e2       	ldi	r22, 0x23	; 35
  2d6:	8f ef       	ldi	r24, 0xFF	; 255
  2d8:	03 df       	rcall	.-506    	; 0xe0 <_Z16uart_send_reporthh>
@@ -434,9 +434,9 @@ Disassembly of section .text:
  2e0:	44 23       	and	r20, r20
  2e2:	49 f0       	breq	.+18     	; 0x2f6 <_Z13test_registerv+0x1b0>
  2e4:	4f ef       	ldi	r20, 0xFF	; 255
- 2e6:	42 a9       	sts	0x42, r20	; 0x800042 <adr>
+ 2e6:	43 a9       	sts	0x43, r20	; 0x800043 <adr>
  2e8:	44 e2       	ldi	r20, 0x24	; 36
- 2ea:	41 a9       	sts	0x41, r20	; 0x800041 <val>
+ 2ea:	42 a9       	sts	0x42, r20	; 0x800042 <val>
  2ec:	64 e2       	ldi	r22, 0x24	; 36
  2ee:	8f ef       	ldi	r24, 0xFF	; 255
  2f0:	f7 de       	rcall	.-530    	; 0xe0 <_Z16uart_send_reporthh>
@@ -446,9 +446,9 @@ Disassembly of section .text:
  2f8:	44 23       	and	r20, r20
  2fa:	49 f0       	breq	.+18     	; 0x30e <_Z13test_registerv+0x1c8>
  2fc:	4f ef       	ldi	r20, 0xFF	; 255
- 2fe:	42 a9       	sts	0x42, r20	; 0x800042 <adr>
+ 2fe:	43 a9       	sts	0x43, r20	; 0x800043 <adr>
  300:	47 e2       	ldi	r20, 0x27	; 39
- 302:	41 a9       	sts	0x41, r20	; 0x800041 <val>
+ 302:	42 a9       	sts	0x42, r20	; 0x800042 <val>
  304:	67 e2       	ldi	r22, 0x27	; 39
  306:	8f ef       	ldi	r24, 0xFF	; 255
  308:	eb de       	rcall	.-554    	; 0xe0 <_Z16uart_send_reporthh>
@@ -458,9 +458,9 @@ Disassembly of section .text:
  310:	44 23       	and	r20, r20
  312:	49 f0       	breq	.+18     	; 0x326 <_Z13test_registerv+0x1e0>
  314:	4f ef       	ldi	r20, 0xFF	; 255
- 316:	42 a9       	sts	0x42, r20	; 0x800042 <adr>
+ 316:	43 a9       	sts	0x43, r20	; 0x800043 <adr>
  318:	48 e2       	ldi	r20, 0x28	; 40
- 31a:	41 a9       	sts	0x41, r20	; 0x800041 <val>
+ 31a:	42 a9       	sts	0x42, r20	; 0x800042 <val>
  31c:	68 e2       	ldi	r22, 0x28	; 40
  31e:	8f ef       	ldi	r24, 0xFF	; 255
  320:	df de       	rcall	.-578    	; 0xe0 <_Z16uart_send_reporthh>
@@ -470,9 +470,9 @@ Disassembly of section .text:
  328:	44 23       	and	r20, r20
  32a:	49 f0       	breq	.+18     	; 0x33e <_Z13test_registerv+0x1f8>
  32c:	4f ef       	ldi	r20, 0xFF	; 255
- 32e:	42 a9       	sts	0x42, r20	; 0x800042 <adr>
+ 32e:	43 a9       	sts	0x43, r20	; 0x800043 <adr>
  330:	49 e2       	ldi	r20, 0x29	; 41
- 332:	41 a9       	sts	0x41, r20	; 0x800041 <val>
+ 332:	42 a9       	sts	0x42, r20	; 0x800042 <val>
  334:	69 e2       	ldi	r22, 0x29	; 41
  336:	8f ef       	ldi	r24, 0xFF	; 255
  338:	d3 de       	rcall	.-602    	; 0xe0 <_Z16uart_send_reporthh>
@@ -482,9 +482,9 @@ Disassembly of section .text:
  340:	44 23       	and	r20, r20
  342:	49 f0       	breq	.+18     	; 0x356 <_Z13test_registerv+0x210>
  344:	4f ef       	ldi	r20, 0xFF	; 255
- 346:	42 a9       	sts	0x42, r20	; 0x800042 <adr>
+ 346:	43 a9       	sts	0x43, r20	; 0x800043 <adr>
  348:	4a e2       	ldi	r20, 0x2A	; 42
- 34a:	41 a9       	sts	0x41, r20	; 0x800041 <val>
+ 34a:	42 a9       	sts	0x42, r20	; 0x800042 <val>
  34c:	6a e2       	ldi	r22, 0x2A	; 42
  34e:	8f ef       	ldi	r24, 0xFF	; 255
  350:	c7 de       	rcall	.-626    	; 0xe0 <_Z16uart_send_reporthh>
@@ -494,9 +494,9 @@ Disassembly of section .text:
  358:	44 23       	and	r20, r20
  35a:	49 f0       	breq	.+18     	; 0x36e <_Z13test_registerv+0x228>
  35c:	4f ef       	ldi	r20, 0xFF	; 255
- 35e:	42 a9       	sts	0x42, r20	; 0x800042 <adr>
+ 35e:	43 a9       	sts	0x43, r20	; 0x800043 <adr>
  360:	4b e2       	ldi	r20, 0x2B	; 43
- 362:	41 a9       	sts	0x41, r20	; 0x800041 <val>
+ 362:	42 a9       	sts	0x42, r20	; 0x800042 <val>
  364:	6b e2       	ldi	r22, 0x2B	; 43
  366:	8f ef       	ldi	r24, 0xFF	; 255
  368:	bb de       	rcall	.-650    	; 0xe0 <_Z16uart_send_reporthh>
@@ -506,9 +506,9 @@ Disassembly of section .text:
  370:	44 23       	and	r20, r20
  372:	49 f0       	breq	.+18     	; 0x386 <_Z13test_registerv+0x240>
  374:	4f ef       	ldi	r20, 0xFF	; 255
- 376:	42 a9       	sts	0x42, r20	; 0x800042 <adr>
+ 376:	43 a9       	sts	0x43, r20	; 0x800043 <adr>
  378:	4c e2       	ldi	r20, 0x2C	; 44
- 37a:	41 a9       	sts	0x41, r20	; 0x800041 <val>
+ 37a:	42 a9       	sts	0x42, r20	; 0x800042 <val>
  37c:	6c e2       	ldi	r22, 0x2C	; 44
  37e:	8f ef       	ldi	r24, 0xFF	; 255
  380:	af de       	rcall	.-674    	; 0xe0 <_Z16uart_send_reporthh>
@@ -518,9 +518,9 @@ Disassembly of section .text:
  388:	44 23       	and	r20, r20
  38a:	49 f0       	breq	.+18     	; 0x39e <_Z13test_registerv+0x258>
  38c:	4f ef       	ldi	r20, 0xFF	; 255
- 38e:	42 a9       	sts	0x42, r20	; 0x800042 <adr>
+ 38e:	43 a9       	sts	0x43, r20	; 0x800043 <adr>
  390:	4d e2       	ldi	r20, 0x2D	; 45
- 392:	41 a9       	sts	0x41, r20	; 0x800041 <val>
+ 392:	42 a9       	sts	0x42, r20	; 0x800042 <val>
  394:	6d e2       	ldi	r22, 0x2D	; 45
  396:	8f ef       	ldi	r24, 0xFF	; 255
  398:	a3 de       	rcall	.-698    	; 0xe0 <_Z16uart_send_reporthh>
@@ -530,9 +530,9 @@ Disassembly of section .text:
  3a0:	44 23       	and	r20, r20
  3a2:	49 f0       	breq	.+18     	; 0x3b6 <_Z13test_registerv+0x270>
  3a4:	4f ef       	ldi	r20, 0xFF	; 255
- 3a6:	42 a9       	sts	0x42, r20	; 0x800042 <adr>
+ 3a6:	43 a9       	sts	0x43, r20	; 0x800043 <adr>
  3a8:	40 e3       	ldi	r20, 0x30	; 48
- 3aa:	41 a9       	sts	0x41, r20	; 0x800041 <val>
+ 3aa:	42 a9       	sts	0x42, r20	; 0x800042 <val>
  3ac:	60 e3       	ldi	r22, 0x30	; 48
  3ae:	8f ef       	ldi	r24, 0xFF	; 255
  3b0:	97 de       	rcall	.-722    	; 0xe0 <_Z16uart_send_reporthh>
@@ -542,9 +542,9 @@ Disassembly of section .text:
  3b8:	44 23       	and	r20, r20
  3ba:	49 f0       	breq	.+18     	; 0x3ce <_Z13test_registerv+0x288>
  3bc:	4f ef       	ldi	r20, 0xFF	; 255
- 3be:	42 a9       	sts	0x42, r20	; 0x800042 <adr>
+ 3be:	43 a9       	sts	0x43, r20	; 0x800043 <adr>
  3c0:	45 e3       	ldi	r20, 0x35	; 53
- 3c2:	41 a9       	sts	0x41, r20	; 0x800041 <val>
+ 3c2:	42 a9       	sts	0x42, r20	; 0x800042 <val>
  3c4:	65 e3       	ldi	r22, 0x35	; 53
  3c6:	8f ef       	ldi	r24, 0xFF	; 255
  3c8:	8b de       	rcall	.-746    	; 0xe0 <_Z16uart_send_reporthh>
@@ -554,9 +554,9 @@ Disassembly of section .text:
  3d0:	44 23       	and	r20, r20
  3d2:	41 f0       	breq	.+16     	; 0x3e4 <_Z13test_registerv+0x29e>
  3d4:	4f ef       	ldi	r20, 0xFF	; 255
- 3d6:	42 a9       	sts	0x42, r20	; 0x800042 <adr>
+ 3d6:	43 a9       	sts	0x43, r20	; 0x800043 <adr>
  3d8:	4a e3       	ldi	r20, 0x3A	; 58
- 3da:	41 a9       	sts	0x41, r20	; 0x800041 <val>
+ 3da:	42 a9       	sts	0x42, r20	; 0x800042 <val>
  3dc:	6a e3       	ldi	r22, 0x3A	; 58
  3de:	8f ef       	ldi	r24, 0xFF	; 255
  3e0:	7f de       	rcall	.-770    	; 0xe0 <_Z16uart_send_reporthh>
@@ -585,33 +585,33 @@ Disassembly of section .text:
  40a:	08 c0       	rjmp	.+16     	; 0x41c <_Z3TMRRhS_S_+0x36>
  40c:	68 17       	cp	r22, r24
  40e:	f9 f0       	breq	.+62     	; 0x44e <_Z3TMRRhS_S_+0x68>
- 410:	42 a9       	sts	0x42, r20	; 0x800042 <adr>
+ 410:	43 a9       	sts	0x43, r20	; 0x800043 <adr>
  412:	6c 91       	ld	r22, X
- 414:	61 a9       	sts	0x41, r22	; 0x800041 <val>
+ 414:	62 a9       	sts	0x42, r22	; 0x800042 <val>
  416:	60 81       	ld	r22, Z
  418:	6c 93       	st	X, r22
  41a:	11 c0       	rjmp	.+34     	; 0x43e <_Z3TMRRhS_S_+0x58>
  41c:	68 13       	cpse	r22, r24
  41e:	08 c0       	rjmp	.+16     	; 0x430 <_Z3TMRRhS_S_+0x4a>
- 420:	22 a9       	sts	0x42, r18	; 0x800042 <adr>
+ 420:	23 a9       	sts	0x43, r18	; 0x800043 <adr>
  422:	a2 2f       	mov	r26, r18
  424:	b3 2f       	mov	r27, r19
  426:	4c 91       	ld	r20, X
- 428:	41 a9       	sts	0x41, r20	; 0x800041 <val>
+ 428:	42 a9       	sts	0x42, r20	; 0x800042 <val>
  42a:	40 81       	ld	r20, Z
  42c:	4c 93       	st	X, r20
  42e:	07 c0       	rjmp	.+14     	; 0x43e <_Z3TMRRhS_S_+0x58>
- 430:	e2 a9       	sts	0x42, r30	; 0x800042 <adr>
+ 430:	e3 a9       	sts	0x43, r30	; 0x800043 <adr>
  432:	40 81       	ld	r20, Z
- 434:	41 a9       	sts	0x41, r20	; 0x800041 <val>
+ 434:	42 a9       	sts	0x42, r20	; 0x800042 <val>
  436:	a2 2f       	mov	r26, r18
  438:	b3 2f       	mov	r27, r19
  43a:	4c 91       	ld	r20, X
  43c:	40 83       	st	Z, r20
  43e:	2e 2f       	mov	r18, r30
  440:	3f 2f       	mov	r19, r31
- 442:	61 a1       	lds	r22, 0x41	; 0x800041 <val>
- 444:	82 a1       	lds	r24, 0x42	; 0x800042 <adr>
+ 442:	62 a1       	lds	r22, 0x42	; 0x800042 <val>
+ 444:	83 a1       	lds	r24, 0x43	; 0x800043 <adr>
  446:	4c de       	rcall	.-872    	; 0xe0 <_Z16uart_send_reporthh>
  448:	e2 2f       	mov	r30, r18
  44a:	f3 2f       	mov	r31, r19
@@ -684,7 +684,7 @@ void test_memory(unsigned short test_pattern)
  4b6:	90 e0       	ldi	r25, 0x00	; 0
  4b8:	e8 2f       	mov	r30, r24
  4ba:	f9 2f       	mov	r31, r25
- 4bc:	ed 5b       	subi	r30, 0xBD	; 189
+ 4bc:	ec 5b       	subi	r30, 0xBC	; 188
  4be:	ff 4f       	sbci	r31, 0xFF	; 255
  4c0:	40 81       	ld	r20, Z
  4c2:	50 e0       	ldi	r21, 0x00	; 0
@@ -699,9 +699,9 @@ void test_memory(unsigned short test_pattern)
  4d0:	9f 4f       	sbci	r25, 0xFF	; 255
  4d2:	c2 df       	rcall	.-124    	; 0x458 <_Z3TMRR15tripple_uint8_t>
  4d4:	90 e0       	ldi	r25, 0x00	; 0
- 4d6:	8d 5b       	subi	r24, 0xBD	; 189
+ 4d6:	8c 5b       	subi	r24, 0xBC	; 188
  4d8:	9f 4f       	sbci	r25, 0xFF	; 255
- 4da:	82 a9       	sts	0x42, r24	; 0x800042 <adr>
+ 4da:	83 a9       	sts	0x43, r24	; 0x800043 <adr>
 			val = test[TMR(i)];
  4dc:	8c 2f       	mov	r24, r28
  4de:	9d 2f       	mov	r25, r29
@@ -711,12 +711,12 @@ void test_memory(unsigned short test_pattern)
  4e6:	90 e0       	ldi	r25, 0x00	; 0
  4e8:	e8 2f       	mov	r30, r24
  4ea:	f9 2f       	mov	r31, r25
- 4ec:	ed 5b       	subi	r30, 0xBD	; 189
+ 4ec:	ec 5b       	subi	r30, 0xBC	; 188
  4ee:	ff 4f       	sbci	r31, 0xFF	; 255
  4f0:	60 81       	ld	r22, Z
- 4f2:	61 a9       	sts	0x41, r22	; 0x800041 <val>
+ 4f2:	62 a9       	sts	0x42, r22	; 0x800042 <val>
 			uart_send_report(adr, val);
- 4f4:	82 a1       	lds	r24, 0x42	; 0x800042 <adr>
+ 4f4:	83 a1       	lds	r24, 0x43	; 0x800043 <adr>
  4f6:	f4 dd       	rcall	.-1048   	; 0xe0 <_Z16uart_send_reporthh>
 			test[TMR(i)] = test_pattern;
  4f8:	8c 2f       	mov	r24, r28
@@ -727,7 +727,7 @@ void test_memory(unsigned short test_pattern)
  502:	90 e0       	ldi	r25, 0x00	; 0
  504:	e8 2f       	mov	r30, r24
  506:	f9 2f       	mov	r31, r25
- 508:	ed 5b       	subi	r30, 0xBD	; 189
+ 508:	ec 5b       	subi	r30, 0xBC	; 188
  50a:	ff 4f       	sbci	r31, 0xFF	; 255
  50c:	20 83       	st	Z, r18
 	return 0;
@@ -831,7 +831,7 @@ int main(void)
  59c:	9f 4f       	sbci	r25, 0xFF	; 255
  59e:	5c df       	rcall	.-328    	; 0x458 <_Z3TMRR15tripple_uint8_t>
  5a0:	8f 32       	cpi	r24, 0x2F	; 47
- 5a2:	a0 f5       	brcc	.+104    	; 0x60c <main+0xaa>
+ 5a2:	d0 f5       	brcc	.+116    	; 0x618 <main+0xb6>
 	{
 		test[TMR(i)] = TEST_PATTERN;
  5a4:	8c 2f       	mov	r24, r28
@@ -842,7 +842,7 @@ int main(void)
  5ae:	90 e0       	ldi	r25, 0x00	; 0
  5b0:	e8 2f       	mov	r30, r24
  5b2:	f9 2f       	mov	r31, r25
- 5b4:	ed 5b       	subi	r30, 0xBD	; 189
+ 5b4:	ec 5b       	subi	r30, 0xBC	; 188
  5b6:	ff 4f       	sbci	r31, 0xFF	; 255
  5b8:	4a ea       	ldi	r20, 0xAA	; 170
  5ba:	40 83       	st	Z, r20
@@ -896,30 +896,40 @@ int main(void)
  602:	40 e2       	ldi	r20, 0x20	; 32
  604:	45 27       	eor	r20, r21
  606:	42 b9       	out	0x02, r20	; 2
-			UART_tx((char)('.'));
- 608:	8e e2       	ldi	r24, 0x2E	; 46
- 60a:	50 dd       	rcall	.-1376   	; 0xac <_Z7UART_txc>
+			if (++counter_two == 10)
+ 608:	41 a1       	lds	r20, 0x41	; 0x800041 <counter_two>
+ 60a:	4f 5f       	subi	r20, 0xFF	; 255
+ 60c:	41 a9       	sts	0x41, r20	; 0x800041 <counter_two>
+ 60e:	4a 30       	cpi	r20, 0x0A	; 10
+ 610:	19 f4       	brne	.+6      	; 0x618 <main+0xb6>
+			{
+
+				UART_tx((char)('.'));
+ 612:	8e e2       	ldi	r24, 0x2E	; 46
+ 614:	4b dd       	rcall	.-1386   	; 0xac <_Z7UART_txc>
+				counter_two = 0;
+ 616:	11 a9       	sts	0x41, r17	; 0x800041 <counter_two>
 		test[TMR(i)] = TEST_PATTERN;
 	}
 
 	while (1)
 	{
 		test_memory(TEST_PATTERN);
- 60c:	8a ea       	ldi	r24, 0xAA	; 170
- 60e:	90 e0       	ldi	r25, 0x00	; 0
- 610:	2c df       	rcall	.-424    	; 0x46a <_Z11test_memoryt>
+ 618:	8a ea       	ldi	r24, 0xAA	; 170
+ 61a:	90 e0       	ldi	r25, 0x00	; 0
+ 61c:	26 df       	rcall	.-436    	; 0x46a <_Z11test_memoryt>
 		test_register();
- 612:	99 dd       	rcall	.-1230   	; 0x146 <_Z13test_registerv>
+ 61e:	93 dd       	rcall	.-1242   	; 0x146 <_Z13test_registerv>
 		if (++counter == 0)
- 614:	40 a1       	lds	r20, 0x40	; 0x800040 <__DATA_REGION_ORIGIN__>
- 616:	4f 5f       	subi	r20, 0xFF	; 255
- 618:	40 a9       	sts	0x40, r20	; 0x800040 <__DATA_REGION_ORIGIN__>
- 61a:	41 13       	cpse	r20, r17
- 61c:	f7 cf       	rjmp	.-18     	; 0x60c <main+0xaa>
- 61e:	f0 cf       	rjmp	.-32     	; 0x600 <main+0x9e>
+ 620:	40 a1       	lds	r20, 0x40	; 0x800040 <__DATA_REGION_ORIGIN__>
+ 622:	4f 5f       	subi	r20, 0xFF	; 255
+ 624:	40 a9       	sts	0x40, r20	; 0x800040 <__DATA_REGION_ORIGIN__>
+ 626:	41 13       	cpse	r20, r17
+ 628:	f7 cf       	rjmp	.-18     	; 0x618 <main+0xb6>
+ 62a:	ea cf       	rjmp	.-44     	; 0x600 <main+0x9e>
 
-00000620 <_exit>:
- 620:	f8 94       	cli
+0000062c <_exit>:
+ 62c:	f8 94       	cli
 
-00000622 <__stop_program>:
- 622:	ff cf       	rjmp	.-2      	; 0x622 <__stop_program>
+0000062e <__stop_program>:
+ 62e:	ff cf       	rjmp	.-2      	; 0x62e <__stop_program>
