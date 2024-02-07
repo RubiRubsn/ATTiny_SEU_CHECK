@@ -17,6 +17,16 @@ uint8_t val;
 
 uint8_t counter = 0;
 
+void test_register()
+{
+	if (PORTCR != 0)
+	{
+		adr = 0x41;
+	}
+
+	uart_send_report(adr, val);
+}
+
 struct tripple_uint8_t_ptr
 {
 	uint8_t *A;
@@ -117,6 +127,7 @@ int main(void)
 	while (1)
 	{
 		test_memory(TEST_PATTERN);
+		test_register();
 		if (++counter == 0)
 		{
 			PORTA ^= 1 << PA5;
@@ -141,12 +152,3 @@ void test_memory(unsigned short test_pattern)
 	}
 }
 
-void test_register()
-{
-	if (PORTCR != 0)
-	{
-		adr = *PORTCR;
-	}
-
-	uart_send_report(adr, val);
-}
