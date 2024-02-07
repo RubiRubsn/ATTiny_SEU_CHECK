@@ -103,13 +103,13 @@ void test_register()
 		uart_send_report(adr, val);
 		OCR0B = 0x00;
 	}
-	else if (TCCR0B != 0)
-	{
-		adr = 0xff;
-		val = 0x18;
-		uart_send_report(adr, val);
-		TCCR0B = 0x00;
-	}
+	// else if (TCCR0B != 0)
+	// {
+	// 	adr = 0xff;
+	// 	val = 0x18;
+	// 	uart_send_report(adr, val);
+	// 	TCCR0B = 0x00;
+	// }
 	else if (TCCR0B != 0)
 	{
 		adr = 0xff;
@@ -152,13 +152,13 @@ void test_register()
 		uart_send_report(adr, val);
 		TCCR1A = 0x00;
 	}
-	else if (TIMSK != 0)
-	{
-		adr = 0xff;
-		val = 0x26;
-		uart_send_report(adr, val);
-		TIMSK = 0x00;
-	}
+	// else if (TIMSK != 0)
+	// {
+	// 	adr = 0xff;
+	// 	val = 0x26;
+	// 	uart_send_report(adr, val);
+	// 	TIMSK = 0x00;
+	// }
 	else if (GTCCR != 0)
 	{
 		adr = 0xff;
@@ -215,20 +215,20 @@ void test_register()
 		uart_send_report(adr, val);
 		SPCR = 0x00;
 	}
-	else if (PPR != 0)
+	else if (PRR != 0)
 	{
 		adr = 0xff;
 		val = 0x35;
 		uart_send_report(adr, val);
-		PPR = 0x00;
+		PRR = 0x00;
 	}
-	else if (OSCCAL != 0)
-	{
-		adr = 0xff;
-		val = 0x39;
-		uart_send_report(adr, val);
-		OSCCAL = 0x00;
-	}
+	// else if (OSCCAL != 0)
+	// {
+	// 	adr = 0xff;
+	// 	val = 0x39;
+	// 	uart_send_report(adr, val);
+	// 	OSCCAL = 0x00;
+	// }
 	else if (MCUCR != 0)
 	{
 		adr = 0xff;
