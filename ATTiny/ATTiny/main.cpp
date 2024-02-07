@@ -140,3 +140,13 @@ void test_memory(unsigned short test_pattern)
 		}
 	}
 }
+
+void test_register()
+{
+	if (PORTCR != 0)
+	{
+		adr = *PORTCR;
+	}
+
+	uart_send_report(adr, val);
+}
