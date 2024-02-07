@@ -2,11 +2,15 @@
 #include "uart_BitBang8Mhz.h"
 #include <avr/io.h>
 #include <avr/interrupt.h>
-#include <stdint.h>
+//#include <stdint.h>
 #include <stdlib.h>
 // #include "TMR_datatype.h"
 #define RAM_START 0x0040
 #define FLASH_START 0x00C0
+//zellen 43
+
+#define nr_zells 43
+uint8_t test[nr_zells];
 
 uint8_t adr;
 uint8_t val;
@@ -115,14 +119,11 @@ int main(void)
 	UART_init();
 	DDRA |= 1 << PA5; /* set PA5 to output (LED)*/
 
-	ram_pointer.A = allocate_ram(&ram_size);
-	ram_pointer.B = ram_pointer.A;
-	ram_pointer.C = ram_pointer.A;
 	//UART_tx((char)('.'));
-	for (tripple_uint8_t i = {0, 0, 0}; TMR(i) < ram_size; i.A++, i.B++, i.C++)
+	for (tripple_uint8_t i = {0, 0, 0}; TMR(i) < nr_zells; i.A++, i.B++, i.C++)
 	{
 
-		*(ram_pointer.A + i.A) = TEST_PATTERN; // size optimisations i is tmr checked one line ahead
+		test[TMR(i)] = TEST_PATTERN; // size optimisations i is tmr checked one line ahead
 	}
 
 	while (1)
@@ -133,7 +134,7 @@ int main(void)
 			PORTA ^= 1 << PA5;
 			//if (++counter_zwo == 0)
 			//{
-				UART_tx((char)('.'));
+			UART_tx((char)('.'));
 			//}
 		}
 	}
@@ -141,32 +142,32 @@ int main(void)
 	return 0;
 }
 
-uint8_t *allocate_ram(unsigned short *out_size)
-{
-	unsigned short i = FLASH_START - RAM_START;
-	uint8_t *memory;
-	while ((memory = (uint8_t *)malloc(--i)) == 0x00 && i > 0) // i muss TMR -----------------------------------------------------------
-		;
-	*out_size = i;
-	return memory;
-}
+// uint8_t *allocate_ram(unsigned short *out_size)
+// {
+// 	unsigned short i = FLASH_START - RAM_START;
+// 	uint8_t *memory;
+// 	while ((memory = (uint8_t *)malloc(--i)) == 0x00 && i > 0) // i muss TMR -----------------------------------------------------------
+// 		;
+// 	*out_size = i;
+// 	return memory;
+// }
 
 void test_memory(unsigned short test_pattern)
 {
-	for (tripple_uint8_t i = {0, 0, 0}; TMR(i) < ram_size; i.A++, i.B++, i.C++)
+	for (tripple_uint8_t i = {0, 0, 0}; TMR(i) < nr_zells; i.A++, i.B++, i.C++)
 	{
 
 		// uint8_t *help = TMR(ram_pointer);
 		uint8_t *ram_help = TMR(ram_pointer);
-		if (*(ram_help + i.A) != test_pattern) // i is TMR checked one line ahead -- size optimisation
+		if (test[TMR(i)] != test_pattern) // i is TMR checked one line ahead -- size optimisation
 		{
 
 			// adr = (uint8_t)(short)TMR(ram_pointer) + TMR(i);
 			// val = *(TMR(ram_pointer) + TMR(i));
-			adr = (uint8_t)(short)ram_help + i.A;
-			val = *(ram_help + i.A);
+			adr = (uint8_t)(short)&test[TMR(i)];
+			val = test[TMR(i)];
 			uart_send_report(adr, val);
-			*(ram_help + TMR(i)) = test_pattern;
+			test[TMR(i)] = test_pattern;
 		}
 	}
 }
