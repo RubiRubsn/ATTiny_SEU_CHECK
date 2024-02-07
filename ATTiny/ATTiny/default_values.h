@@ -38,7 +38,7 @@
 #define REG0D 0x00 // DIDR0 Digital Input Disable Register 0
 // #define REG0C 0x00 // GIMSK General Interrupt Mask Register
 // #define REG0B 0x00 // GIFR General input flag register
-#define REG0A 0x00 // PCMSK1Pin Change Mask Register 1 maske 7
+#define REG0A 0x00 // PCMSK1 Pin Change Mask Register 1 maske 7
 #define REG09 0x00 // PCMSK0 Pin Change Mask Register 0
 #define REG08 0x00 // PORTCR maske x03
 

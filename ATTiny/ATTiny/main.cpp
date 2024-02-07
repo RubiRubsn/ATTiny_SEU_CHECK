@@ -21,10 +21,222 @@ void test_register()
 {
 	if (PORTCR != 0)
 	{
-		adr = 0x41;
+		adr = 0xff;
+		val = 0x08;
+		uart_send_report(adr, val);
+		PORTCR = 0x00;
 	}
-
-	uart_send_report(adr, val);
+	else if (PCMSK0 != 0)
+	{
+		adr = 0xff;
+		val = 0x09;
+		uart_send_report(adr, val);
+		PCMSK0 = 0x00;
+	}
+	else if (PCMSK1 != 0)
+	{
+		adr = 0xff;
+		val = 0x0A;
+		uart_send_report(adr, val);
+		PCMSK1 = 0x00;
+	}
+	else if (DIDR0 != 0)
+	{
+		adr = 0xff;
+		val = 0x0D;
+		uart_send_report(adr, val);
+		DIDR0 = 0x00;
+	}
+	else if (ADCL != 0)
+	{
+		adr = 0xff;
+		val = 0x0E;
+		uart_send_report(adr, val);
+		ADCL = 0x00;
+	}
+	else if (ADCH != 0)
+	{
+		adr = 0xff;
+		val = 0x0F;
+		uart_send_report(adr, val);
+		ADCH = 0x00;
+	}
+	else if (ADMUX != 0)
+	{
+		adr = 0xff;
+		val = 0x10;
+		uart_send_report(adr, val);
+		ADMUX = 0x00;
+	}
+	else if (ADCSRB != 0)
+	{
+		adr = 0xff;
+		val = 0x11;
+		uart_send_report(adr, val);
+		ADCSRB = 0x00;
+	}
+	else if (ADCSRA != 0)
+	{
+		adr = 0xff;
+		val = 0x12;
+		uart_send_report(adr, val);
+		ADCSRA = 0x00;
+	}
+	else if (ACSRB != 0)
+	{
+		adr = 0xff;
+		val = 0x13;
+		uart_send_report(adr, val);
+		ACSRB = 0x00;
+	}
+	else if (ACSRA != 0)
+	{
+		adr = 0xff;
+		val = 0x14;
+		uart_send_report(adr, val);
+		ACSRA = 0x00;
+	}
+	else if (OCR0B != 0)
+	{
+		adr = 0xff;
+		val = 0x15;
+		uart_send_report(adr, val);
+		OCR0B = 0x00;
+	}
+	else if (TCCR0B != 0)
+	{
+		adr = 0xff;
+		val = 0x18;
+		uart_send_report(adr, val);
+		TCCR0B = 0x00;
+	}
+	else if (TCCR0B != 0)
+	{
+		adr = 0xff;
+		val = 0x18;
+		uart_send_report(adr, val);
+		TCCR0B = 0x00;
+	}
+	else if (TCNT1L != 0)
+	{
+		adr = 0xff;
+		val = 0x20;
+		uart_send_report(adr, val);
+		TCNT1L = 0x00;
+	}
+	else if (TCNT1H != 0)
+	{
+		adr = 0xff;
+		val = 0x21;
+		uart_send_report(adr, val);
+		TCNT1H = 0x00;
+	}
+	else if (TCCR1C != 0)
+	{
+		adr = 0xff;
+		val = 0x22;
+		uart_send_report(adr, val);
+		TCCR1C = 0x00;
+	}
+	else if (TCCR1B != 0)
+	{
+		adr = 0xff;
+		val = 0x23;
+		uart_send_report(adr, val);
+		TCCR1B = 0x00;
+	}
+	else if (TCCR1A != 0)
+	{
+		adr = 0xff;
+		val = 0x24;
+		uart_send_report(adr, val);
+		TCCR1A = 0x00;
+	}
+	else if (TIMSK != 0)
+	{
+		adr = 0xff;
+		val = 0x26;
+		uart_send_report(adr, val);
+		TIMSK = 0x00;
+	}
+	else if (GTCCR != 0)
+	{
+		adr = 0xff;
+		val = 0x27;
+		uart_send_report(adr, val);
+		GTCCR = 0x00;
+	}
+	else if (TWSD != 0)
+	{
+		adr = 0xff;
+		val = 0x28;
+		uart_send_report(adr, val);
+		TWSD = 0x00;
+	}
+	else if (TWSAM != 0)
+	{
+		adr = 0xff;
+		val = 0x29;
+		uart_send_report(adr, val);
+		TWSAM = 0x00;
+	}
+	else if (TWSA != 0)
+	{
+		adr = 0xff;
+		val = 0x2A;
+		uart_send_report(adr, val);
+		TWSA = 0x00;
+	}
+	else if (TWSSRA != 0)
+	{
+		adr = 0xff;
+		val = 0x2B;
+		uart_send_report(adr, val);
+		TWSSRA = 0x00;
+	}
+	else if (TWSCRB != 0)
+	{
+		adr = 0xff;
+		val = 0x2C;
+		uart_send_report(adr, val);
+		TWSCRB = 0x00;
+	}
+	else if (TWSCRA != 0)
+	{
+		adr = 0xff;
+		val = 0x2D;
+		uart_send_report(adr, val);
+		TWSCRA = 0x00;
+	}
+	else if (SPCR != 0)
+	{
+		adr = 0xff;
+		val = 0x30;
+		uart_send_report(adr, val);
+		SPCR = 0x00;
+	}
+	else if (PPR != 0)
+	{
+		adr = 0xff;
+		val = 0x35;
+		uart_send_report(adr, val);
+		PPR = 0x00;
+	}
+	else if (OSCCAL != 0)
+	{
+		adr = 0xff;
+		val = 0x39;
+		uart_send_report(adr, val);
+		OSCCAL = 0x00;
+	}
+	else if (MCUCR != 0)
+	{
+		adr = 0xff;
+		val = 0x3A;
+		uart_send_report(adr, val);
+		MCUCR = 0x00;
+	}
+	// uart_send_report(adr, val);
 }
 
 struct tripple_uint8_t_ptr
@@ -151,4 +363,3 @@ void test_memory(unsigned short test_pattern)
 		}
 	}
 }
-
