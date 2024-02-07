@@ -12,7 +12,7 @@ uint8_t adr;
 uint8_t val;
 
 uint8_t counter = 0;
-uint8_t counter_zwo = 0;
+//uint8_t counter_zwo = 0;
 
 struct tripple_uint8_t_ptr
 {
@@ -118,11 +118,11 @@ int main(void)
 	ram_pointer.A = allocate_ram(&ram_size);
 	ram_pointer.B = ram_pointer.A;
 	ram_pointer.C = ram_pointer.A;
-	UART_tx((char)('.'));
+	//UART_tx((char)('.'));
 	for (tripple_uint8_t i = {0, 0, 0}; TMR(i) < ram_size; i.A++, i.B++, i.C++)
 	{
 
-		*(TMR(ram_pointer) + i.A) = TEST_PATTERN; // size optimisations i is tmr checked one line ahead
+		*(ram_pointer.A + i.A) = TEST_PATTERN; // size optimisations i is tmr checked one line ahead
 	}
 
 	while (1)
@@ -131,10 +131,10 @@ int main(void)
 		if (++counter == 0)
 		{
 			PORTA ^= 1 << PA5;
-			if (++counter_zwo == 0)
-			{
+			//if (++counter_zwo == 0)
+			//{
 				UART_tx((char)('.'));
-			}
+			//}
 		}
 	}
 
