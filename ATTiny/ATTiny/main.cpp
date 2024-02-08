@@ -22,85 +22,97 @@ void test_register()
 {
 	if (PORTCR != 0)
 	{
-		adr = 0xff;
-		val = 0x08;
+		adr = 0x08 | (1 << 7);
+		val = PORTCR;
+		UART_tx('$');
 		uart_send_report(adr, val);
 		PORTCR = 0x00;
 	}
 	else if (PCMSK0 != 0)
 	{
-		adr = 0xff;
-		val = 0x09;
+		adr = 0x09 | (1 << 7);
+		val = PCMSK0;
+		UART_tx('$');
 		uart_send_report(adr, val);
 		PCMSK0 = 0x00;
 	}
 	else if (PCMSK1 != 0)
 	{
-		adr = 0xff;
-		val = 0x0A;
+		adr = 0x0A | (1 << 7);
+		val = PCMSK1;
+		UART_tx('$');
 		uart_send_report(adr, val);
 		PCMSK1 = 0x00;
 	}
 	else if (DIDR0 != 0)
 	{
-		adr = 0xff;
-		val = 0x0D;
+		adr = 0x0D | (1 << 7);
+		val = DIDR0;
+		UART_tx('$');
 		uart_send_report(adr, val);
 		DIDR0 = 0x00;
 	}
 	else if (ADCL != 0)
 	{
-		adr = 0xff;
-		val = 0x0E;
+		adr = 0x0E | (1 << 7);
+		val = ADCL;
+		UART_tx('$');
 		uart_send_report(adr, val);
 		ADCL = 0x00;
 	}
 	else if (ADCH != 0)
 	{
-		adr = 0xff;
-		val = 0x0F;
+		adr = 0x0F | (1 << 7);
+		val = ADCH;
+		UART_tx('$');
 		uart_send_report(adr, val);
 		ADCH = 0x00;
 	}
 	else if (ADMUX != 0)
 	{
-		adr = 0xff;
-		val = 0x10;
+		adr = 0x10 | (1 << 7);
+		val = ADMUX;
+		UART_tx('$');
 		uart_send_report(adr, val);
 		ADMUX = 0x00;
 	}
 	else if (ADCSRB != 0)
 	{
-		adr = 0xff;
-		val = 0x11;
+		adr = 0x11 | (1 << 7);
+		val = ADCSRB;
+		UART_tx('$');
 		uart_send_report(adr, val);
 		ADCSRB = 0x00;
 	}
 	else if (ADCSRA != 0)
 	{
-		adr = 0xff;
-		val = 0x12;
+		adr = 0x12 | (1 << 7);
+		val = ADCSRA;
+		UART_tx('$');
 		uart_send_report(adr, val);
 		ADCSRA = 0x00;
 	}
 	else if (ACSRB != 0)
 	{
-		adr = 0xff;
-		val = 0x13;
+		adr = 0x13 | (1 << 7);
+		val = ACSRB;
+		UART_tx('$');
 		uart_send_report(adr, val);
 		ACSRB = 0x00;
 	}
 	else if (ACSRA != 0)
 	{
-		adr = 0xff;
-		val = 0x14;
+		adr = 0x14 | (1 << 7);
+		val = ACSRA;
+		UART_tx('$');
 		uart_send_report(adr, val);
 		ACSRA = 0x00;
 	}
 	else if (OCR0B != 0)
 	{
-		adr = 0xff;
-		val = 0x15;
+		adr = 0x15 | (1 << 7);
+		val = OCR0B;
+		UART_tx('$');
 		uart_send_report(adr, val);
 		OCR0B = 0x00;
 	}
@@ -113,43 +125,49 @@ void test_register()
 	// }
 	else if (TCCR0B != 0)
 	{
-		adr = 0xff;
-		val = 0x18;
+		adr = 0x18 | (1 << 7);
+		val = TCCR0B;
+		UART_tx('$');
 		uart_send_report(adr, val);
 		TCCR0B = 0x00;
 	}
 	else if (TCNT1L != 0)
 	{
-		adr = 0xff;
-		val = 0x20;
+		adr = 0x20 | (1 << 7);
+		val = TCNT1L;
+		UART_tx('$');
 		uart_send_report(adr, val);
 		TCNT1L = 0x00;
 	}
 	else if (TCNT1H != 0)
 	{
-		adr = 0xff;
-		val = 0x21;
+		adr = 0x21 | (1 << 7);
+		val = TCNT1H;
+		UART_tx('$');
 		uart_send_report(adr, val);
 		TCNT1H = 0x00;
 	}
 	else if (TCCR1C != 0)
 	{
-		adr = 0xff;
-		val = 0x22;
+		adr = 0x22 | (1 << 7);
+		val = TCCR1C;
+		UART_tx('$');
 		uart_send_report(adr, val);
 		TCCR1C = 0x00;
 	}
 	else if (TCCR1B != 0)
 	{
-		adr = 0xff;
-		val = 0x23;
+		adr = 0x23 | (1 << 7);
+		val = TCCR1B;
+		UART_tx('$');
 		uart_send_report(adr, val);
 		TCCR1B = 0x00;
 	}
 	else if (TCCR1A != 0)
 	{
-		adr = 0xff;
-		val = 0x24;
+		adr = 0x24 | (1 << 7);
+		val = TCCR1A;
+		UART_tx('$');
 		uart_send_report(adr, val);
 		TCCR1A = 0x00;
 	}
@@ -162,64 +180,73 @@ void test_register()
 	// }
 	else if (GTCCR != 0)
 	{
-		adr = 0xff;
-		val = 0x27;
+		adr = 0x27 | (1 << 7);
+		val = GTCCR;
+		UART_tx('$');
 		uart_send_report(adr, val);
 		GTCCR = 0x00;
 	}
 	else if (TWSD != 0)
 	{
-		adr = 0xff;
-		val = 0x28;
+		adr = 0x28 | (1 << 7);
+		val = TWSD;
+		UART_tx('$');
 		uart_send_report(adr, val);
 		TWSD = 0x00;
 	}
 	else if (TWSAM != 0)
 	{
-		adr = 0xff;
-		val = 0x29;
+		adr = 0x29 | (1 << 7);
+		val = TWSAM;
+		UART_tx('$');
 		uart_send_report(adr, val);
 		TWSAM = 0x00;
 	}
 	else if (TWSA != 0)
 	{
-		adr = 0xff;
-		val = 0x2A;
+		adr = 0x2A | (1 << 7);
+		val = TWSA;
+		UART_tx('$');
 		uart_send_report(adr, val);
 		TWSA = 0x00;
 	}
 	else if (TWSSRA != 0)
 	{
-		adr = 0xff;
-		val = 0x2B;
+		adr = 0x2B | (1 << 7);
+		val = TWSSRA;
+		UART_tx('$');
 		uart_send_report(adr, val);
 		TWSSRA = 0x00;
 	}
 	else if (TWSCRB != 0)
 	{
-		adr = 0xff;
-		val = 0x2C;
+		adr = 0x2C | (1 << 7);
+		val = TWSCRB;
+		UART_tx('$');
 		uart_send_report(adr, val);
 		TWSCRB = 0x00;
 	}
 	else if (TWSCRA != 0)
 	{
-		adr = 0xff;
-		val = 0x2D;
+		adr = 0x2D | (1 << 7);
+		val = TWSCRA;
+		UART_tx('$');
 		uart_send_report(adr, val);
 		TWSCRA = 0x00;
 	}
 	else if (SPCR != 0)
 	{
-		adr = 0xff;
-		val = 0x30;
+		adr = 0x30 | (1 << 7);
+		val = SPCR;
+		UART_tx('$');
 		uart_send_report(adr, val);
 		SPCR = 0x00;
 	}
 	else if (PRR != 0)
 	{
-		adr = 0xff;
-		val = 0x35;
+		adr = 0x35 | (1 << 7);
+		val = PRR;
+		UART_tx('$');
 		uart_send_report(adr, val);
 		PRR = 0x00;
 	}
@@ -232,8 +259,9 @@ void test_register()
 	// }
 	else if (MCUCR != 0)
 	{
-		adr = 0xff;
-		val = 0x3A;
+		adr = 0x3A | (1 << 7);
+		val = MCUCR;
+		UART_tx('$');
 		uart_send_report(adr, val);
 		MCUCR = 0x00;
 	}
@@ -364,6 +392,7 @@ void test_memory(unsigned short test_pattern)
 		{
 			adr = (uint8_t)(short)&test[TMR(i)];
 			val = test[TMR(i)];
+			UART_tx('$');
 			uart_send_report(adr, val);
 			test[TMR(i)] = test_pattern;
 		}
