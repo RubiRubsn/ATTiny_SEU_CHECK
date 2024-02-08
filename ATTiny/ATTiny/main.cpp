@@ -9,7 +9,7 @@
 #define FLASH_START 0x00C0
 // zellen 43
 
-#define nr_zells 70 //47
+#define nr_zells 70 // 47
 uint8_t test[nr_zells];
 
 uint8_t adr;
@@ -281,9 +281,12 @@ struct tripple_uint8_t
 	uint8_t B;
 	uint8_t C;
 };
+
+tripple_uint8_t i;
+
 #define TEST_PATTERN 0xAA
 
-void test_memory(unsigned short test_pattern);
+void test_memory();
 
 uint8_t TMR(uint8_t &A, uint8_t &B, uint8_t &C)
 {
@@ -359,15 +362,17 @@ int main(void)
 	CLKPSR = 0x0; // Clock Division Factor = 1			//vielleicht doch durch 8
 	UART_init();
 	DDRA |= 1 << PA5; /* set PA5 to output (LED)*/
-
-	for (tripple_uint8_t i = {0, 0, 0}; TMR(i) < nr_zells; i.A++, i.B++, i.C++)
+	i.A = 0;
+	i.B = 0;
+	i.C = 0;
+	for (i; TMR(i) < nr_zells; i.A++, i.B++, i.C++)
 	{
 		test[TMR(i)] = TEST_PATTERN;
 	}
 
 	while (1)
 	{
-		test_memory(TEST_PATTERN);
+		test_memory();
 		test_register();
 		if (++counter == 0)
 		{
@@ -384,17 +389,20 @@ int main(void)
 	return 0;
 }
 
-void test_memory(unsigned short test_pattern)
+void test_memory()
 {
-	for (tripple_uint8_t i = {0, 0, 0}; TMR(i) < nr_zells; i.A++, i.B++, i.C++)
+	i.A = 0;
+	i.B = 0;
+	i.C = 0;
+	for (i; TMR(i) < nr_zells; i.A++, i.B++, i.C++)
 	{
-		if (test[TMR(i)] != test_pattern)
+		if (test[TMR(i)] != TEST_PATTERN)
 		{
 			adr = (uint8_t)(short)&test[TMR(i)];
 			val = test[TMR(i)];
 			UART_tx('$');
 			uart_send_report(adr, val);
-			test[TMR(i)] = test_pattern;
+			test[TMR(i)] = TEST_PATTERN;
 		}
 	}
 }

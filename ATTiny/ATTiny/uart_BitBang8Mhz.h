@@ -31,6 +31,7 @@ void UART_init();
 volatile uint16_t tx_shift_reg_a = 0;
 volatile uint16_t tx_shift_reg_b = 0;
 volatile uint16_t tx_shift_reg_c = 0;
+uint16_t local_tx_shift_reg;
 
 volatile uint16_t volatile_TMR()
 {
@@ -65,7 +66,7 @@ void set_TMR_val(uint16_t val)
 
 void UART_tx(char character)
 {
-   uint16_t local_tx_shift_reg = volatile_TMR();
+   local_tx_shift_reg = volatile_TMR();
 
    // if sending the previous character is not yet finished, return
    // transmission is finished when tx_shift_reg == 0
@@ -130,7 +131,7 @@ void uart_send_report(uint8_t address, uint8_t content)
 // timer0 compare A match interrupt
 ISR(TIM0_COMPA_vect)
 {
-   uint16_t local_tx_shift_reg = volatile_TMR();
+   local_tx_shift_reg = volatile_TMR();
 
    if (local_tx_shift_reg & 0x01)
    {
