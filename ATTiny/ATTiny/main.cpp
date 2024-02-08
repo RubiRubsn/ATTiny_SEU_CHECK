@@ -9,7 +9,7 @@
 #define FLASH_START 0x00C0
 // zellen 43
 
-#define nr_zells 47
+#define nr_zells 70 //47
 uint8_t test[nr_zells];
 
 uint8_t adr;
