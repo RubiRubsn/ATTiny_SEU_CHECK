@@ -365,7 +365,7 @@ int main(void)
 	i.A = 0;
 	i.B = 0;
 	i.C = 0;
-	for (i.A=0; TMR(i) < nr_zells; i.A++, i.B++, i.C++)
+	for (i.A = 0; TMR(i) < nr_zells; i.A++, i.B++, i.C++)
 	{
 		test[TMR(i)] = TEST_PATTERN;
 	}
@@ -373,7 +373,7 @@ int main(void)
 	while (1)
 	{
 		test_memory();
-		test_register();
+		// test_register();
 		if (++counter == 0)
 		{
 			PORTA ^= 1 << PA5;
@@ -394,7 +394,7 @@ void test_memory()
 	i.A = 0;
 	i.B = 0;
 	i.C = 0;
-	for (i.A=0; TMR(i) < nr_zells; i.A++, i.B++, i.C++)
+	for (i.A = 0; TMR(i) < nr_zells; i.A++, i.B++, i.C++)
 	{
 		if (test[TMR(i)] != TEST_PATTERN)
 		{
