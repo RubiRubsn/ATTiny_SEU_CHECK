@@ -118,19 +118,12 @@ void test_register()
 	}
 	// else if (TCCR0B != 0)
 	// {
-	// 	adr = 0xff;
-	// 	val = 0x18;
+	// 	adr = 0x18 | (1 << 7);
+	// 	val = TCCR0B;
+	// 	UART_tx('$');
 	// 	uart_send_report(adr, val);
 	// 	TCCR0B = 0x00;
 	// }
-	else if (TCCR0B != 0)
-	{
-		adr = 0x18 | (1 << 7);
-		val = TCCR0B;
-		UART_tx('$');
-		uart_send_report(adr, val);
-		TCCR0B = 0x00;
-	}
 	else if (TCNT1L != 0)
 	{
 		adr = 0x20 | (1 << 7);
@@ -373,7 +366,7 @@ int main(void)
 	while (1)
 	{
 		test_memory();
-		// test_register();
+		test_register();
 		if (++counter == 0)
 		{
 			PORTA ^= 1 << PA5;
