@@ -66,9 +66,9 @@ void set_TMR_val(uint16_t val)
 
 void UART_tx(char character)
 {
-   uint16_t local_tx_shift_reg = volatile_TMR();
    while (volatile_TMR())
       ;
+   uint16_t local_tx_shift_reg = volatile_TMR();
    // if sending the previous character is not yet finished, return
    // transmission is finished when tx_shift_reg == 0
    if (local_tx_shift_reg)
