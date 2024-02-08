@@ -377,6 +377,7 @@ int main(void)
 		if (++counter == 0)
 		{
 			PORTA ^= 1 << PA5;
+			UART_tx((char)('.'));
 			if (++counter_two == 10)
 			{
 
