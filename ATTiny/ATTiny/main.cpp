@@ -9,7 +9,7 @@
 #define FLASH_START 0x00C0
 // zellen 43
 
-#define nr_zells 70 // 47
+#define nr_zells 90 // 47
 uint8_t test[nr_zells];
 
 uint8_t adr;
@@ -365,7 +365,7 @@ int main(void)
 	i.A = 0;
 	i.B = 0;
 	i.C = 0;
-	for (i; TMR(i) < nr_zells; i.A++, i.B++, i.C++)
+	for (i.A=0; TMR(i) < nr_zells; i.A++, i.B++, i.C++)
 	{
 		test[TMR(i)] = TEST_PATTERN;
 	}
@@ -394,7 +394,7 @@ void test_memory()
 	i.A = 0;
 	i.B = 0;
 	i.C = 0;
-	for (i; TMR(i) < nr_zells; i.A++, i.B++, i.C++)
+	for (i.A=0; TMR(i) < nr_zells; i.A++, i.B++, i.C++)
 	{
 		if (test[TMR(i)] != TEST_PATTERN)
 		{
