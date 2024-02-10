@@ -366,7 +366,7 @@ int main(void)
 	while (1)
 	{
 		test_memory();
-		test_register();
+//		test_register();
 		if (++counter == 0)
 		{
 			PORTA ^= 1 << PA5;
