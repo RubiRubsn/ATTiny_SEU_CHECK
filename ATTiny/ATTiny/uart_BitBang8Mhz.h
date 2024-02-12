@@ -66,7 +66,7 @@ void set_TMR_val(uint16_t val)
    tx_shift_reg_c = val;
 }
 
-void UART_tx(char character) // char muss TMR
+void UART_tx(char character) // char muss TMR !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 {
    uint16_t local_tx_shift_reg = volatile_TMR();
    while (local_tx_shift_reg)
