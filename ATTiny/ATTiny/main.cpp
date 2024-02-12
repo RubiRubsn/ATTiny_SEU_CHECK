@@ -9,7 +9,7 @@
 #define FLASH_START 0x00C0
 // zellen 43
 
-#define nr_zells 90 // 47
+#define nr_zells 20 //90 // 47
 uint8_t test[nr_zells];
 
 uint8_t adr;
@@ -366,7 +366,7 @@ int main(void)
 	while (1)
 	{
 		test_memory();
-//		test_register();
+		test_register();
 		if (++counter == 0)
 		{
 			PORTA ^= 1 << PA5;
