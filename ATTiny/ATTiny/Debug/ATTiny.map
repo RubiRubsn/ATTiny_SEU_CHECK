@@ -322,7 +322,7 @@ END GROUP
                 0x00800040                _edata = .
                 [!provide]                PROVIDE (__data_end, .)
 
-.bss            0x00800040       0x21
+.bss            0x00800040       0x3f
                 0x00800040                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
@@ -337,27 +337,27 @@ END GROUP
                 0x00800045                val
  .bss.adr       0x00800046        0x1 main.o
                 0x00800046                adr
- .bss.test      0x00800047       0x14 main.o
+ .bss.test      0x00800047       0x32 main.o
                 0x00800047                test
  .bss.tx_shift_reg_c
-                0x0080005b        0x2 main.o
-                0x0080005b                tx_shift_reg_c
+                0x00800079        0x2 main.o
+                0x00800079                tx_shift_reg_c
  .bss.tx_shift_reg_b
-                0x0080005d        0x2 main.o
-                0x0080005d                tx_shift_reg_b
+                0x0080007b        0x2 main.o
+                0x0080007b                tx_shift_reg_b
  .bss.tx_shift_reg_a
-                0x0080005f        0x2 main.o
-                0x0080005f                tx_shift_reg_a
+                0x0080007d        0x2 main.o
+                0x0080007d                tx_shift_reg_a
  *(COMMON)
-                0x00800061                PROVIDE (__bss_end, .)
+                0x0080007f                PROVIDE (__bss_end, .)
                 0x000005aa                __data_load_start = LOADADDR (.data)
                 0x000005aa                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x00800061        0x0
+.noinit         0x0080007f        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
  *(.noinit*)
                 [!provide]                PROVIDE (__noinit_end, .)
-                0x00800061                _end = .
+                0x0080007f                _end = .
                 [!provide]                PROVIDE (__heap_start, .)
 
 .lock
