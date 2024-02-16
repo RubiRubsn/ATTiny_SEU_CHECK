@@ -3,23 +3,23 @@ ATTiny.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         000005aa  00000000  00000000  00000074  2**1
+  0 .text         000004c4  00000000  00000000  00000074  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .data         00000000  00800040  00800040  0000061e  2**0
+  1 .data         00000000  00800040  00800040  00000538  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  2 .bss          00000021  00800040  00800040  0000061e  2**0
+  2 .bss          0000003f  00800040  00800040  00000538  2**0
                   ALLOC
-  3 .comment      00000030  00000000  00000000  0000061e  2**0
+  3 .comment      00000030  00000000  00000000  00000538  2**0
                   CONTENTS, READONLY
-  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000650  2**2
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000568  2**2
                   CONTENTS, READONLY
-  5 .debug_info   0000045b  00000000  00000000  0000068c  2**0
+  5 .debug_info   0000045b  00000000  00000000  000005a4  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_abbrev 0000041c  00000000  00000000  00000ae7  2**0
+  6 .debug_abbrev 0000041c  00000000  00000000  000009ff  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_line   000000fd  00000000  00000000  00000f03  2**0
+  7 .debug_line   000000fd  00000000  00000000  00000e1b  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_str    00000184  00000000  00000000  00001000  2**0
+  8 .debug_str    00000184  00000000  00000000  00000f18  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -61,69 +61,69 @@ Disassembly of section .text:
   36:	1d 93       	st	X+, r17
 
 00000038 <.do_clear_bss_start>:
-  38:	a1 36       	cpi	r26, 0x61	; 97
+  38:	af 37       	cpi	r26, 0x7F	; 127
   3a:	b2 07       	cpc	r27, r18
   3c:	e1 f7       	brne	.-8      	; 0x36 <.do_clear_bss_loop>
-  3e:	7e d2       	rcall	.+1276   	; 0x53c <main>
-  40:	b2 c2       	rjmp	.+1380   	; 0x5a6 <_exit>
+  3e:	0b d2       	rcall	.+1046   	; 0x456 <main>
+  40:	3f c2       	rjmp	.+1150   	; 0x4c0 <_exit>
 
 00000042 <__bad_interrupt>:
   42:	de cf       	rjmp	.-68     	; 0x0 <__vectors>
 
 00000044 <_Z12volatile_TMRv>:
-  44:	6f a3       	lds	r22, 0x5f	; 0x80005f <tx_shift_reg_a>
-  46:	70 a5       	lds	r23, 0x60	; 0x800060 <tx_shift_reg_a+0x1>
-  48:	4d a3       	lds	r20, 0x5d	; 0x80005d <tx_shift_reg_b>
-  4a:	5e a3       	lds	r21, 0x5e	; 0x80005e <tx_shift_reg_b+0x1>
+  44:	6d a7       	lds	r22, 0x7d	; 0x80007d <tx_shift_reg_a>
+  46:	7e a7       	lds	r23, 0x7e	; 0x80007e <tx_shift_reg_a+0x1>
+  48:	4b a7       	lds	r20, 0x7b	; 0x80007b <tx_shift_reg_b>
+  4a:	5c a7       	lds	r21, 0x7c	; 0x80007c <tx_shift_reg_b+0x1>
   4c:	64 17       	cp	r22, r20
   4e:	75 07       	cpc	r23, r21
   50:	39 f4       	brne	.+14     	; 0x60 <_Z12volatile_TMRv+0x1c>
-  52:	6d a3       	lds	r22, 0x5d	; 0x80005d <tx_shift_reg_b>
-  54:	7e a3       	lds	r23, 0x5e	; 0x80005e <tx_shift_reg_b+0x1>
-  56:	4b a3       	lds	r20, 0x5b	; 0x80005b <tx_shift_reg_c>
-  58:	5c a3       	lds	r21, 0x5c	; 0x80005c <tx_shift_reg_c+0x1>
+  52:	6b a7       	lds	r22, 0x7b	; 0x80007b <tx_shift_reg_b>
+  54:	7c a7       	lds	r23, 0x7c	; 0x80007c <tx_shift_reg_b+0x1>
+  56:	49 a7       	lds	r20, 0x79	; 0x800079 <tx_shift_reg_c>
+  58:	5a a7       	lds	r21, 0x7a	; 0x80007a <tx_shift_reg_c+0x1>
   5a:	64 17       	cp	r22, r20
   5c:	75 07       	cpc	r23, r21
   5e:	e1 f0       	breq	.+56     	; 0x98 <__DATA_REGION_LENGTH__+0x18>
-  60:	6f a3       	lds	r22, 0x5f	; 0x80005f <tx_shift_reg_a>
-  62:	70 a5       	lds	r23, 0x60	; 0x800060 <tx_shift_reg_a+0x1>
-  64:	4d a3       	lds	r20, 0x5d	; 0x80005d <tx_shift_reg_b>
-  66:	5e a3       	lds	r21, 0x5e	; 0x80005e <tx_shift_reg_b+0x1>
+  60:	6d a7       	lds	r22, 0x7d	; 0x80007d <tx_shift_reg_a>
+  62:	7e a7       	lds	r23, 0x7e	; 0x80007e <tx_shift_reg_a+0x1>
+  64:	4b a7       	lds	r20, 0x7b	; 0x80007b <tx_shift_reg_b>
+  66:	5c a7       	lds	r21, 0x7c	; 0x80007c <tx_shift_reg_b+0x1>
   68:	64 17       	cp	r22, r20
   6a:	75 07       	cpc	r23, r21
   6c:	29 f4       	brne	.+10     	; 0x78 <_Z12volatile_TMRv+0x34>
-  6e:	4f a3       	lds	r20, 0x5f	; 0x80005f <tx_shift_reg_a>
-  70:	50 a5       	lds	r21, 0x60	; 0x800060 <tx_shift_reg_a+0x1>
-  72:	5c ab       	sts	0x5c, r21	; 0x80005c <tx_shift_reg_c+0x1>
-  74:	4b ab       	sts	0x5b, r20	; 0x80005b <tx_shift_reg_c>
+  6e:	4d a7       	lds	r20, 0x7d	; 0x80007d <tx_shift_reg_a>
+  70:	5e a7       	lds	r21, 0x7e	; 0x80007e <tx_shift_reg_a+0x1>
+  72:	5a af       	sts	0x7a, r21	; 0x80007a <tx_shift_reg_c+0x1>
+  74:	49 af       	sts	0x79, r20	; 0x800079 <tx_shift_reg_c>
   76:	10 c0       	rjmp	.+32     	; 0x98 <__DATA_REGION_LENGTH__+0x18>
-  78:	6f a3       	lds	r22, 0x5f	; 0x80005f <tx_shift_reg_a>
-  7a:	70 a5       	lds	r23, 0x60	; 0x800060 <tx_shift_reg_a+0x1>
-  7c:	4b a3       	lds	r20, 0x5b	; 0x80005b <tx_shift_reg_c>
-  7e:	5c a3       	lds	r21, 0x5c	; 0x80005c <tx_shift_reg_c+0x1>
+  78:	6d a7       	lds	r22, 0x7d	; 0x80007d <tx_shift_reg_a>
+  7a:	7e a7       	lds	r23, 0x7e	; 0x80007e <tx_shift_reg_a+0x1>
+  7c:	49 a7       	lds	r20, 0x79	; 0x800079 <tx_shift_reg_c>
+  7e:	5a a7       	lds	r21, 0x7a	; 0x80007a <tx_shift_reg_c+0x1>
   80:	64 17       	cp	r22, r20
   82:	75 07       	cpc	r23, r21
   84:	29 f4       	brne	.+10     	; 0x90 <__DATA_REGION_LENGTH__+0x10>
-  86:	4f a3       	lds	r20, 0x5f	; 0x80005f <tx_shift_reg_a>
-  88:	50 a5       	lds	r21, 0x60	; 0x800060 <tx_shift_reg_a+0x1>
-  8a:	5e ab       	sts	0x5e, r21	; 0x80005e <tx_shift_reg_b+0x1>
-  8c:	4d ab       	sts	0x5d, r20	; 0x80005d <tx_shift_reg_b>
+  86:	4d a7       	lds	r20, 0x7d	; 0x80007d <tx_shift_reg_a>
+  88:	5e a7       	lds	r21, 0x7e	; 0x80007e <tx_shift_reg_a+0x1>
+  8a:	5c af       	sts	0x7c, r21	; 0x80007c <tx_shift_reg_b+0x1>
+  8c:	4b af       	sts	0x7b, r20	; 0x80007b <tx_shift_reg_b>
   8e:	04 c0       	rjmp	.+8      	; 0x98 <__DATA_REGION_LENGTH__+0x18>
-  90:	4d a3       	lds	r20, 0x5d	; 0x80005d <tx_shift_reg_b>
-  92:	5e a3       	lds	r21, 0x5e	; 0x80005e <tx_shift_reg_b+0x1>
-  94:	50 ad       	sts	0x60, r21	; 0x800060 <tx_shift_reg_a+0x1>
-  96:	4f ab       	sts	0x5f, r20	; 0x80005f <tx_shift_reg_a>
-  98:	8f a3       	lds	r24, 0x5f	; 0x80005f <tx_shift_reg_a>
-  9a:	90 a5       	lds	r25, 0x60	; 0x800060 <tx_shift_reg_a+0x1>
+  90:	4b a7       	lds	r20, 0x7b	; 0x80007b <tx_shift_reg_b>
+  92:	5c a7       	lds	r21, 0x7c	; 0x80007c <tx_shift_reg_b+0x1>
+  94:	5e af       	sts	0x7e, r21	; 0x80007e <tx_shift_reg_a+0x1>
+  96:	4d af       	sts	0x7d, r20	; 0x80007d <tx_shift_reg_a>
+  98:	8d a7       	lds	r24, 0x7d	; 0x80007d <tx_shift_reg_a>
+  9a:	9e a7       	lds	r25, 0x7e	; 0x80007e <tx_shift_reg_a+0x1>
   9c:	08 95       	ret
 
 0000009e <_Z11set_TMR_valj>:
-  9e:	90 ad       	sts	0x60, r25	; 0x800060 <tx_shift_reg_a+0x1>
-  a0:	8f ab       	sts	0x5f, r24	; 0x80005f <tx_shift_reg_a>
-  a2:	9e ab       	sts	0x5e, r25	; 0x80005e <tx_shift_reg_b+0x1>
-  a4:	8d ab       	sts	0x5d, r24	; 0x80005d <tx_shift_reg_b>
-  a6:	9c ab       	sts	0x5c, r25	; 0x80005c <tx_shift_reg_c+0x1>
-  a8:	8b ab       	sts	0x5b, r24	; 0x80005b <tx_shift_reg_c>
+  9e:	9e af       	sts	0x7e, r25	; 0x80007e <tx_shift_reg_a+0x1>
+  a0:	8d af       	sts	0x7d, r24	; 0x80007d <tx_shift_reg_a>
+  a2:	9c af       	sts	0x7c, r25	; 0x80007c <tx_shift_reg_b+0x1>
+  a4:	8b af       	sts	0x7b, r24	; 0x80007b <tx_shift_reg_b>
+  a6:	9a af       	sts	0x7a, r25	; 0x80007a <tx_shift_reg_c+0x1>
+  a8:	89 af       	sts	0x79, r24	; 0x800079 <tx_shift_reg_c>
   aa:	08 95       	ret
 
 000000ac <_Z7UART_txc>:
@@ -214,575 +214,460 @@ Disassembly of section .text:
 
 00000148 <_Z13test_registerv>:
  148:	48 b1       	in	r20, 0x08	; 8
- 14a:	44 23       	and	r20, r20
- 14c:	59 f0       	breq	.+22     	; 0x164 <_Z13test_registerv+0x1c>
+ 14a:	43 70       	andi	r20, 0x03	; 3
+ 14c:	49 f0       	breq	.+18     	; 0x160 <_Z13test_registerv+0x18>
  14e:	48 e8       	ldi	r20, 0x88	; 136
  150:	46 a9       	sts	0x46, r20	; 0x800046 <adr>
  152:	48 b1       	in	r20, 0x08	; 8
- 154:	45 a9       	sts	0x45, r20	; 0x800045 <val>
- 156:	84 e2       	ldi	r24, 0x24	; 36
- 158:	a9 df       	rcall	.-174    	; 0xac <_Z7UART_txc>
- 15a:	65 a1       	lds	r22, 0x45	; 0x800045 <val>
- 15c:	86 a1       	lds	r24, 0x46	; 0x800046 <adr>
- 15e:	c0 df       	rcall	.-128    	; 0xe0 <_Z16uart_send_reporthh>
- 160:	18 b9       	out	0x08, r17	; 8
- 162:	08 95       	ret
- 164:	49 b1       	in	r20, 0x09	; 9
- 166:	44 23       	and	r20, r20
- 168:	59 f0       	breq	.+22     	; 0x180 <_Z13test_registerv+0x38>
- 16a:	49 e8       	ldi	r20, 0x89	; 137
- 16c:	46 a9       	sts	0x46, r20	; 0x800046 <adr>
- 16e:	49 b1       	in	r20, 0x09	; 9
- 170:	45 a9       	sts	0x45, r20	; 0x800045 <val>
- 172:	84 e2       	ldi	r24, 0x24	; 36
- 174:	9b df       	rcall	.-202    	; 0xac <_Z7UART_txc>
- 176:	65 a1       	lds	r22, 0x45	; 0x800045 <val>
- 178:	86 a1       	lds	r24, 0x46	; 0x800046 <adr>
- 17a:	b2 df       	rcall	.-156    	; 0xe0 <_Z16uart_send_reporthh>
- 17c:	19 b9       	out	0x09, r17	; 9
- 17e:	08 95       	ret
- 180:	4a b1       	in	r20, 0x0a	; 10
- 182:	44 23       	and	r20, r20
- 184:	59 f0       	breq	.+22     	; 0x19c <_Z13test_registerv+0x54>
- 186:	4a e8       	ldi	r20, 0x8A	; 138
- 188:	46 a9       	sts	0x46, r20	; 0x800046 <adr>
- 18a:	4a b1       	in	r20, 0x0a	; 10
- 18c:	45 a9       	sts	0x45, r20	; 0x800045 <val>
- 18e:	84 e2       	ldi	r24, 0x24	; 36
- 190:	8d df       	rcall	.-230    	; 0xac <_Z7UART_txc>
- 192:	65 a1       	lds	r22, 0x45	; 0x800045 <val>
- 194:	86 a1       	lds	r24, 0x46	; 0x800046 <adr>
- 196:	a4 df       	rcall	.-184    	; 0xe0 <_Z16uart_send_reporthh>
- 198:	1a b9       	out	0x0a, r17	; 10
- 19a:	08 95       	ret
- 19c:	4d b1       	in	r20, 0x0d	; 13
- 19e:	44 23       	and	r20, r20
- 1a0:	59 f0       	breq	.+22     	; 0x1b8 <_Z13test_registerv+0x70>
- 1a2:	4d e8       	ldi	r20, 0x8D	; 141
+ 154:	43 70       	andi	r20, 0x03	; 3
+ 156:	45 a9       	sts	0x45, r20	; 0x800045 <val>
+ 158:	48 b1       	in	r20, 0x08	; 8
+ 15a:	4c 7f       	andi	r20, 0xFC	; 252
+ 15c:	48 b9       	out	0x08, r20	; 8
+ 15e:	f5 c0       	rjmp	.+490    	; 0x34a <_Z13test_registerv+0x202>
+ 160:	49 b1       	in	r20, 0x09	; 9
+ 162:	44 23       	and	r20, r20
+ 164:	31 f0       	breq	.+12     	; 0x172 <_Z13test_registerv+0x2a>
+ 166:	49 e8       	ldi	r20, 0x89	; 137
+ 168:	46 a9       	sts	0x46, r20	; 0x800046 <adr>
+ 16a:	49 b1       	in	r20, 0x09	; 9
+ 16c:	45 a9       	sts	0x45, r20	; 0x800045 <val>
+ 16e:	19 b9       	out	0x09, r17	; 9
+ 170:	ec c0       	rjmp	.+472    	; 0x34a <_Z13test_registerv+0x202>
+ 172:	4a b1       	in	r20, 0x0a	; 10
+ 174:	4f 70       	andi	r20, 0x0F	; 15
+ 176:	49 f0       	breq	.+18     	; 0x18a <_Z13test_registerv+0x42>
+ 178:	4a e8       	ldi	r20, 0x8A	; 138
+ 17a:	46 a9       	sts	0x46, r20	; 0x800046 <adr>
+ 17c:	4a b1       	in	r20, 0x0a	; 10
+ 17e:	4f 70       	andi	r20, 0x0F	; 15
+ 180:	45 a9       	sts	0x45, r20	; 0x800045 <val>
+ 182:	4a b1       	in	r20, 0x0a	; 10
+ 184:	40 7f       	andi	r20, 0xF0	; 240
+ 186:	4a b9       	out	0x0a, r20	; 10
+ 188:	e0 c0       	rjmp	.+448    	; 0x34a <_Z13test_registerv+0x202>
+ 18a:	4d b1       	in	r20, 0x0d	; 13
+ 18c:	44 23       	and	r20, r20
+ 18e:	31 f0       	breq	.+12     	; 0x19c <_Z13test_registerv+0x54>
+ 190:	4d e8       	ldi	r20, 0x8D	; 141
+ 192:	46 a9       	sts	0x46, r20	; 0x800046 <adr>
+ 194:	4d b1       	in	r20, 0x0d	; 13
+ 196:	45 a9       	sts	0x45, r20	; 0x800045 <val>
+ 198:	1d b9       	out	0x0d, r17	; 13
+ 19a:	d7 c0       	rjmp	.+430    	; 0x34a <_Z13test_registerv+0x202>
+ 19c:	40 b3       	in	r20, 0x10	; 16
+ 19e:	4f 77       	andi	r20, 0x7F	; 127
+ 1a0:	49 f0       	breq	.+18     	; 0x1b4 <_Z13test_registerv+0x6c>
+ 1a2:	40 e9       	ldi	r20, 0x90	; 144
  1a4:	46 a9       	sts	0x46, r20	; 0x800046 <adr>
- 1a6:	4d b1       	in	r20, 0x0d	; 13
- 1a8:	45 a9       	sts	0x45, r20	; 0x800045 <val>
- 1aa:	84 e2       	ldi	r24, 0x24	; 36
- 1ac:	7f df       	rcall	.-258    	; 0xac <_Z7UART_txc>
- 1ae:	65 a1       	lds	r22, 0x45	; 0x800045 <val>
- 1b0:	86 a1       	lds	r24, 0x46	; 0x800046 <adr>
- 1b2:	96 df       	rcall	.-212    	; 0xe0 <_Z16uart_send_reporthh>
- 1b4:	1d b9       	out	0x0d, r17	; 13
- 1b6:	08 95       	ret
- 1b8:	4e b1       	in	r20, 0x0e	; 14
- 1ba:	44 23       	and	r20, r20
- 1bc:	59 f0       	breq	.+22     	; 0x1d4 <_Z13test_registerv+0x8c>
- 1be:	4e e8       	ldi	r20, 0x8E	; 142
- 1c0:	46 a9       	sts	0x46, r20	; 0x800046 <adr>
- 1c2:	4e b1       	in	r20, 0x0e	; 14
- 1c4:	45 a9       	sts	0x45, r20	; 0x800045 <val>
- 1c6:	84 e2       	ldi	r24, 0x24	; 36
- 1c8:	71 df       	rcall	.-286    	; 0xac <_Z7UART_txc>
- 1ca:	65 a1       	lds	r22, 0x45	; 0x800045 <val>
- 1cc:	86 a1       	lds	r24, 0x46	; 0x800046 <adr>
- 1ce:	88 df       	rcall	.-240    	; 0xe0 <_Z16uart_send_reporthh>
- 1d0:	1e b9       	out	0x0e, r17	; 14
- 1d2:	08 95       	ret
- 1d4:	4f b1       	in	r20, 0x0f	; 15
- 1d6:	44 23       	and	r20, r20
- 1d8:	59 f0       	breq	.+22     	; 0x1f0 <_Z13test_registerv+0xa8>
- 1da:	4f e8       	ldi	r20, 0x8F	; 143
- 1dc:	46 a9       	sts	0x46, r20	; 0x800046 <adr>
- 1de:	4f b1       	in	r20, 0x0f	; 15
- 1e0:	45 a9       	sts	0x45, r20	; 0x800045 <val>
- 1e2:	84 e2       	ldi	r24, 0x24	; 36
- 1e4:	63 df       	rcall	.-314    	; 0xac <_Z7UART_txc>
- 1e6:	65 a1       	lds	r22, 0x45	; 0x800045 <val>
- 1e8:	86 a1       	lds	r24, 0x46	; 0x800046 <adr>
- 1ea:	7a df       	rcall	.-268    	; 0xe0 <_Z16uart_send_reporthh>
- 1ec:	1f b9       	out	0x0f, r17	; 15
- 1ee:	08 95       	ret
- 1f0:	40 b3       	in	r20, 0x10	; 16
- 1f2:	44 23       	and	r20, r20
- 1f4:	59 f0       	breq	.+22     	; 0x20c <_Z13test_registerv+0xc4>
- 1f6:	40 e9       	ldi	r20, 0x90	; 144
- 1f8:	46 a9       	sts	0x46, r20	; 0x800046 <adr>
- 1fa:	40 b3       	in	r20, 0x10	; 16
- 1fc:	45 a9       	sts	0x45, r20	; 0x800045 <val>
- 1fe:	84 e2       	ldi	r24, 0x24	; 36
- 200:	55 df       	rcall	.-342    	; 0xac <_Z7UART_txc>
- 202:	65 a1       	lds	r22, 0x45	; 0x800045 <val>
- 204:	86 a1       	lds	r24, 0x46	; 0x800046 <adr>
- 206:	6c df       	rcall	.-296    	; 0xe0 <_Z16uart_send_reporthh>
- 208:	10 bb       	out	0x10, r17	; 16
- 20a:	08 95       	ret
- 20c:	41 b3       	in	r20, 0x11	; 17
- 20e:	44 23       	and	r20, r20
- 210:	59 f0       	breq	.+22     	; 0x228 <_Z13test_registerv+0xe0>
- 212:	41 e9       	ldi	r20, 0x91	; 145
- 214:	46 a9       	sts	0x46, r20	; 0x800046 <adr>
- 216:	41 b3       	in	r20, 0x11	; 17
- 218:	45 a9       	sts	0x45, r20	; 0x800045 <val>
- 21a:	84 e2       	ldi	r24, 0x24	; 36
- 21c:	47 df       	rcall	.-370    	; 0xac <_Z7UART_txc>
- 21e:	65 a1       	lds	r22, 0x45	; 0x800045 <val>
- 220:	86 a1       	lds	r24, 0x46	; 0x800046 <adr>
- 222:	5e df       	rcall	.-324    	; 0xe0 <_Z16uart_send_reporthh>
- 224:	11 bb       	out	0x11, r17	; 17
- 226:	08 95       	ret
- 228:	42 b3       	in	r20, 0x12	; 18
- 22a:	44 23       	and	r20, r20
- 22c:	59 f0       	breq	.+22     	; 0x244 <_Z13test_registerv+0xfc>
- 22e:	42 e9       	ldi	r20, 0x92	; 146
- 230:	46 a9       	sts	0x46, r20	; 0x800046 <adr>
- 232:	42 b3       	in	r20, 0x12	; 18
- 234:	45 a9       	sts	0x45, r20	; 0x800045 <val>
- 236:	84 e2       	ldi	r24, 0x24	; 36
- 238:	39 df       	rcall	.-398    	; 0xac <_Z7UART_txc>
- 23a:	65 a1       	lds	r22, 0x45	; 0x800045 <val>
- 23c:	86 a1       	lds	r24, 0x46	; 0x800046 <adr>
- 23e:	50 df       	rcall	.-352    	; 0xe0 <_Z16uart_send_reporthh>
- 240:	12 bb       	out	0x12, r17	; 18
- 242:	08 95       	ret
- 244:	43 b3       	in	r20, 0x13	; 19
- 246:	44 23       	and	r20, r20
- 248:	59 f0       	breq	.+22     	; 0x260 <_Z13test_registerv+0x118>
- 24a:	43 e9       	ldi	r20, 0x93	; 147
+ 1a6:	40 b3       	in	r20, 0x10	; 16
+ 1a8:	4f 77       	andi	r20, 0x7F	; 127
+ 1aa:	45 a9       	sts	0x45, r20	; 0x800045 <val>
+ 1ac:	40 b3       	in	r20, 0x10	; 16
+ 1ae:	40 78       	andi	r20, 0x80	; 128
+ 1b0:	40 bb       	out	0x10, r20	; 16
+ 1b2:	cb c0       	rjmp	.+406    	; 0x34a <_Z13test_registerv+0x202>
+ 1b4:	41 b3       	in	r20, 0x11	; 17
+ 1b6:	4f 7c       	andi	r20, 0xCF	; 207
+ 1b8:	49 f0       	breq	.+18     	; 0x1cc <_Z13test_registerv+0x84>
+ 1ba:	41 e9       	ldi	r20, 0x91	; 145
+ 1bc:	46 a9       	sts	0x46, r20	; 0x800046 <adr>
+ 1be:	41 b3       	in	r20, 0x11	; 17
+ 1c0:	4f 7c       	andi	r20, 0xCF	; 207
+ 1c2:	45 a9       	sts	0x45, r20	; 0x800045 <val>
+ 1c4:	41 b3       	in	r20, 0x11	; 17
+ 1c6:	40 73       	andi	r20, 0x30	; 48
+ 1c8:	41 bb       	out	0x11, r20	; 17
+ 1ca:	bf c0       	rjmp	.+382    	; 0x34a <_Z13test_registerv+0x202>
+ 1cc:	42 b3       	in	r20, 0x12	; 18
+ 1ce:	44 23       	and	r20, r20
+ 1d0:	31 f0       	breq	.+12     	; 0x1de <_Z13test_registerv+0x96>
+ 1d2:	42 e9       	ldi	r20, 0x92	; 146
+ 1d4:	46 a9       	sts	0x46, r20	; 0x800046 <adr>
+ 1d6:	42 b3       	in	r20, 0x12	; 18
+ 1d8:	45 a9       	sts	0x45, r20	; 0x800045 <val>
+ 1da:	12 bb       	out	0x12, r17	; 18
+ 1dc:	b6 c0       	rjmp	.+364    	; 0x34a <_Z13test_registerv+0x202>
+ 1de:	43 b3       	in	r20, 0x13	; 19
+ 1e0:	4f 7e       	andi	r20, 0xEF	; 239
+ 1e2:	49 f0       	breq	.+18     	; 0x1f6 <_Z13test_registerv+0xae>
+ 1e4:	43 e9       	ldi	r20, 0x93	; 147
+ 1e6:	46 a9       	sts	0x46, r20	; 0x800046 <adr>
+ 1e8:	43 b3       	in	r20, 0x13	; 19
+ 1ea:	4f 7e       	andi	r20, 0xEF	; 239
+ 1ec:	45 a9       	sts	0x45, r20	; 0x800045 <val>
+ 1ee:	43 b3       	in	r20, 0x13	; 19
+ 1f0:	40 71       	andi	r20, 0x10	; 16
+ 1f2:	43 bb       	out	0x13, r20	; 19
+ 1f4:	aa c0       	rjmp	.+340    	; 0x34a <_Z13test_registerv+0x202>
+ 1f6:	44 b3       	in	r20, 0x14	; 20
+ 1f8:	4f 7d       	andi	r20, 0xDF	; 223
+ 1fa:	49 f0       	breq	.+18     	; 0x20e <_Z13test_registerv+0xc6>
+ 1fc:	44 e9       	ldi	r20, 0x94	; 148
+ 1fe:	46 a9       	sts	0x46, r20	; 0x800046 <adr>
+ 200:	44 b3       	in	r20, 0x14	; 20
+ 202:	4f 7d       	andi	r20, 0xDF	; 223
+ 204:	45 a9       	sts	0x45, r20	; 0x800045 <val>
+ 206:	44 b3       	in	r20, 0x14	; 20
+ 208:	40 72       	andi	r20, 0x20	; 32
+ 20a:	44 bb       	out	0x14, r20	; 20
+ 20c:	9e c0       	rjmp	.+316    	; 0x34a <_Z13test_registerv+0x202>
+ 20e:	45 b3       	in	r20, 0x15	; 21
+ 210:	44 23       	and	r20, r20
+ 212:	31 f0       	breq	.+12     	; 0x220 <_Z13test_registerv+0xd8>
+ 214:	45 e9       	ldi	r20, 0x95	; 149
+ 216:	46 a9       	sts	0x46, r20	; 0x800046 <adr>
+ 218:	45 b3       	in	r20, 0x15	; 21
+ 21a:	45 a9       	sts	0x45, r20	; 0x800045 <val>
+ 21c:	15 bb       	out	0x15, r17	; 21
+ 21e:	95 c0       	rjmp	.+298    	; 0x34a <_Z13test_registerv+0x202>
+ 220:	40 b5       	in	r20, 0x20	; 32
+ 222:	44 23       	and	r20, r20
+ 224:	31 f0       	breq	.+12     	; 0x232 <_Z13test_registerv+0xea>
+ 226:	40 ea       	ldi	r20, 0xA0	; 160
+ 228:	46 a9       	sts	0x46, r20	; 0x800046 <adr>
+ 22a:	40 b5       	in	r20, 0x20	; 32
+ 22c:	45 a9       	sts	0x45, r20	; 0x800045 <val>
+ 22e:	10 bd       	out	0x20, r17	; 32
+ 230:	8c c0       	rjmp	.+280    	; 0x34a <_Z13test_registerv+0x202>
+ 232:	41 b5       	in	r20, 0x21	; 33
+ 234:	44 23       	and	r20, r20
+ 236:	31 f0       	breq	.+12     	; 0x244 <_Z13test_registerv+0xfc>
+ 238:	41 ea       	ldi	r20, 0xA1	; 161
+ 23a:	46 a9       	sts	0x46, r20	; 0x800046 <adr>
+ 23c:	41 b5       	in	r20, 0x21	; 33
+ 23e:	45 a9       	sts	0x45, r20	; 0x800045 <val>
+ 240:	11 bd       	out	0x21, r17	; 33
+ 242:	83 c0       	rjmp	.+262    	; 0x34a <_Z13test_registerv+0x202>
+ 244:	43 b5       	in	r20, 0x23	; 35
+ 246:	4f 7d       	andi	r20, 0xDF	; 223
+ 248:	49 f0       	breq	.+18     	; 0x25c <_Z13test_registerv+0x114>
+ 24a:	43 ea       	ldi	r20, 0xA3	; 163
  24c:	46 a9       	sts	0x46, r20	; 0x800046 <adr>
- 24e:	43 b3       	in	r20, 0x13	; 19
- 250:	45 a9       	sts	0x45, r20	; 0x800045 <val>
- 252:	84 e2       	ldi	r24, 0x24	; 36
- 254:	2b df       	rcall	.-426    	; 0xac <_Z7UART_txc>
- 256:	65 a1       	lds	r22, 0x45	; 0x800045 <val>
- 258:	86 a1       	lds	r24, 0x46	; 0x800046 <adr>
- 25a:	42 df       	rcall	.-380    	; 0xe0 <_Z16uart_send_reporthh>
- 25c:	13 bb       	out	0x13, r17	; 19
- 25e:	08 95       	ret
- 260:	44 b3       	in	r20, 0x14	; 20
- 262:	44 23       	and	r20, r20
- 264:	59 f0       	breq	.+22     	; 0x27c <_Z13test_registerv+0x134>
- 266:	44 e9       	ldi	r20, 0x94	; 148
- 268:	46 a9       	sts	0x46, r20	; 0x800046 <adr>
- 26a:	44 b3       	in	r20, 0x14	; 20
- 26c:	45 a9       	sts	0x45, r20	; 0x800045 <val>
- 26e:	84 e2       	ldi	r24, 0x24	; 36
- 270:	1d df       	rcall	.-454    	; 0xac <_Z7UART_txc>
- 272:	65 a1       	lds	r22, 0x45	; 0x800045 <val>
- 274:	86 a1       	lds	r24, 0x46	; 0x800046 <adr>
- 276:	34 df       	rcall	.-408    	; 0xe0 <_Z16uart_send_reporthh>
- 278:	14 bb       	out	0x14, r17	; 20
- 27a:	08 95       	ret
- 27c:	45 b3       	in	r20, 0x15	; 21
- 27e:	44 23       	and	r20, r20
- 280:	59 f0       	breq	.+22     	; 0x298 <_Z13test_registerv+0x150>
- 282:	45 e9       	ldi	r20, 0x95	; 149
- 284:	46 a9       	sts	0x46, r20	; 0x800046 <adr>
- 286:	45 b3       	in	r20, 0x15	; 21
- 288:	45 a9       	sts	0x45, r20	; 0x800045 <val>
- 28a:	84 e2       	ldi	r24, 0x24	; 36
- 28c:	0f df       	rcall	.-482    	; 0xac <_Z7UART_txc>
- 28e:	65 a1       	lds	r22, 0x45	; 0x800045 <val>
- 290:	86 a1       	lds	r24, 0x46	; 0x800046 <adr>
- 292:	26 df       	rcall	.-436    	; 0xe0 <_Z16uart_send_reporthh>
- 294:	15 bb       	out	0x15, r17	; 21
- 296:	08 95       	ret
- 298:	40 b5       	in	r20, 0x20	; 32
- 29a:	44 23       	and	r20, r20
- 29c:	59 f0       	breq	.+22     	; 0x2b4 <_Z13test_registerv+0x16c>
- 29e:	40 ea       	ldi	r20, 0xA0	; 160
- 2a0:	46 a9       	sts	0x46, r20	; 0x800046 <adr>
- 2a2:	40 b5       	in	r20, 0x20	; 32
- 2a4:	45 a9       	sts	0x45, r20	; 0x800045 <val>
- 2a6:	84 e2       	ldi	r24, 0x24	; 36
- 2a8:	01 df       	rcall	.-510    	; 0xac <_Z7UART_txc>
- 2aa:	65 a1       	lds	r22, 0x45	; 0x800045 <val>
- 2ac:	86 a1       	lds	r24, 0x46	; 0x800046 <adr>
- 2ae:	18 df       	rcall	.-464    	; 0xe0 <_Z16uart_send_reporthh>
- 2b0:	10 bd       	out	0x20, r17	; 32
- 2b2:	08 95       	ret
- 2b4:	41 b5       	in	r20, 0x21	; 33
- 2b6:	44 23       	and	r20, r20
- 2b8:	59 f0       	breq	.+22     	; 0x2d0 <_Z13test_registerv+0x188>
- 2ba:	41 ea       	ldi	r20, 0xA1	; 161
- 2bc:	46 a9       	sts	0x46, r20	; 0x800046 <adr>
- 2be:	41 b5       	in	r20, 0x21	; 33
- 2c0:	45 a9       	sts	0x45, r20	; 0x800045 <val>
- 2c2:	84 e2       	ldi	r24, 0x24	; 36
- 2c4:	f3 de       	rcall	.-538    	; 0xac <_Z7UART_txc>
- 2c6:	65 a1       	lds	r22, 0x45	; 0x800045 <val>
- 2c8:	86 a1       	lds	r24, 0x46	; 0x800046 <adr>
- 2ca:	0a df       	rcall	.-492    	; 0xe0 <_Z16uart_send_reporthh>
- 2cc:	11 bd       	out	0x21, r17	; 33
- 2ce:	08 95       	ret
- 2d0:	42 b5       	in	r20, 0x22	; 34
- 2d2:	44 23       	and	r20, r20
- 2d4:	59 f0       	breq	.+22     	; 0x2ec <_Z13test_registerv+0x1a4>
- 2d6:	42 ea       	ldi	r20, 0xA2	; 162
- 2d8:	46 a9       	sts	0x46, r20	; 0x800046 <adr>
- 2da:	42 b5       	in	r20, 0x22	; 34
- 2dc:	45 a9       	sts	0x45, r20	; 0x800045 <val>
- 2de:	84 e2       	ldi	r24, 0x24	; 36
- 2e0:	e5 de       	rcall	.-566    	; 0xac <_Z7UART_txc>
- 2e2:	65 a1       	lds	r22, 0x45	; 0x800045 <val>
- 2e4:	86 a1       	lds	r24, 0x46	; 0x800046 <adr>
- 2e6:	fc de       	rcall	.-520    	; 0xe0 <_Z16uart_send_reporthh>
- 2e8:	12 bd       	out	0x22, r17	; 34
- 2ea:	08 95       	ret
- 2ec:	43 b5       	in	r20, 0x23	; 35
- 2ee:	44 23       	and	r20, r20
- 2f0:	59 f0       	breq	.+22     	; 0x308 <_Z13test_registerv+0x1c0>
- 2f2:	43 ea       	ldi	r20, 0xA3	; 163
- 2f4:	46 a9       	sts	0x46, r20	; 0x800046 <adr>
- 2f6:	43 b5       	in	r20, 0x23	; 35
- 2f8:	45 a9       	sts	0x45, r20	; 0x800045 <val>
- 2fa:	84 e2       	ldi	r24, 0x24	; 36
- 2fc:	d7 de       	rcall	.-594    	; 0xac <_Z7UART_txc>
- 2fe:	65 a1       	lds	r22, 0x45	; 0x800045 <val>
- 300:	86 a1       	lds	r24, 0x46	; 0x800046 <adr>
- 302:	ee de       	rcall	.-548    	; 0xe0 <_Z16uart_send_reporthh>
- 304:	13 bd       	out	0x23, r17	; 35
- 306:	08 95       	ret
- 308:	44 b5       	in	r20, 0x24	; 36
- 30a:	44 23       	and	r20, r20
- 30c:	59 f0       	breq	.+22     	; 0x324 <_Z13test_registerv+0x1dc>
- 30e:	44 ea       	ldi	r20, 0xA4	; 164
- 310:	46 a9       	sts	0x46, r20	; 0x800046 <adr>
- 312:	44 b5       	in	r20, 0x24	; 36
- 314:	45 a9       	sts	0x45, r20	; 0x800045 <val>
- 316:	84 e2       	ldi	r24, 0x24	; 36
- 318:	c9 de       	rcall	.-622    	; 0xac <_Z7UART_txc>
- 31a:	65 a1       	lds	r22, 0x45	; 0x800045 <val>
- 31c:	86 a1       	lds	r24, 0x46	; 0x800046 <adr>
- 31e:	e0 de       	rcall	.-576    	; 0xe0 <_Z16uart_send_reporthh>
- 320:	14 bd       	out	0x24, r17	; 36
- 322:	08 95       	ret
- 324:	47 b5       	in	r20, 0x27	; 39
- 326:	44 23       	and	r20, r20
- 328:	59 f0       	breq	.+22     	; 0x340 <_Z13test_registerv+0x1f8>
- 32a:	47 ea       	ldi	r20, 0xA7	; 167
- 32c:	46 a9       	sts	0x46, r20	; 0x800046 <adr>
- 32e:	47 b5       	in	r20, 0x27	; 39
- 330:	45 a9       	sts	0x45, r20	; 0x800045 <val>
- 332:	84 e2       	ldi	r24, 0x24	; 36
- 334:	bb de       	rcall	.-650    	; 0xac <_Z7UART_txc>
- 336:	65 a1       	lds	r22, 0x45	; 0x800045 <val>
- 338:	86 a1       	lds	r24, 0x46	; 0x800046 <adr>
- 33a:	d2 de       	rcall	.-604    	; 0xe0 <_Z16uart_send_reporthh>
- 33c:	17 bd       	out	0x27, r17	; 39
- 33e:	08 95       	ret
- 340:	48 b5       	in	r20, 0x28	; 40
- 342:	44 23       	and	r20, r20
- 344:	59 f0       	breq	.+22     	; 0x35c <_Z13test_registerv+0x214>
- 346:	48 ea       	ldi	r20, 0xA8	; 168
- 348:	46 a9       	sts	0x46, r20	; 0x800046 <adr>
- 34a:	48 b5       	in	r20, 0x28	; 40
- 34c:	45 a9       	sts	0x45, r20	; 0x800045 <val>
- 34e:	84 e2       	ldi	r24, 0x24	; 36
- 350:	ad de       	rcall	.-678    	; 0xac <_Z7UART_txc>
- 352:	65 a1       	lds	r22, 0x45	; 0x800045 <val>
- 354:	86 a1       	lds	r24, 0x46	; 0x800046 <adr>
- 356:	c4 de       	rcall	.-632    	; 0xe0 <_Z16uart_send_reporthh>
- 358:	18 bd       	out	0x28, r17	; 40
- 35a:	08 95       	ret
- 35c:	49 b5       	in	r20, 0x29	; 41
- 35e:	44 23       	and	r20, r20
- 360:	59 f0       	breq	.+22     	; 0x378 <_Z13test_registerv+0x230>
- 362:	49 ea       	ldi	r20, 0xA9	; 169
- 364:	46 a9       	sts	0x46, r20	; 0x800046 <adr>
- 366:	49 b5       	in	r20, 0x29	; 41
- 368:	45 a9       	sts	0x45, r20	; 0x800045 <val>
- 36a:	84 e2       	ldi	r24, 0x24	; 36
- 36c:	9f de       	rcall	.-706    	; 0xac <_Z7UART_txc>
- 36e:	65 a1       	lds	r22, 0x45	; 0x800045 <val>
- 370:	86 a1       	lds	r24, 0x46	; 0x800046 <adr>
- 372:	b6 de       	rcall	.-660    	; 0xe0 <_Z16uart_send_reporthh>
- 374:	19 bd       	out	0x29, r17	; 41
- 376:	08 95       	ret
- 378:	4a b5       	in	r20, 0x2a	; 42
- 37a:	44 23       	and	r20, r20
- 37c:	59 f0       	breq	.+22     	; 0x394 <_Z13test_registerv+0x24c>
- 37e:	4a ea       	ldi	r20, 0xAA	; 170
+ 24e:	43 b5       	in	r20, 0x23	; 35
+ 250:	4f 7d       	andi	r20, 0xDF	; 223
+ 252:	45 a9       	sts	0x45, r20	; 0x800045 <val>
+ 254:	43 b5       	in	r20, 0x23	; 35
+ 256:	40 72       	andi	r20, 0x20	; 32
+ 258:	43 bd       	out	0x23, r20	; 35
+ 25a:	77 c0       	rjmp	.+238    	; 0x34a <_Z13test_registerv+0x202>
+ 25c:	44 b5       	in	r20, 0x24	; 36
+ 25e:	43 7f       	andi	r20, 0xF3	; 243
+ 260:	49 f0       	breq	.+18     	; 0x274 <_Z13test_registerv+0x12c>
+ 262:	44 ea       	ldi	r20, 0xA4	; 164
+ 264:	46 a9       	sts	0x46, r20	; 0x800046 <adr>
+ 266:	44 b5       	in	r20, 0x24	; 36
+ 268:	43 7f       	andi	r20, 0xF3	; 243
+ 26a:	45 a9       	sts	0x45, r20	; 0x800045 <val>
+ 26c:	44 b5       	in	r20, 0x24	; 36
+ 26e:	4c 70       	andi	r20, 0x0C	; 12
+ 270:	44 bd       	out	0x24, r20	; 36
+ 272:	6b c0       	rjmp	.+214    	; 0x34a <_Z13test_registerv+0x202>
+ 274:	47 b5       	in	r20, 0x27	; 39
+ 276:	41 78       	andi	r20, 0x81	; 129
+ 278:	49 f0       	breq	.+18     	; 0x28c <_Z13test_registerv+0x144>
+ 27a:	47 ea       	ldi	r20, 0xA7	; 167
+ 27c:	46 a9       	sts	0x46, r20	; 0x800046 <adr>
+ 27e:	47 b5       	in	r20, 0x27	; 39
+ 280:	41 78       	andi	r20, 0x81	; 129
+ 282:	45 a9       	sts	0x45, r20	; 0x800045 <val>
+ 284:	47 b5       	in	r20, 0x27	; 39
+ 286:	4e 77       	andi	r20, 0x7E	; 126
+ 288:	47 bd       	out	0x27, r20	; 39
+ 28a:	5f c0       	rjmp	.+190    	; 0x34a <_Z13test_registerv+0x202>
+ 28c:	48 b5       	in	r20, 0x28	; 40
+ 28e:	44 23       	and	r20, r20
+ 290:	31 f0       	breq	.+12     	; 0x29e <_Z13test_registerv+0x156>
+ 292:	48 ea       	ldi	r20, 0xA8	; 168
+ 294:	46 a9       	sts	0x46, r20	; 0x800046 <adr>
+ 296:	48 b5       	in	r20, 0x28	; 40
+ 298:	45 a9       	sts	0x45, r20	; 0x800045 <val>
+ 29a:	18 bd       	out	0x28, r17	; 40
+ 29c:	56 c0       	rjmp	.+172    	; 0x34a <_Z13test_registerv+0x202>
+ 29e:	49 b5       	in	r20, 0x29	; 41
+ 2a0:	44 23       	and	r20, r20
+ 2a2:	31 f0       	breq	.+12     	; 0x2b0 <_Z13test_registerv+0x168>
+ 2a4:	49 ea       	ldi	r20, 0xA9	; 169
+ 2a6:	46 a9       	sts	0x46, r20	; 0x800046 <adr>
+ 2a8:	49 b5       	in	r20, 0x29	; 41
+ 2aa:	45 a9       	sts	0x45, r20	; 0x800045 <val>
+ 2ac:	19 bd       	out	0x29, r17	; 41
+ 2ae:	4d c0       	rjmp	.+154    	; 0x34a <_Z13test_registerv+0x202>
+ 2b0:	4a b5       	in	r20, 0x2a	; 42
+ 2b2:	44 23       	and	r20, r20
+ 2b4:	31 f0       	breq	.+12     	; 0x2c2 <_Z13test_registerv+0x17a>
+ 2b6:	4a ea       	ldi	r20, 0xAA	; 170
+ 2b8:	46 a9       	sts	0x46, r20	; 0x800046 <adr>
+ 2ba:	4a b5       	in	r20, 0x2a	; 42
+ 2bc:	45 a9       	sts	0x45, r20	; 0x800045 <val>
+ 2be:	1a bd       	out	0x2a, r17	; 42
+ 2c0:	44 c0       	rjmp	.+136    	; 0x34a <_Z13test_registerv+0x202>
+ 2c2:	4b b5       	in	r20, 0x2b	; 43
+ 2c4:	4f 7c       	andi	r20, 0xCF	; 207
+ 2c6:	49 f0       	breq	.+18     	; 0x2da <_Z13test_registerv+0x192>
+ 2c8:	4b ea       	ldi	r20, 0xAB	; 171
+ 2ca:	46 a9       	sts	0x46, r20	; 0x800046 <adr>
+ 2cc:	4b b5       	in	r20, 0x2b	; 43
+ 2ce:	4f 7c       	andi	r20, 0xCF	; 207
+ 2d0:	45 a9       	sts	0x45, r20	; 0x800045 <val>
+ 2d2:	4b b5       	in	r20, 0x2b	; 43
+ 2d4:	40 73       	andi	r20, 0x30	; 48
+ 2d6:	4b bd       	out	0x2b, r20	; 43
+ 2d8:	38 c0       	rjmp	.+112    	; 0x34a <_Z13test_registerv+0x202>
+ 2da:	0c b5       	in	r16, 0x2c	; 44
+ 2dc:	02 ff       	sbrs	r16, 2
+ 2de:	09 c0       	rjmp	.+18     	; 0x2f2 <_Z13test_registerv+0x1aa>
+ 2e0:	4c ea       	ldi	r20, 0xAC	; 172
+ 2e2:	46 a9       	sts	0x46, r20	; 0x800046 <adr>
+ 2e4:	4c b5       	in	r20, 0x2c	; 44
+ 2e6:	44 70       	andi	r20, 0x04	; 4
+ 2e8:	45 a9       	sts	0x45, r20	; 0x800045 <val>
+ 2ea:	4c b5       	in	r20, 0x2c	; 44
+ 2ec:	4b 7f       	andi	r20, 0xFB	; 251
+ 2ee:	4c bd       	out	0x2c, r20	; 44
+ 2f0:	2c c0       	rjmp	.+88     	; 0x34a <_Z13test_registerv+0x202>
+ 2f2:	4d b5       	in	r20, 0x2d	; 45
+ 2f4:	4f 7b       	andi	r20, 0xBF	; 191
+ 2f6:	49 f0       	breq	.+18     	; 0x30a <_Z13test_registerv+0x1c2>
+ 2f8:	4d ea       	ldi	r20, 0xAD	; 173
+ 2fa:	46 a9       	sts	0x46, r20	; 0x800046 <adr>
+ 2fc:	4d b5       	in	r20, 0x2d	; 45
+ 2fe:	4f 7b       	andi	r20, 0xBF	; 191
+ 300:	45 a9       	sts	0x45, r20	; 0x800045 <val>
+ 302:	4d b5       	in	r20, 0x2d	; 45
+ 304:	40 74       	andi	r20, 0x40	; 64
+ 306:	4d bd       	out	0x2d, r20	; 45
+ 308:	20 c0       	rjmp	.+64     	; 0x34a <_Z13test_registerv+0x202>
+ 30a:	40 b7       	in	r20, 0x30	; 48
+ 30c:	44 23       	and	r20, r20
+ 30e:	31 f0       	breq	.+12     	; 0x31c <_Z13test_registerv+0x1d4>
+ 310:	40 eb       	ldi	r20, 0xB0	; 176
+ 312:	46 a9       	sts	0x46, r20	; 0x800046 <adr>
+ 314:	40 b7       	in	r20, 0x30	; 48
+ 316:	45 a9       	sts	0x45, r20	; 0x800045 <val>
+ 318:	10 bf       	out	0x30, r17	; 48
+ 31a:	17 c0       	rjmp	.+46     	; 0x34a <_Z13test_registerv+0x202>
+ 31c:	45 b7       	in	r20, 0x35	; 53
+ 31e:	4f 71       	andi	r20, 0x1F	; 31
+ 320:	49 f0       	breq	.+18     	; 0x334 <_Z13test_registerv+0x1ec>
+ 322:	45 eb       	ldi	r20, 0xB5	; 181
+ 324:	46 a9       	sts	0x46, r20	; 0x800046 <adr>
+ 326:	45 b7       	in	r20, 0x35	; 53
+ 328:	4f 71       	andi	r20, 0x1F	; 31
+ 32a:	45 a9       	sts	0x45, r20	; 0x800045 <val>
+ 32c:	45 b7       	in	r20, 0x35	; 53
+ 32e:	40 7e       	andi	r20, 0xE0	; 224
+ 330:	45 bf       	out	0x35, r20	; 53
+ 332:	0b c0       	rjmp	.+22     	; 0x34a <_Z13test_registerv+0x202>
+ 334:	4a b7       	in	r20, 0x3a	; 58
+ 336:	4f 7d       	andi	r20, 0xDF	; 223
+ 338:	69 f0       	breq	.+26     	; 0x354 <_Z13test_registerv+0x20c>
+ 33a:	4a eb       	ldi	r20, 0xBA	; 186
+ 33c:	46 a9       	sts	0x46, r20	; 0x800046 <adr>
+ 33e:	4a b7       	in	r20, 0x3a	; 58
+ 340:	4f 7d       	andi	r20, 0xDF	; 223
+ 342:	45 a9       	sts	0x45, r20	; 0x800045 <val>
+ 344:	4a b7       	in	r20, 0x3a	; 58
+ 346:	40 72       	andi	r20, 0x20	; 32
+ 348:	4a bf       	out	0x3a, r20	; 58
+ 34a:	84 e2       	ldi	r24, 0x24	; 36
+ 34c:	af de       	rcall	.-674    	; 0xac <_Z7UART_txc>
+ 34e:	65 a1       	lds	r22, 0x45	; 0x800045 <val>
+ 350:	86 a1       	lds	r24, 0x46	; 0x800046 <adr>
+ 352:	c6 ce       	rjmp	.-628    	; 0xe0 <_Z16uart_send_reporthh>
+ 354:	08 95       	ret
+
+00000356 <_Z3TMRRhS_S_>:
+ 356:	2f 93       	push	r18
+ 358:	3f 93       	push	r19
+ 35a:	cf 93       	push	r28
+ 35c:	df 93       	push	r29
+ 35e:	cd b7       	in	r28, 0x3d	; 61
+ 360:	de b7       	in	r29, 0x3e	; 62
+ 362:	e8 2f       	mov	r30, r24
+ 364:	f9 2f       	mov	r31, r25
+ 366:	26 2f       	mov	r18, r22
+ 368:	37 2f       	mov	r19, r23
+ 36a:	60 81       	ld	r22, Z
+ 36c:	a2 2f       	mov	r26, r18
+ 36e:	b3 2f       	mov	r27, r19
+ 370:	7c 91       	ld	r23, X
+ 372:	a4 2f       	mov	r26, r20
+ 374:	b5 2f       	mov	r27, r21
+ 376:	8c 91       	ld	r24, X
+ 378:	67 13       	cpse	r22, r23
+ 37a:	08 c0       	rjmp	.+16     	; 0x38c <_Z3TMRRhS_S_+0x36>
+ 37c:	68 17       	cp	r22, r24
+ 37e:	f9 f0       	breq	.+62     	; 0x3be <_Z3TMRRhS_S_+0x68>
  380:	46 a9       	sts	0x46, r20	; 0x800046 <adr>
- 382:	4a b5       	in	r20, 0x2a	; 42
- 384:	45 a9       	sts	0x45, r20	; 0x800045 <val>
- 386:	84 e2       	ldi	r24, 0x24	; 36
- 388:	91 de       	rcall	.-734    	; 0xac <_Z7UART_txc>
- 38a:	65 a1       	lds	r22, 0x45	; 0x800045 <val>
- 38c:	86 a1       	lds	r24, 0x46	; 0x800046 <adr>
- 38e:	a8 de       	rcall	.-688    	; 0xe0 <_Z16uart_send_reporthh>
- 390:	1a bd       	out	0x2a, r17	; 42
- 392:	08 95       	ret
- 394:	4b b5       	in	r20, 0x2b	; 43
- 396:	44 23       	and	r20, r20
- 398:	59 f0       	breq	.+22     	; 0x3b0 <_Z13test_registerv+0x268>
- 39a:	4b ea       	ldi	r20, 0xAB	; 171
- 39c:	46 a9       	sts	0x46, r20	; 0x800046 <adr>
- 39e:	4b b5       	in	r20, 0x2b	; 43
- 3a0:	45 a9       	sts	0x45, r20	; 0x800045 <val>
- 3a2:	84 e2       	ldi	r24, 0x24	; 36
- 3a4:	83 de       	rcall	.-762    	; 0xac <_Z7UART_txc>
- 3a6:	65 a1       	lds	r22, 0x45	; 0x800045 <val>
- 3a8:	86 a1       	lds	r24, 0x46	; 0x800046 <adr>
- 3aa:	9a de       	rcall	.-716    	; 0xe0 <_Z16uart_send_reporthh>
- 3ac:	1b bd       	out	0x2b, r17	; 43
- 3ae:	08 95       	ret
- 3b0:	4c b5       	in	r20, 0x2c	; 44
- 3b2:	44 23       	and	r20, r20
- 3b4:	59 f0       	breq	.+22     	; 0x3cc <_Z13test_registerv+0x284>
- 3b6:	4c ea       	ldi	r20, 0xAC	; 172
- 3b8:	46 a9       	sts	0x46, r20	; 0x800046 <adr>
- 3ba:	4c b5       	in	r20, 0x2c	; 44
- 3bc:	45 a9       	sts	0x45, r20	; 0x800045 <val>
- 3be:	84 e2       	ldi	r24, 0x24	; 36
- 3c0:	75 de       	rcall	.-790    	; 0xac <_Z7UART_txc>
- 3c2:	65 a1       	lds	r22, 0x45	; 0x800045 <val>
- 3c4:	86 a1       	lds	r24, 0x46	; 0x800046 <adr>
- 3c6:	8c de       	rcall	.-744    	; 0xe0 <_Z16uart_send_reporthh>
- 3c8:	1c bd       	out	0x2c, r17	; 44
- 3ca:	08 95       	ret
- 3cc:	4d b5       	in	r20, 0x2d	; 45
- 3ce:	44 23       	and	r20, r20
- 3d0:	59 f0       	breq	.+22     	; 0x3e8 <_Z13test_registerv+0x2a0>
- 3d2:	4d ea       	ldi	r20, 0xAD	; 173
- 3d4:	46 a9       	sts	0x46, r20	; 0x800046 <adr>
- 3d6:	4d b5       	in	r20, 0x2d	; 45
- 3d8:	45 a9       	sts	0x45, r20	; 0x800045 <val>
- 3da:	84 e2       	ldi	r24, 0x24	; 36
- 3dc:	67 de       	rcall	.-818    	; 0xac <_Z7UART_txc>
- 3de:	65 a1       	lds	r22, 0x45	; 0x800045 <val>
- 3e0:	86 a1       	lds	r24, 0x46	; 0x800046 <adr>
- 3e2:	7e de       	rcall	.-772    	; 0xe0 <_Z16uart_send_reporthh>
- 3e4:	1d bd       	out	0x2d, r17	; 45
- 3e6:	08 95       	ret
- 3e8:	40 b7       	in	r20, 0x30	; 48
- 3ea:	44 23       	and	r20, r20
- 3ec:	59 f0       	breq	.+22     	; 0x404 <_Z13test_registerv+0x2bc>
- 3ee:	40 eb       	ldi	r20, 0xB0	; 176
- 3f0:	46 a9       	sts	0x46, r20	; 0x800046 <adr>
- 3f2:	40 b7       	in	r20, 0x30	; 48
- 3f4:	45 a9       	sts	0x45, r20	; 0x800045 <val>
- 3f6:	84 e2       	ldi	r24, 0x24	; 36
- 3f8:	59 de       	rcall	.-846    	; 0xac <_Z7UART_txc>
- 3fa:	65 a1       	lds	r22, 0x45	; 0x800045 <val>
- 3fc:	86 a1       	lds	r24, 0x46	; 0x800046 <adr>
- 3fe:	70 de       	rcall	.-800    	; 0xe0 <_Z16uart_send_reporthh>
- 400:	10 bf       	out	0x30, r17	; 48
- 402:	08 95       	ret
- 404:	45 b7       	in	r20, 0x35	; 53
- 406:	44 23       	and	r20, r20
- 408:	59 f0       	breq	.+22     	; 0x420 <_Z13test_registerv+0x2d8>
- 40a:	45 eb       	ldi	r20, 0xB5	; 181
- 40c:	46 a9       	sts	0x46, r20	; 0x800046 <adr>
- 40e:	45 b7       	in	r20, 0x35	; 53
- 410:	45 a9       	sts	0x45, r20	; 0x800045 <val>
- 412:	84 e2       	ldi	r24, 0x24	; 36
- 414:	4b de       	rcall	.-874    	; 0xac <_Z7UART_txc>
- 416:	65 a1       	lds	r22, 0x45	; 0x800045 <val>
- 418:	86 a1       	lds	r24, 0x46	; 0x800046 <adr>
- 41a:	62 de       	rcall	.-828    	; 0xe0 <_Z16uart_send_reporthh>
- 41c:	15 bf       	out	0x35, r17	; 53
- 41e:	08 95       	ret
- 420:	4a b7       	in	r20, 0x3a	; 58
- 422:	44 23       	and	r20, r20
- 424:	51 f0       	breq	.+20     	; 0x43a <_Z13test_registerv+0x2f2>
- 426:	4a eb       	ldi	r20, 0xBA	; 186
- 428:	46 a9       	sts	0x46, r20	; 0x800046 <adr>
- 42a:	4a b7       	in	r20, 0x3a	; 58
- 42c:	45 a9       	sts	0x45, r20	; 0x800045 <val>
- 42e:	84 e2       	ldi	r24, 0x24	; 36
- 430:	3d de       	rcall	.-902    	; 0xac <_Z7UART_txc>
- 432:	65 a1       	lds	r22, 0x45	; 0x800045 <val>
- 434:	86 a1       	lds	r24, 0x46	; 0x800046 <adr>
- 436:	54 de       	rcall	.-856    	; 0xe0 <_Z16uart_send_reporthh>
- 438:	1a bf       	out	0x3a, r17	; 58
- 43a:	08 95       	ret
+ 382:	6c 91       	ld	r22, X
+ 384:	65 a9       	sts	0x45, r22	; 0x800045 <val>
+ 386:	60 81       	ld	r22, Z
+ 388:	6c 93       	st	X, r22
+ 38a:	11 c0       	rjmp	.+34     	; 0x3ae <_Z3TMRRhS_S_+0x58>
+ 38c:	68 13       	cpse	r22, r24
+ 38e:	08 c0       	rjmp	.+16     	; 0x3a0 <_Z3TMRRhS_S_+0x4a>
+ 390:	26 a9       	sts	0x46, r18	; 0x800046 <adr>
+ 392:	a2 2f       	mov	r26, r18
+ 394:	b3 2f       	mov	r27, r19
+ 396:	4c 91       	ld	r20, X
+ 398:	45 a9       	sts	0x45, r20	; 0x800045 <val>
+ 39a:	40 81       	ld	r20, Z
+ 39c:	4c 93       	st	X, r20
+ 39e:	07 c0       	rjmp	.+14     	; 0x3ae <_Z3TMRRhS_S_+0x58>
+ 3a0:	e6 a9       	sts	0x46, r30	; 0x800046 <adr>
+ 3a2:	40 81       	ld	r20, Z
+ 3a4:	45 a9       	sts	0x45, r20	; 0x800045 <val>
+ 3a6:	a2 2f       	mov	r26, r18
+ 3a8:	b3 2f       	mov	r27, r19
+ 3aa:	4c 91       	ld	r20, X
+ 3ac:	40 83       	st	Z, r20
+ 3ae:	2e 2f       	mov	r18, r30
+ 3b0:	3f 2f       	mov	r19, r31
+ 3b2:	65 a1       	lds	r22, 0x45	; 0x800045 <val>
+ 3b4:	86 a1       	lds	r24, 0x46	; 0x800046 <adr>
+ 3b6:	94 de       	rcall	.-728    	; 0xe0 <_Z16uart_send_reporthh>
+ 3b8:	e2 2f       	mov	r30, r18
+ 3ba:	f3 2f       	mov	r31, r19
+ 3bc:	80 81       	ld	r24, Z
+ 3be:	df 91       	pop	r29
+ 3c0:	cf 91       	pop	r28
+ 3c2:	3f 91       	pop	r19
+ 3c4:	2f 91       	pop	r18
+ 3c6:	08 95       	ret
 
-0000043c <_Z3TMRRhS_S_>:
- 43c:	2f 93       	push	r18
- 43e:	3f 93       	push	r19
- 440:	cf 93       	push	r28
- 442:	df 93       	push	r29
- 444:	cd b7       	in	r28, 0x3d	; 61
- 446:	de b7       	in	r29, 0x3e	; 62
- 448:	e8 2f       	mov	r30, r24
- 44a:	f9 2f       	mov	r31, r25
- 44c:	26 2f       	mov	r18, r22
- 44e:	37 2f       	mov	r19, r23
- 450:	60 81       	ld	r22, Z
- 452:	a2 2f       	mov	r26, r18
- 454:	b3 2f       	mov	r27, r19
- 456:	7c 91       	ld	r23, X
- 458:	a4 2f       	mov	r26, r20
- 45a:	b5 2f       	mov	r27, r21
- 45c:	8c 91       	ld	r24, X
- 45e:	67 13       	cpse	r22, r23
- 460:	08 c0       	rjmp	.+16     	; 0x472 <_Z3TMRRhS_S_+0x36>
- 462:	68 17       	cp	r22, r24
- 464:	f9 f0       	breq	.+62     	; 0x4a4 <_Z3TMRRhS_S_+0x68>
- 466:	46 a9       	sts	0x46, r20	; 0x800046 <adr>
- 468:	6c 91       	ld	r22, X
- 46a:	65 a9       	sts	0x45, r22	; 0x800045 <val>
- 46c:	60 81       	ld	r22, Z
- 46e:	6c 93       	st	X, r22
- 470:	11 c0       	rjmp	.+34     	; 0x494 <_Z3TMRRhS_S_+0x58>
- 472:	68 13       	cpse	r22, r24
- 474:	08 c0       	rjmp	.+16     	; 0x486 <_Z3TMRRhS_S_+0x4a>
- 476:	26 a9       	sts	0x46, r18	; 0x800046 <adr>
- 478:	a2 2f       	mov	r26, r18
- 47a:	b3 2f       	mov	r27, r19
- 47c:	4c 91       	ld	r20, X
- 47e:	45 a9       	sts	0x45, r20	; 0x800045 <val>
- 480:	40 81       	ld	r20, Z
- 482:	4c 93       	st	X, r20
- 484:	07 c0       	rjmp	.+14     	; 0x494 <_Z3TMRRhS_S_+0x58>
- 486:	e6 a9       	sts	0x46, r30	; 0x800046 <adr>
- 488:	40 81       	ld	r20, Z
- 48a:	45 a9       	sts	0x45, r20	; 0x800045 <val>
- 48c:	a2 2f       	mov	r26, r18
- 48e:	b3 2f       	mov	r27, r19
- 490:	4c 91       	ld	r20, X
- 492:	40 83       	st	Z, r20
- 494:	2e 2f       	mov	r18, r30
- 496:	3f 2f       	mov	r19, r31
- 498:	65 a1       	lds	r22, 0x45	; 0x800045 <val>
- 49a:	86 a1       	lds	r24, 0x46	; 0x800046 <adr>
- 49c:	21 de       	rcall	.-958    	; 0xe0 <_Z16uart_send_reporthh>
- 49e:	e2 2f       	mov	r30, r18
- 4a0:	f3 2f       	mov	r31, r19
- 4a2:	80 81       	ld	r24, Z
- 4a4:	df 91       	pop	r29
- 4a6:	cf 91       	pop	r28
- 4a8:	3f 91       	pop	r19
- 4aa:	2f 91       	pop	r18
- 4ac:	08 95       	ret
+000003c8 <_Z3TMRR15tripple_uint8_t>:
+ 3c8:	48 2f       	mov	r20, r24
+ 3ca:	59 2f       	mov	r21, r25
+ 3cc:	4e 5f       	subi	r20, 0xFE	; 254
+ 3ce:	5f 4f       	sbci	r21, 0xFF	; 255
+ 3d0:	68 2f       	mov	r22, r24
+ 3d2:	79 2f       	mov	r23, r25
+ 3d4:	6f 5f       	subi	r22, 0xFF	; 255
+ 3d6:	7f 4f       	sbci	r23, 0xFF	; 255
+ 3d8:	be cf       	rjmp	.-132    	; 0x356 <_Z3TMRRhS_S_>
 
-000004ae <_Z3TMRR15tripple_uint8_t>:
- 4ae:	48 2f       	mov	r20, r24
- 4b0:	59 2f       	mov	r21, r25
- 4b2:	4e 5f       	subi	r20, 0xFE	; 254
- 4b4:	5f 4f       	sbci	r21, 0xFF	; 255
- 4b6:	68 2f       	mov	r22, r24
- 4b8:	79 2f       	mov	r23, r25
- 4ba:	6f 5f       	subi	r22, 0xFF	; 255
- 4bc:	7f 4f       	sbci	r23, 0xFF	; 255
- 4be:	be cf       	rjmp	.-132    	; 0x43c <_Z3TMRRhS_S_>
+000003da <_Z11test_memoryv>:
+ 3da:	10 a9       	sts	0x40, r17	; 0x800040 <__DATA_REGION_ORIGIN__>
+ 3dc:	11 a9       	sts	0x41, r17	; 0x800041 <__DATA_REGION_ORIGIN__+0x1>
+ 3de:	12 a9       	sts	0x42, r17	; 0x800042 <__DATA_REGION_ORIGIN__+0x2>
+ 3e0:	80 e4       	ldi	r24, 0x40	; 64
+ 3e2:	90 e0       	ldi	r25, 0x00	; 0
+ 3e4:	f1 df       	rcall	.-30     	; 0x3c8 <_Z3TMRR15tripple_uint8_t>
+ 3e6:	82 33       	cpi	r24, 0x32	; 50
+ 3e8:	a8 f5       	brcc	.+106    	; 0x454 <_Z11test_memoryv+0x7a>
+ 3ea:	80 e4       	ldi	r24, 0x40	; 64
+ 3ec:	90 e0       	ldi	r25, 0x00	; 0
+ 3ee:	ec df       	rcall	.-40     	; 0x3c8 <_Z3TMRR15tripple_uint8_t>
+ 3f0:	90 e0       	ldi	r25, 0x00	; 0
+ 3f2:	e8 2f       	mov	r30, r24
+ 3f4:	f9 2f       	mov	r31, r25
+ 3f6:	e9 5b       	subi	r30, 0xB9	; 185
+ 3f8:	ff 4f       	sbci	r31, 0xFF	; 255
+ 3fa:	40 81       	ld	r20, Z
+ 3fc:	4a 3a       	cpi	r20, 0xAA	; 170
+ 3fe:	01 f1       	breq	.+64     	; 0x440 <_Z11test_memoryv+0x66>
+ 400:	80 e4       	ldi	r24, 0x40	; 64
+ 402:	90 e0       	ldi	r25, 0x00	; 0
+ 404:	e1 df       	rcall	.-62     	; 0x3c8 <_Z3TMRR15tripple_uint8_t>
+ 406:	90 e0       	ldi	r25, 0x00	; 0
+ 408:	89 5b       	subi	r24, 0xB9	; 185
+ 40a:	9f 4f       	sbci	r25, 0xFF	; 255
+ 40c:	86 a9       	sts	0x46, r24	; 0x800046 <adr>
+ 40e:	80 e4       	ldi	r24, 0x40	; 64
+ 410:	90 e0       	ldi	r25, 0x00	; 0
+ 412:	da df       	rcall	.-76     	; 0x3c8 <_Z3TMRR15tripple_uint8_t>
+ 414:	90 e0       	ldi	r25, 0x00	; 0
+ 416:	e8 2f       	mov	r30, r24
+ 418:	f9 2f       	mov	r31, r25
+ 41a:	e9 5b       	subi	r30, 0xB9	; 185
+ 41c:	ff 4f       	sbci	r31, 0xFF	; 255
+ 41e:	40 81       	ld	r20, Z
+ 420:	45 a9       	sts	0x45, r20	; 0x800045 <val>
+ 422:	80 e4       	ldi	r24, 0x40	; 64
+ 424:	90 e0       	ldi	r25, 0x00	; 0
+ 426:	d0 df       	rcall	.-96     	; 0x3c8 <_Z3TMRR15tripple_uint8_t>
+ 428:	90 e0       	ldi	r25, 0x00	; 0
+ 42a:	e8 2f       	mov	r30, r24
+ 42c:	f9 2f       	mov	r31, r25
+ 42e:	e9 5b       	subi	r30, 0xB9	; 185
+ 430:	ff 4f       	sbci	r31, 0xFF	; 255
+ 432:	4a ea       	ldi	r20, 0xAA	; 170
+ 434:	40 83       	st	Z, r20
+ 436:	84 e2       	ldi	r24, 0x24	; 36
+ 438:	39 de       	rcall	.-910    	; 0xac <_Z7UART_txc>
+ 43a:	65 a1       	lds	r22, 0x45	; 0x800045 <val>
+ 43c:	86 a1       	lds	r24, 0x46	; 0x800046 <adr>
+ 43e:	50 de       	rcall	.-864    	; 0xe0 <_Z16uart_send_reporthh>
+ 440:	40 a1       	lds	r20, 0x40	; 0x800040 <__DATA_REGION_ORIGIN__>
+ 442:	4f 5f       	subi	r20, 0xFF	; 255
+ 444:	40 a9       	sts	0x40, r20	; 0x800040 <__DATA_REGION_ORIGIN__>
+ 446:	41 a1       	lds	r20, 0x41	; 0x800041 <__DATA_REGION_ORIGIN__+0x1>
+ 448:	4f 5f       	subi	r20, 0xFF	; 255
+ 44a:	41 a9       	sts	0x41, r20	; 0x800041 <__DATA_REGION_ORIGIN__+0x1>
+ 44c:	42 a1       	lds	r20, 0x42	; 0x800042 <__DATA_REGION_ORIGIN__+0x2>
+ 44e:	4f 5f       	subi	r20, 0xFF	; 255
+ 450:	42 a9       	sts	0x42, r20	; 0x800042 <__DATA_REGION_ORIGIN__+0x2>
+ 452:	c6 cf       	rjmp	.-116    	; 0x3e0 <_Z11test_memoryv+0x6>
+ 454:	08 95       	ret
 
-000004c0 <_Z11test_memoryv>:
- 4c0:	10 a9       	sts	0x40, r17	; 0x800040 <__DATA_REGION_ORIGIN__>
- 4c2:	11 a9       	sts	0x41, r17	; 0x800041 <__DATA_REGION_ORIGIN__+0x1>
- 4c4:	12 a9       	sts	0x42, r17	; 0x800042 <__DATA_REGION_ORIGIN__+0x2>
- 4c6:	80 e4       	ldi	r24, 0x40	; 64
- 4c8:	90 e0       	ldi	r25, 0x00	; 0
- 4ca:	f1 df       	rcall	.-30     	; 0x4ae <_Z3TMRR15tripple_uint8_t>
- 4cc:	84 31       	cpi	r24, 0x14	; 20
- 4ce:	a8 f5       	brcc	.+106    	; 0x53a <_Z11test_memoryv+0x7a>
- 4d0:	80 e4       	ldi	r24, 0x40	; 64
- 4d2:	90 e0       	ldi	r25, 0x00	; 0
- 4d4:	ec df       	rcall	.-40     	; 0x4ae <_Z3TMRR15tripple_uint8_t>
- 4d6:	90 e0       	ldi	r25, 0x00	; 0
- 4d8:	e8 2f       	mov	r30, r24
- 4da:	f9 2f       	mov	r31, r25
- 4dc:	e9 5b       	subi	r30, 0xB9	; 185
- 4de:	ff 4f       	sbci	r31, 0xFF	; 255
- 4e0:	40 81       	ld	r20, Z
- 4e2:	4a 3a       	cpi	r20, 0xAA	; 170
- 4e4:	01 f1       	breq	.+64     	; 0x526 <_Z11test_memoryv+0x66>
- 4e6:	80 e4       	ldi	r24, 0x40	; 64
- 4e8:	90 e0       	ldi	r25, 0x00	; 0
- 4ea:	e1 df       	rcall	.-62     	; 0x4ae <_Z3TMRR15tripple_uint8_t>
- 4ec:	90 e0       	ldi	r25, 0x00	; 0
- 4ee:	89 5b       	subi	r24, 0xB9	; 185
- 4f0:	9f 4f       	sbci	r25, 0xFF	; 255
- 4f2:	86 a9       	sts	0x46, r24	; 0x800046 <adr>
- 4f4:	80 e4       	ldi	r24, 0x40	; 64
- 4f6:	90 e0       	ldi	r25, 0x00	; 0
- 4f8:	da df       	rcall	.-76     	; 0x4ae <_Z3TMRR15tripple_uint8_t>
- 4fa:	90 e0       	ldi	r25, 0x00	; 0
- 4fc:	e8 2f       	mov	r30, r24
- 4fe:	f9 2f       	mov	r31, r25
- 500:	e9 5b       	subi	r30, 0xB9	; 185
- 502:	ff 4f       	sbci	r31, 0xFF	; 255
- 504:	40 81       	ld	r20, Z
- 506:	45 a9       	sts	0x45, r20	; 0x800045 <val>
- 508:	84 e2       	ldi	r24, 0x24	; 36
- 50a:	d0 dd       	rcall	.-1120   	; 0xac <_Z7UART_txc>
- 50c:	65 a1       	lds	r22, 0x45	; 0x800045 <val>
- 50e:	86 a1       	lds	r24, 0x46	; 0x800046 <adr>
- 510:	e7 dd       	rcall	.-1074   	; 0xe0 <_Z16uart_send_reporthh>
- 512:	80 e4       	ldi	r24, 0x40	; 64
- 514:	90 e0       	ldi	r25, 0x00	; 0
- 516:	cb df       	rcall	.-106    	; 0x4ae <_Z3TMRR15tripple_uint8_t>
- 518:	90 e0       	ldi	r25, 0x00	; 0
- 51a:	e8 2f       	mov	r30, r24
- 51c:	f9 2f       	mov	r31, r25
- 51e:	e9 5b       	subi	r30, 0xB9	; 185
- 520:	ff 4f       	sbci	r31, 0xFF	; 255
- 522:	4a ea       	ldi	r20, 0xAA	; 170
- 524:	40 83       	st	Z, r20
- 526:	40 a1       	lds	r20, 0x40	; 0x800040 <__DATA_REGION_ORIGIN__>
- 528:	4f 5f       	subi	r20, 0xFF	; 255
- 52a:	40 a9       	sts	0x40, r20	; 0x800040 <__DATA_REGION_ORIGIN__>
- 52c:	41 a1       	lds	r20, 0x41	; 0x800041 <__DATA_REGION_ORIGIN__+0x1>
- 52e:	4f 5f       	subi	r20, 0xFF	; 255
- 530:	41 a9       	sts	0x41, r20	; 0x800041 <__DATA_REGION_ORIGIN__+0x1>
- 532:	42 a1       	lds	r20, 0x42	; 0x800042 <__DATA_REGION_ORIGIN__+0x2>
- 534:	4f 5f       	subi	r20, 0xFF	; 255
- 536:	42 a9       	sts	0x42, r20	; 0x800042 <__DATA_REGION_ORIGIN__+0x2>
- 538:	c6 cf       	rjmp	.-116    	; 0x4c6 <_Z11test_memoryv+0x6>
- 53a:	08 95       	ret
+00000456 <main>:
+ 456:	48 ed       	ldi	r20, 0xD8	; 216
+ 458:	4c bf       	out	0x3c, r20	; 60
+ 45a:	16 bf       	out	0x36, r17	; 54
+ 45c:	36 de       	rcall	.-916    	; 0xca <_Z9UART_initv>
+ 45e:	0d 9a       	sbi	0x01, 5	; 1
+ 460:	10 a9       	sts	0x40, r17	; 0x800040 <__DATA_REGION_ORIGIN__>
+ 462:	11 a9       	sts	0x41, r17	; 0x800041 <__DATA_REGION_ORIGIN__+0x1>
+ 464:	12 a9       	sts	0x42, r17	; 0x800042 <__DATA_REGION_ORIGIN__+0x2>
+ 466:	80 e4       	ldi	r24, 0x40	; 64
+ 468:	90 e0       	ldi	r25, 0x00	; 0
+ 46a:	ae df       	rcall	.-164    	; 0x3c8 <_Z3TMRR15tripple_uint8_t>
+ 46c:	82 33       	cpi	r24, 0x32	; 50
+ 46e:	00 f5       	brcc	.+64     	; 0x4b0 <main+0x5a>
+ 470:	80 e4       	ldi	r24, 0x40	; 64
+ 472:	90 e0       	ldi	r25, 0x00	; 0
+ 474:	a9 df       	rcall	.-174    	; 0x3c8 <_Z3TMRR15tripple_uint8_t>
+ 476:	90 e0       	ldi	r25, 0x00	; 0
+ 478:	e8 2f       	mov	r30, r24
+ 47a:	f9 2f       	mov	r31, r25
+ 47c:	e9 5b       	subi	r30, 0xB9	; 185
+ 47e:	ff 4f       	sbci	r31, 0xFF	; 255
+ 480:	4a ea       	ldi	r20, 0xAA	; 170
+ 482:	40 83       	st	Z, r20
+ 484:	40 a1       	lds	r20, 0x40	; 0x800040 <__DATA_REGION_ORIGIN__>
+ 486:	4f 5f       	subi	r20, 0xFF	; 255
+ 488:	40 a9       	sts	0x40, r20	; 0x800040 <__DATA_REGION_ORIGIN__>
+ 48a:	41 a1       	lds	r20, 0x41	; 0x800041 <__DATA_REGION_ORIGIN__+0x1>
+ 48c:	4f 5f       	subi	r20, 0xFF	; 255
+ 48e:	41 a9       	sts	0x41, r20	; 0x800041 <__DATA_REGION_ORIGIN__+0x1>
+ 490:	42 a1       	lds	r20, 0x42	; 0x800042 <__DATA_REGION_ORIGIN__+0x2>
+ 492:	4f 5f       	subi	r20, 0xFF	; 255
+ 494:	42 a9       	sts	0x42, r20	; 0x800042 <__DATA_REGION_ORIGIN__+0x2>
+ 496:	e7 cf       	rjmp	.-50     	; 0x466 <main+0x10>
+ 498:	52 b1       	in	r21, 0x02	; 2
+ 49a:	40 e2       	ldi	r20, 0x20	; 32
+ 49c:	45 27       	eor	r20, r21
+ 49e:	42 b9       	out	0x02, r20	; 2
+ 4a0:	44 a1       	lds	r20, 0x44	; 0x800044 <counter_two>
+ 4a2:	4f 5f       	subi	r20, 0xFF	; 255
+ 4a4:	44 a9       	sts	0x44, r20	; 0x800044 <counter_two>
+ 4a6:	4a 30       	cpi	r20, 0x0A	; 10
+ 4a8:	19 f4       	brne	.+6      	; 0x4b0 <main+0x5a>
+ 4aa:	8e e2       	ldi	r24, 0x2E	; 46
+ 4ac:	ff dd       	rcall	.-1026   	; 0xac <_Z7UART_txc>
+ 4ae:	14 a9       	sts	0x44, r17	; 0x800044 <counter_two>
+ 4b0:	94 df       	rcall	.-216    	; 0x3da <_Z11test_memoryv>
+ 4b2:	4a de       	rcall	.-876    	; 0x148 <_Z13test_registerv>
+ 4b4:	43 a1       	lds	r20, 0x43	; 0x800043 <counter>
+ 4b6:	4f 5f       	subi	r20, 0xFF	; 255
+ 4b8:	43 a9       	sts	0x43, r20	; 0x800043 <counter>
+ 4ba:	41 13       	cpse	r20, r17
+ 4bc:	f9 cf       	rjmp	.-14     	; 0x4b0 <main+0x5a>
+ 4be:	ec cf       	rjmp	.-40     	; 0x498 <main+0x42>
 
-0000053c <main>:
- 53c:	48 ed       	ldi	r20, 0xD8	; 216
- 53e:	4c bf       	out	0x3c, r20	; 60
- 540:	16 bf       	out	0x36, r17	; 54
- 542:	c3 dd       	rcall	.-1146   	; 0xca <_Z9UART_initv>
- 544:	0d 9a       	sbi	0x01, 5	; 1
- 546:	10 a9       	sts	0x40, r17	; 0x800040 <__DATA_REGION_ORIGIN__>
- 548:	11 a9       	sts	0x41, r17	; 0x800041 <__DATA_REGION_ORIGIN__+0x1>
- 54a:	12 a9       	sts	0x42, r17	; 0x800042 <__DATA_REGION_ORIGIN__+0x2>
- 54c:	80 e4       	ldi	r24, 0x40	; 64
- 54e:	90 e0       	ldi	r25, 0x00	; 0
- 550:	ae df       	rcall	.-164    	; 0x4ae <_Z3TMRR15tripple_uint8_t>
- 552:	84 31       	cpi	r24, 0x14	; 20
- 554:	00 f5       	brcc	.+64     	; 0x596 <main+0x5a>
- 556:	80 e4       	ldi	r24, 0x40	; 64
- 558:	90 e0       	ldi	r25, 0x00	; 0
- 55a:	a9 df       	rcall	.-174    	; 0x4ae <_Z3TMRR15tripple_uint8_t>
- 55c:	90 e0       	ldi	r25, 0x00	; 0
- 55e:	e8 2f       	mov	r30, r24
- 560:	f9 2f       	mov	r31, r25
- 562:	e9 5b       	subi	r30, 0xB9	; 185
- 564:	ff 4f       	sbci	r31, 0xFF	; 255
- 566:	4a ea       	ldi	r20, 0xAA	; 170
- 568:	40 83       	st	Z, r20
- 56a:	40 a1       	lds	r20, 0x40	; 0x800040 <__DATA_REGION_ORIGIN__>
- 56c:	4f 5f       	subi	r20, 0xFF	; 255
- 56e:	40 a9       	sts	0x40, r20	; 0x800040 <__DATA_REGION_ORIGIN__>
- 570:	41 a1       	lds	r20, 0x41	; 0x800041 <__DATA_REGION_ORIGIN__+0x1>
- 572:	4f 5f       	subi	r20, 0xFF	; 255
- 574:	41 a9       	sts	0x41, r20	; 0x800041 <__DATA_REGION_ORIGIN__+0x1>
- 576:	42 a1       	lds	r20, 0x42	; 0x800042 <__DATA_REGION_ORIGIN__+0x2>
- 578:	4f 5f       	subi	r20, 0xFF	; 255
- 57a:	42 a9       	sts	0x42, r20	; 0x800042 <__DATA_REGION_ORIGIN__+0x2>
- 57c:	e7 cf       	rjmp	.-50     	; 0x54c <main+0x10>
- 57e:	52 b1       	in	r21, 0x02	; 2
- 580:	40 e2       	ldi	r20, 0x20	; 32
- 582:	45 27       	eor	r20, r21
- 584:	42 b9       	out	0x02, r20	; 2
- 586:	44 a1       	lds	r20, 0x44	; 0x800044 <counter_two>
- 588:	4f 5f       	subi	r20, 0xFF	; 255
- 58a:	44 a9       	sts	0x44, r20	; 0x800044 <counter_two>
- 58c:	4a 30       	cpi	r20, 0x0A	; 10
- 58e:	19 f4       	brne	.+6      	; 0x596 <main+0x5a>
- 590:	8e e2       	ldi	r24, 0x2E	; 46
- 592:	8c dd       	rcall	.-1256   	; 0xac <_Z7UART_txc>
- 594:	14 a9       	sts	0x44, r17	; 0x800044 <counter_two>
- 596:	94 df       	rcall	.-216    	; 0x4c0 <_Z11test_memoryv>
- 598:	d7 dd       	rcall	.-1106   	; 0x148 <_Z13test_registerv>
- 59a:	43 a1       	lds	r20, 0x43	; 0x800043 <counter>
- 59c:	4f 5f       	subi	r20, 0xFF	; 255
- 59e:	43 a9       	sts	0x43, r20	; 0x800043 <counter>
- 5a0:	41 13       	cpse	r20, r17
- 5a2:	f9 cf       	rjmp	.-14     	; 0x596 <main+0x5a>
- 5a4:	ec cf       	rjmp	.-40     	; 0x57e <main+0x42>
+000004c0 <_exit>:
+ 4c0:	f8 94       	cli
 
-000005a6 <_exit>:
- 5a6:	f8 94       	cli
-
-000005a8 <__stop_program>:
- 5a8:	ff cf       	rjmp	.-2      	; 0x5a8 <__stop_program>
+000004c2 <__stop_program>:
+ 4c2:	ff cf       	rjmp	.-2      	; 0x4c2 <__stop_program>
