@@ -52,22 +52,22 @@ void test_register()
 		UART_tx('$');
 		uart_send_report(adr, val);
 	}
-	else if (ADCL != 0)
-	{
-		adr = 0x0E | (1 << 7);
-		val = ADCL;
-		ADCL = 0x00;
-		UART_tx('$');
-		uart_send_report(adr, val);
-	}
-	else if (ADCH != 0)
-	{
-		adr = 0x0F | (1 << 7);
-		val = ADCH;
-		ADCH = 0x00;
-		UART_tx('$');
-		uart_send_report(adr, val);
-	}
+	// else if (ADCL != 0)
+	// {
+	// 	adr = 0x0E | (1 << 7);
+	// 	val = ADCL;
+	// 	ADCL = 0x00;
+	// 	UART_tx('$');
+	// 	uart_send_report(adr, val);
+	// }
+	// else if (ADCH != 0)
+	// {
+	// 	adr = 0x0F | (1 << 7);
+	// 	val = ADCH;
+	// 	ADCH = 0x00;
+	// 	UART_tx('$');
+	// 	uart_send_report(adr, val);
+	// }
 	else if ((ADMUX & (0x7F)) != 0)
 	{
 		adr = 0x10 | (1 << 7);
@@ -100,11 +100,11 @@ void test_register()
 		UART_tx('$');
 		uart_send_report(adr, val);
 	}
-	else if (ACSRA != 0)
+	else if ((ACSRA & 0xDF) != 0)
 	{
 		adr = 0x14 | (1 << 7);
-		val = ACSRA;
-		ACSRA = 0x00;
+		val = ACSRA & 0xDF;
+		ACSRA = ACSRA & ~0xDF;
 		UART_tx('$');
 		uart_send_report(adr, val);
 	}
@@ -140,14 +140,14 @@ void test_register()
 		UART_tx('$');
 		uart_send_report(adr, val);
 	}
-	else if ((TCCR1C & 0xC0) != 0)
-	{
-		adr = 0x22 | (1 << 7);
-		val = TCCR1C & 0xC0;
-		TCCR1C = TCCR1C & ~(0xC0);
-		UART_tx('$');
-		uart_send_report(adr, val);
-	}
+	// else if ((TCCR1C & 0xC0) != 0)
+	// {
+	// 	adr = 0x22 | (1 << 7);
+	// 	val = TCCR1C & 0xC0;
+	// 	TCCR1C = TCCR1C & ~(0xC0);
+	// 	UART_tx('$');
+	// 	uart_send_report(adr, val);
+	// }
 	else if ((TCCR1B & 0xDF) != 0)
 	{
 		adr = 0x23 | (1 << 7);
@@ -203,19 +203,19 @@ void test_register()
 		UART_tx('$');
 		uart_send_report(adr, val);
 	}
-	else if (TWSSRA != 0)
+	else if ((TWSSRA & 0xCF) != 0)
 	{
 		adr = 0x2B | (1 << 7);
-		val = TWSSRA;
-		TWSSRA = 0x00;
+		val = TWSSRA & 0xCF;
+		TWSSRA = TWSSRA & ~0xCF;
 		UART_tx('$');
 		uart_send_report(adr, val);
 	}
-	else if ((TWSCRB & 0x07) != 0)
+	else if ((TWSCRB & 0x04) != 0)
 	{
 		adr = 0x2C | (1 << 7);
-		val = TWSCRB & 0x07;
-		TWSCRB = TWSCRB & ~(0x07);
+		val = TWSCRB & 0x04;
+		TWSCRB = TWSCRB & ~(0x04);
 		UART_tx('$');
 		uart_send_report(adr, val);
 	}
