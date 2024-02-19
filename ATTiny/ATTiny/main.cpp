@@ -342,7 +342,7 @@ uint8_t *TMR(tripple_uint8_t_ptr &A)
 		{
 			adr = (uint8_t)(short)&(A.A);
 			val = (uint8_t)(short)(A.A);
-			A.A = A.B;
+			A.A =   A.B;
 		}
 		uart_send_report(adr, val);
 	}
@@ -351,7 +351,6 @@ uint8_t *TMR(tripple_uint8_t_ptr &A)
 
 int main(void)
 {
-
 	CCP = 0xD8;	  // disable Configuration Change Protection Register
 	CLKPSR = 0x0; // Clock Division Factor = 1			//vielleicht doch durch 8
 	UART_init();

@@ -79,7 +79,7 @@ Disassembly of section .text:
   42:	de cf       	rjmp	.-68     	; 0x0 <__vectors>
 
 00000044 <_Z12volatile_TMRv>:
-			A.A = A.B;
+			A.A =   A.B;
 		}
 		uart_send_report(adr, val);
 	}
@@ -649,11 +649,11 @@ void test_memory()
  454:	08 95       	ret
 
 00000456 <main>:
+	return A.A;
 };
 
 int main(void)
 {
-
 	CCP = 0xD8;	  // disable Configuration Change Protection Register
  456:	48 ed       	ldi	r20, 0xD8	; 216
  458:	4c bf       	out	0x3c, r20	; 60
