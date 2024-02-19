@@ -102,6 +102,7 @@ void test_register()
 	}
 	else if ((ACSRA & 0xDF) != 0)
 	{
+		
 		adr = 0x14 | (1 << 7);
 		val = ACSRA & 0xDF;
 		ACSRA = ACSRA & ~0xDF;
