@@ -100,15 +100,15 @@ void test_register()
 		UART_tx('$');
 		uart_send_report(adr, val);
 	}
-	else if ((ACSRA & 0xCF) != 0)
-	{
-		
-		adr = 0x14 | (1 << 7);
-		val = ACSRA & 0xCF;
-		ACSRA = ACSRA & ~0xCF;
-		UART_tx('$');
-		uart_send_report(adr, val);
-	}
+	//wieder rein!!!	// else if ((ACSRA & 0xCF) != 0)
+	// {
+
+	// 	adr = 0x14 | (1 << 7);
+	// 	val = ACSRA & 0xCF;
+	// 	ACSRA = ACSRA & ~0xCF;
+	// 	UART_tx('$');
+	// 	uart_send_report(adr, val);
+	// }
 	else if (OCR0B != 0)
 	{
 		adr = 0x15 | (1 << 7);
@@ -342,7 +342,7 @@ uint8_t *TMR(tripple_uint8_t_ptr &A)
 		{
 			adr = (uint8_t)(short)&(A.A);
 			val = (uint8_t)(short)(A.A);
-			A.A =   A.B;
+			A.A = A.B;
 		}
 		uart_send_report(adr, val);
 	}
