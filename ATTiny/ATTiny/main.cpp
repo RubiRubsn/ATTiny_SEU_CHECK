@@ -100,11 +100,11 @@ void test_register()
 		UART_tx('$');
 		uart_send_report(adr, val);
 	}
-	else if ((ACSRA & 0xDF) != 0)
+	else if ((ACSRA & 0xCF) != 0)
 	{
 		adr = 0x14 | (1 << 7);
-		val = ACSRA & 0xDF;
-		ACSRA = ACSRA & ~0xDF;
+		val = ACSRA & 0xCF;
+		ACSRA = ACSRA & ~0xCF;
 		UART_tx('$');
 		uart_send_report(adr, val);
 	}
