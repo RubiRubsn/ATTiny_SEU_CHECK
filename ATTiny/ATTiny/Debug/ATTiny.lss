@@ -315,15 +315,15 @@ Disassembly of section .text:
  1f2:	43 bb       	out	0x13, r20	; 19
  1f4:	aa c0       	rjmp	.+340    	; 0x34a <_Z13test_registerv+0x202>
  1f6:	44 b3       	in	r20, 0x14	; 20
- 1f8:	4f 7d       	andi	r20, 0xDF	; 223
+ 1f8:	4f 7c       	andi	r20, 0xCF	; 207
  1fa:	49 f0       	breq	.+18     	; 0x20e <_Z13test_registerv+0xc6>
  1fc:	44 e9       	ldi	r20, 0x94	; 148
  1fe:	46 a9       	sts	0x46, r20	; 0x800046 <adr>
  200:	44 b3       	in	r20, 0x14	; 20
- 202:	4f 7d       	andi	r20, 0xDF	; 223
+ 202:	4f 7c       	andi	r20, 0xCF	; 207
  204:	45 a9       	sts	0x45, r20	; 0x800045 <val>
  206:	44 b3       	in	r20, 0x14	; 20
- 208:	40 72       	andi	r20, 0x20	; 32
+ 208:	40 73       	andi	r20, 0x30	; 48
  20a:	44 bb       	out	0x14, r20	; 20
  20c:	9e c0       	rjmp	.+316    	; 0x34a <_Z13test_registerv+0x202>
  20e:	45 b3       	in	r20, 0x15	; 21
