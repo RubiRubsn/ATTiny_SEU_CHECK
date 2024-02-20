@@ -14,6 +14,7 @@ uint8_t test[nr_zells];
 
 uint8_t adr;
 uint8_t val;
+uint8_t corrected_val;
 uint8_t counter_two = 0;
 
 uint8_t counter = 0;
@@ -292,12 +293,7 @@ struct tripple_uint8_t_ptr
 	uint8_t *C;
 };
 
-struct tripple_uint8_t
-{
-	uint8_t A;
-	uint8_t B;
-	uint8_t C;
-};
+
 
 tripple_uint8_t i;
 
@@ -319,18 +315,21 @@ uint8_t TMR(uint8_t &A, uint8_t &B, uint8_t &C)
 			adr = (uint8_t)(short)&C;
 			val = C;
 			C = A;
+			corrected_val = C;
 		}
 		else if (A == C)
 		{
 			adr = (uint8_t)(short)&B;
 			val = B;
 			B = A;
+			corrected_val = B;
 		}
 		else
 		{
 			adr = (uint8_t)(short)&A;
 			val = A;
 			A = B;
+			corrected_val = A;
 		}
 		UART_tx('$');
 		UART_tx('T');

@@ -28,6 +28,14 @@ void UART_init();
 #define F_CPU (8000000UL) // 8 MHz
 #endif                    /* !F_CPU */
 
+
+struct tripple_uint8_t
+{
+	uint8_t A;
+	uint8_t B;
+	uint8_t C;
+};
+
 volatile uint16_t tx_shift_reg_a = 0;
 volatile uint16_t tx_shift_reg_b = 0;
 volatile uint16_t tx_shift_reg_c = 0;
@@ -68,6 +76,8 @@ void set_TMR_val(uint16_t val)
 
 void UART_tx(char character) // char muss TMR !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 {
+	char a=character;
+	char b= character;
    uint16_t local_tx_shift_reg = volatile_TMR();
    while (local_tx_shift_reg)
    {
@@ -76,7 +86,14 @@ void UART_tx(char character) // char muss TMR !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
    // fill the TX shift register witch the character to be sent and the start & stop bits (start bit (1<<0) is already 0)
    // local_tx_shift_reg = volatile_TMR();
+	if (!((a == b) && (b == character)))
+	{
+		if (a == b)
+		{
+			character = a;
+		}
 
+	}
    local_tx_shift_reg = (uint16_t)(character << 1) | (uint16_t)(1 << 9); // stop bit (1<<9)
 
    set_TMR_val(local_tx_shift_reg);
