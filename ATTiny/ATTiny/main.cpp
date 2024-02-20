@@ -26,36 +26,40 @@ void test_register()
 		adr = 0x08;
 		val = PORTCR & 0x3;
 		PORTCR = PORTCR & ~(0x3);
+		corrected_val = PORTCR;
 		UART_tx('$');
 		UART_tx('$');
-		uart_send_report(adr, val);
+		uart_send_report(adr, val, corrected_val);
 	}
 	else if (PCMSK0 != 0)
 	{
 		adr = 0x09;
 		val = PCMSK0;
 		PCMSK0 = 0x00;
+		corrected_val = PCMSK0;
 		UART_tx('$');
 		UART_tx('$');
-		uart_send_report(adr, val);
+		uart_send_report(adr, val, corrected_val);
 	}
 	else if ((PCMSK1 & (0x0F)) != 0)
 	{
 		adr = 0x0A;
 		val = PCMSK1 & (0x0F);
 		PCMSK1 = PCMSK1 & ~(0x0F);
+		corrected_val = PCMSK1;
 		UART_tx('$');
 		UART_tx('$');
-		uart_send_report(adr, val);
+		uart_send_report(adr, val, corrected_val);
 	}
 	else if (DIDR0 != 0)
 	{
 		adr = 0x0D;
 		val = DIDR0;
 		DIDR0 = 0x00;
+		corrected_val = DIDR0;
 		UART_tx('$');
 		UART_tx('$');
-		uart_send_report(adr, val);
+		uart_send_report(adr, val, corrected_val);
 	}
 	// else if (ADCL != 0)
 	// {
@@ -78,39 +82,43 @@ void test_register()
 		adr = 0x10;
 		val = ADMUX & 0x7F;
 		ADMUX = ADMUX & ~(0x7F);
+		corrected_val = ADMUX & 0x7F;
 		UART_tx('$');
 		UART_tx('$');
-		uart_send_report(adr, val);
+		uart_send_report(adr, val, corrected_val);
 	}
 	else if ((ADCSRB & (0xCF)) != 0)
 	{
 		adr = 0x11;
 		val = ADCSRB & (0xCF);
 		ADCSRB = ADCSRB & ~(0xCF);
+		corrected_val = ADCSRB & (0xCF);
 		UART_tx('$');
 		UART_tx('$');
-		uart_send_report(adr, val);
+		uart_send_report(adr, val, corrected_val);
 	}
 	else if (ADCSRA != 0)
 	{
 		adr = 0x12;
 		val = ADCSRA;
 		ADCSRA = 0x00;
+		corrected_val = ADCSRA;
 		UART_tx('$');
 		UART_tx('$');
-		uart_send_report(adr, val);
+		uart_send_report(adr, val, corrected_val);
 	}
 	else if ((ACSRB & 0xEF) != 0)
 	{
 		adr = 0x13;
 		val = ACSRB & 0xEF;
 		ACSRB = ACSRB & ~0xEF;
+		corrected_val = ACSRB & 0xEF;
 		UART_tx('$');
 		UART_tx('$');
-		uart_send_report(adr, val);
+		uart_send_report(adr, val, corrected_val);
 	}
-	//wieder rein!!!	// else if ((ACSRA & 0xCF) != 0)
-	// {
+	// wieder rein!!!	// else if ((ACSRA & 0xCF) != 0)
+	//  {
 
 	// 	adr = 0x14  ;
 	// 	val = ACSRA & 0xCF;
@@ -123,9 +131,10 @@ void test_register()
 		adr = 0x15;
 		val = OCR0B;
 		OCR0B = 0x00;
+		corrected_val = OCR0B;
 		UART_tx('$');
 		UART_tx('$');
-		uart_send_report(adr, val);
+		uart_send_report(adr, val, corrected_val);
 	}
 	// else if (TCCR0B != 0)
 	// {
@@ -140,18 +149,20 @@ void test_register()
 		adr = 0x20;
 		val = TCNT1L;
 		TCNT1L = 0x00;
+		corrected_val = TCNT1L;
 		UART_tx('$');
 		UART_tx('$');
-		uart_send_report(adr, val);
+		uart_send_report(adr, val, corrected_val);
 	}
 	else if (TCNT1H != 0)
 	{
 		adr = 0x21;
 		val = TCNT1H;
 		TCNT1H = 0x00;
+		corrected_val = TCNT1H;
 		UART_tx('$');
 		UART_tx('$');
-		uart_send_report(adr, val);
+		uart_send_report(adr, val, corrected_val);
 	}
 	// else if ((TCCR1C & 0xC0) != 0)
 	// {
@@ -166,18 +177,20 @@ void test_register()
 		adr = 0x23;
 		val = TCCR1B & 0xDF;
 		TCCR1B = TCCR1B & ~(0xDF);
+		corrected_val = TCCR1B & 0xDF;
 		UART_tx('$');
 		UART_tx('$');
-		uart_send_report(adr, val);
+		uart_send_report(adr, val, corrected_val);
 	}
 	else if ((TCCR1A & 0xF3) != 0)
 	{
 		adr = 0x24;
 		val = TCCR1A & 0xF3;
 		TCCR1A = TCCR1A & ~(0xf3);
+		corrected_val = TCCR1A & 0xF3;
 		UART_tx('$');
 		UART_tx('$');
-		uart_send_report(adr, val);
+		uart_send_report(adr, val, corrected_val);
 	}
 	// else if (TIMSK != 0)
 	// {
@@ -191,81 +204,90 @@ void test_register()
 		adr = 0x27;
 		val = GTCCR & 0x81;
 		GTCCR = GTCCR & ~0x81;
+		corrected_val = GTCCR & 0x81;
 		UART_tx('$');
 		UART_tx('$');
-		uart_send_report(adr, val);
+		uart_send_report(adr, val, corrected_val);
 	}
 	else if (TWSD != 0)
 	{
 		adr = 0x28;
 		val = TWSD;
 		TWSD = 0x00;
+		corrected_val = TWSD = 0x00;
 		UART_tx('$');
 		UART_tx('$');
-		uart_send_report(adr, val);
+		uart_send_report(adr, val, corrected_val);
 	}
 	else if (TWSAM != 0)
 	{
 		adr = 0x29;
 		val = TWSAM;
 		TWSAM = 0x00;
+		corrected_val = TWSAM;
 		UART_tx('$');
 		UART_tx('$');
-		uart_send_report(adr, val);
+		uart_send_report(adr, val, corrected_val);
 	}
 	else if (TWSA != 0)
 	{
 		adr = 0x2A;
 		val = TWSA;
 		TWSA = 0x00;
+		corrected_val = TWSA;
 		UART_tx('$');
 		UART_tx('$');
-		uart_send_report(adr, val);
+		uart_send_report(adr, val, corrected_val);
 	}
 	else if ((TWSSRA & 0xCF) != 0)
 	{
 		adr = 0x2B;
 		val = TWSSRA & 0xCF;
 		TWSSRA = TWSSRA & ~0xCF;
+		corrected_val = TWSSRA & 0xCF;
 		UART_tx('$');
 		UART_tx('$');
-		uart_send_report(adr, val);
+		uart_send_report(adr, val, corrected_val);
 	}
 	else if ((TWSCRB & 0x04) != 0)
 	{
 		adr = 0x2C;
 		val = TWSCRB & 0x04;
 		TWSCRB = TWSCRB & ~(0x04);
+		corrected_val = TWSCRB & 0x04;
 		UART_tx('$');
 		UART_tx('$');
-		uart_send_report(adr, val);
+		uart_send_report(adr, val, corrected_val);
 	}
 	else if ((TWSCRA & 0xBF) != 0)
 	{
 		adr = 0x2D;
 		val = TWSCRA & 0xBF;
 		TWSCRA = TWSCRA & ~(0xBF);
+		corrected_val = TWSCRA & 0xBF;
 		UART_tx('$');
 		UART_tx('$');
-		uart_send_report(adr, val);
+		uart_send_report(adr, val, corrected_val);
 	}
 	else if (SPCR != 0)
 	{
 		adr = 0x30;
 		val = SPCR;
 		SPCR = 0x00;
+		corrected_val = SPCR;
 		UART_tx('$');
 		UART_tx('$');
-		uart_send_report(adr, val);
+		uart_send_report(adr, val, corrected_val);
 	}
 	else if ((PRR & 0x1F) != 0)
 	{
 		adr = 0x35;
 		val = PRR & 0x1F;
 		PRR = PRR & ~(0x1F);
+		corrected_val = PRR & 0x1F;
 		UART_tx('$');
 		UART_tx('$');
-		uart_send_report(adr, val);
+		uart_send_report(adr, val, corrected_val);
 	}
 	// else if (OSCCAL != 0)
 	// {
@@ -279,9 +301,10 @@ void test_register()
 		adr = 0x3A;
 		val = MCUCR & 0xDF;
 		MCUCR = MCUCR & ~(0xDF);
+		corrected_val = MCUCR & 0xDF;
 		UART_tx('$');
 		UART_tx('$');
-		uart_send_report(adr, val);
+		uart_send_report(adr, val, corrected_val);
 	}
 	// uart_send_report(adr, val);
 }
@@ -292,8 +315,6 @@ struct tripple_uint8_t_ptr
 	uint8_t *B;
 	uint8_t *C;
 };
-
-
 
 tripple_uint8_t i;
 
@@ -333,7 +354,7 @@ uint8_t TMR(uint8_t &A, uint8_t &B, uint8_t &C)
 		}
 		UART_tx('$');
 		UART_tx('T');
-		uart_send_report(adr, val);
+		uart_send_report(adr, val, corrected_val);
 	}
 	return A;
 };
@@ -342,38 +363,38 @@ uint8_t TMR(tripple_uint8_t &A)
 	return TMR(A.A, A.B, A.C);
 };
 
-uint8_t *TMR(tripple_uint8_t_ptr &A)
-{
-	if ((A.A == A.B) && (A.B == A.C))
-	{
-		return A.A;
-	}
-	else
-	{
-		if (A.A == A.B)
-		{
-			adr = (uint8_t)(short)&(A.C);
-			val = (uint8_t)(short)(A.C);
-			A.C = A.A;
-		}
-		else if (A.A == A.C)
-		{
-			adr = (uint8_t)(short)&(A.B);
-			val = (uint8_t)(short)(A.B);
-			A.B = A.A;
-		}
-		else
-		{
-			adr = (uint8_t)(short)&(A.A);
-			val = (uint8_t)(short)(A.A);
-			A.A = A.B;
-		}
-		UART_tx('$');
-		UART_tx('T');
-		uart_send_report(adr, val);
-	}
-	return A.A;
-};
+// uint8_t *TMR(tripple_uint8_t_ptr &A)
+// {
+// 	if ((A.A == A.B) && (A.B == A.C))
+// 	{
+// 		return A.A;
+// 	}
+// 	else
+// 	{
+// 		if (A.A == A.B)
+// 		{
+// 			adr = (uint8_t)(short)&(A.C);
+// 			val = (uint8_t)(short)(A.C);
+// 			A.C = A.A;
+// 		}
+// 		else if (A.A == A.C)
+// 		{
+// 			adr = (uint8_t)(short)&(A.B);
+// 			val = (uint8_t)(short)(A.B);
+// 			A.B = A.A;
+// 		}
+// 		else
+// 		{
+// 			adr = (uint8_t)(short)&(A.A);
+// 			val = (uint8_t)(short)(A.A);
+// 			A.A = A.B;
+// 		}
+// 		UART_tx('$');
+// 		UART_tx('T');
+// 		uart_send_report(adr, val);
+// 	}
+// 	return A.A;
+// };
 
 int main(void)
 {
@@ -420,9 +441,10 @@ void test_memory()
 			adr = (uint8_t)(short)&test[TMR(i)];
 			val = test[TMR(i)];
 			test[TMR(i)] = TEST_PATTERN;
+			corrected_val = test[TMR(i)];
 			UART_tx('$');
 			UART_tx('R');
-			uart_send_report(adr, val);
+			uart_send_report(adr, val, corrected_val);
 		}
 	}
 }
