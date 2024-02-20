@@ -18,7 +18,6 @@ void UART_init();
 // #include "TMR_datatype.h"
 // #include <util/delay.h>
 
-// change these to use another pin
 #define TX_PORT PORTB
 #define TX_PIN PB1
 #define TX_DDR DDRB
@@ -70,63 +69,45 @@ uint8_t TMRNU(tripple_uint8_t &A)
    return TMRNU(A.A, A.B, A.C);
 };
 
-// volatile uint16_t tx_shift_reg_a = 0;
-// volatile uint16_t tx_shift_reg_b = 0;
-// volatile uint16_t tx_shift_reg_c = 0;
+uint16_t TMRNU(uint16_t &A, uint16_t &B, uint16_t &C)
+{
+	if ((A == B) && (B == C))
+	{
+		return A;
+	}
+	else
+	{
+		if (A == B)
+		{
+			C = A;
+		}
+		else if (A == C)
+		{
+			B = A;
+		}
+		else
+		{
+			A = B;
+		}
+	}
+	return A;
+};
+uint8_t TMRNU(tripple_uint16_t &A)
+{
+	return TMRNU(A.A, A.B, A.C);
+};
 
-uint16_t help = 0x0000;
-// uint16_t local_tx_shift_reg;
 
-// volatile uint16_t volatile_TMR()
-// {
-//    if ((tx_shift_reg_a == tx_shift_reg_b) && (tx_shift_reg_b == tx_shift_reg_c))
-//    {
-//       return tx_shift_reg_a;
-//    }
-//    else
-//    {
-//       if (tx_shift_reg_a == tx_shift_reg_b)
-//       {
-//          tx_shift_reg_c = tx_shift_reg_a;
-//       }
-//       else if (tx_shift_reg_a == tx_shift_reg_c)
-//       {
-//          tx_shift_reg_b = tx_shift_reg_a;
-//       }
-//       else
-//       {
-//          tx_shift_reg_a = tx_shift_reg_b;
-//       }
-//    }
-//    return tx_shift_reg_a;
-// };
-
-// void set_TMR_val(uint16_t val)
-// {
-//    tx_shift_reg_a = val;
-//    tx_shift_reg_b = val;
-//    tx_shift_reg_c = val;
-// }
 
 void UART_tx(tripple_uint8_t character)
 {
-   // uint16_t local_tx_shift_reg = volatile_TMR();
-   //  while (local_tx_shift_reg)
-   //  {
-   //     local_tx_shift_reg = volatile_TMR();
-   //  }
 
-   // fill the TX shift register witch the character to be sent and the start & stop bits (start bit (1<<0) is already 0)
-   // local_tx_shift_reg = volatile_TMR();
-   uint8_t help = TMRNU(character);
    tripple_uint16_t send_buffer;
    send_buffer.A = (uint16_t)(character.A << 1) | (uint16_t)(1 << 9);
    send_buffer.B = (uint16_t)(character.B << 1) | (uint16_t)(1 << 9);
    send_buffer.C = (uint16_t)(character.C << 1) | (uint16_t)(1 << 9);
    TMRNU(send_buffer);
-   // local_tx_shift_reg = (uint16_t)(help << 1) | (uint16_t)(1 << 9); // stop bit (1<<9)
 
-   // set_TMR_val(local_tx_shift_reg);
 
    // start timer0 with a prescaler of 8
    TCCR0B = (1 << CS01);
@@ -170,9 +151,6 @@ void UART_init()
    // set timer0 to CTC mode clear timer on compare match
    TCCR0A = (1 << WGM01);
 
-   // enable output compare 0 A interrupt
-   // TIMSK |= (1 << OCF0A);                                                                                                        //hier mal noch schauen, vielleicht rein??????????????????????
-
    // set compare value to 103 to achieve a 9600 baud rate (i.e. 104µs)
    // together with the 8MHz/8=1MHz timer0 clock
    /*
@@ -183,8 +161,7 @@ void UART_init()
 
    OCR0A = 103; // Default == 103
 
-   // enable interrupts
-   // sei();
+
 }
 
 void uart_send_report(uint8_t address, uint8_t content, uint8_t corr_cont)
@@ -205,29 +182,3 @@ void uart_send_report(uint8_t address, uint8_t content, uint8_t corr_cont)
    UART_tx(h_content);
    UART_tx(h_corr_cont);
 }
-
-// // timer0 compare A match interrupt
-// ISR(TIM0_COMPA_vect)
-// {
-//    TCNT0 = 0;
-//    uint16_t local_tx_shift_reg = volatile_TMR();
-
-//    if (local_tx_shift_reg & 0x01)
-//    {
-//       TX_PORT |= (1 << TX_PIN);
-//    }
-//    else
-//    {
-//       TX_PORT &= ~(1 << TX_PIN);
-//    }
-
-//    local_tx_shift_reg = volatile_TMR();
-//    local_tx_shift_reg >>= 1;
-//    set_TMR_val(local_tx_shift_reg);
-//    local_tx_shift_reg = volatile_TMR();
-//    if (!local_tx_shift_reg)
-//    {
-//       TCCR0B = 0;
-//       TCNT0 = 0;
-//    }
-// }
