@@ -1,4 +1,6 @@
+#ifndef __AVR_ATtiny20__
 #define __AVR_ATtiny20__
+#endif
 #include "uart_BitBang8Mhz.h"
 #include <avr/io.h>
 #include <avr/interrupt.h>
@@ -12,9 +14,9 @@
 #define nr_zells 50 // 90 // 47
 uint8_t test[nr_zells];
 
-uint8_t adr;
-uint8_t val;
-uint8_t corrected_val;
+volatile uint8_t adr;
+volatile uint8_t val;
+volatile uint8_t corrected_val;
 uint8_t counter_two = 0;
 
 uint8_t counter = 0;

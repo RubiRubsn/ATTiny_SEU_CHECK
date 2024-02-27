@@ -416,15 +416,15 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000      0xbac
+.debug_info     0x00000000      0xbb1
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x45b C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATtiny_DFP/1.10.348/gcc/dev/attiny20/avrtiny/crtattiny20.o
- .debug_info    0x0000045b      0x751 main.o
+ .debug_info    0x0000045b      0x756 main.o
 
-.debug_abbrev   0x00000000      0x666
+.debug_abbrev   0x00000000      0x66d
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x41c C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATtiny_DFP/1.10.348/gcc/dev/attiny20/avrtiny/crtattiny20.o
- .debug_abbrev  0x0000041c      0x24a main.o
+ .debug_abbrev  0x0000041c      0x251 main.o
 
 .debug_line     0x00000000      0x7a9
  *(.debug_line .debug_line.* .debug_line_end)
